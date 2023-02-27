@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FetchMyProfile, ME } from "../Redux/ActionTypes";
 import { useDispatch } from "react-redux";
-import ProfileSection from "./ProfileSection";
+import ActivityProfile from "./ActivityProfile";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Profile = () => {
       });
     })();
   }, []);
-  return <ProfileSection />;
+  return <ActivityProfile />;
 };
 
 export default Profile;
