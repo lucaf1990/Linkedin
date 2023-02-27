@@ -9,19 +9,23 @@ const ActivityProfile = () => {
   return (
     <Container>
       <Row id="ActivityProfile">
-        <Col id="ActivityCol">
-          <h5>Activity</h5>
-          <p className="p-activity">
-            {Math.floor(Math.random() * 7000)} followers{" "}
-          </p>
+        <Col style={{ padding: "0" }}>
+          <Col id="ActivityCol">
+            <h5>Activity</h5>
+            <p className="p-activity">
+              {Math.floor(Math.random() * 7000)} followers{" "}
+            </p>
 
-          <h5>{mystate.name} hasn't posted lately </h5>
-          <p className="p-activity">
-            {mystate.name} recent post and comment will be displayed here{" "}
-          </p>
-          <Dropdown.Toggle id="ActivityToggle">
-            Show all activity
-          </Dropdown.Toggle>
+            <h5>{mystate.name} hasn't posted lately </h5>
+            <p className="p-activity">
+              {mystate.name} recent post and comment will be displayed here{" "}
+            </p>
+          </Col>
+          <Col>
+            <Dropdown.Toggle id="ActivityToggle">
+              Show all activity
+            </Dropdown.Toggle>
+          </Col>
         </Col>
       </Row>
     </Container>

@@ -15,19 +15,20 @@ const ProfileSection = () => {
           src={data.image}
           alt={data.name}
           style={{
-            height: "130px",
-            width: "130px",
+            height: "150px",
+            width: "150px",
             padding: "0",
             borderRadius: "100%",
             border: "4px white solid ",
             position: "relative",
-            top: "110px",
-            left: "150px",
+            top: "95px",
+            left: "75px",
           }}
         />
       </div>
       <Row id="profileProfile" className="flex-column">
-        <Col>
+        <Col style={{ padding: "0" }}>
+          {/* Per levare gli spazi alla foto grande */}
           <img
             src={data.image}
             alt={data.name}
@@ -43,14 +44,10 @@ const ProfileSection = () => {
             {data.area}
           </p>
         </Col>
-        <Col>
-          <Button className="Profile-Btn1">Collegati</Button>
-          <Button className="Profile-Btn2 btn-light text-primary">
-            Messaggio
-          </Button>
-          <Button className="Profile-Btn3 btn-light text-secondary">
-            Altro
-          </Button>
+        <Col className="d-flex">
+          <div className="Profile-Btn1">Collegati</div>
+          <div className="Profile-Btn2 btn-light text-primary">Messaggio</div>
+          <div className="Profile-Btn3 btn-light text-secondary">Altro</div>
         </Col>
       </Row>
     </Container>
