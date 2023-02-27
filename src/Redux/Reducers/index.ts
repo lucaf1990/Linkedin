@@ -4,7 +4,7 @@ import { Me, MyState } from "../Interfaces";
 
 const initialState: MyState = {
   profilesFetch: [],
-  me: {},
+  me: <Me>{},
 };
 
 const profileReducer = (state = initialState, action: PayloadAction<Me>) => {
