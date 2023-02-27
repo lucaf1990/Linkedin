@@ -1,0 +1,27 @@
+import { PayloadAction } from "@reduxjs/toolkit";
+import { PROFILES_FETCH, ME } from "../ActionTypes";
+import { Me } from "../Interfaces";
+
+const initialState = {
+  profilesFetch: [],
+  me: {},
+};
+
+const profileReducer = (state = initialState, action: PayloadAction<Me>) => {
+  switch (action.type) {
+    case PROFILES_FETCH:
+      return {
+        ...state,
+        profilesFetch: [...state.profilesFetch, action.payload],
+      };
+    case ME:
+      return {
+        ...state,
+        me: action.payload,
+      };
+
+    default:
+      return state;
+  }
+};
+export default profileReducer;
