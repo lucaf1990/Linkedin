@@ -6,8 +6,8 @@ import Profile from "./Components/Profile";
 function App() {
   return (
     <div className="App">
-      <Profile />
       <Navbar />
+      <Profile />
     </div>
   );
 }
