@@ -6,7 +6,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
-      let data = await FetchMyProfile("me");
+      let data = await FetchMyProfile();
       console.log(data);
       dispatch({
         type: ME,

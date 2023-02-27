@@ -1,10 +1,10 @@
 export const PROFILES_FETCH = "PROFILES_FETCH";
 export const ME = "ME";
 
-export const FetchMyProfile = async (endPoint: string) => {
+export const FetchMyProfile = async () => {
   try {
     let res = await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${endPoint}`,
+      `https://striveschool-api.herokuapp.com/api/profile/me`,
       {
         method: "GET",
         headers: {
