@@ -1,3 +1,26 @@
+#ActivityProfile {
+  border: lightgray solid 1px;
+  width: 60%;
+  border-radius: 15px;
+  height: fit-content;
+  margin-top: 1rem;
+  margin-left: 10%;
+}
+#ActivityCol {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+#ActivityToggle {
+  background: transparent;
+  color: black;
+  border: none;
+  text-align: center;
+  width: 100%;
+}
+.p-activity {
+  font-size: 0.8em;
+}
+
 #profileProfile {
   border: lightgray solid 1px;
   width: 60%;
