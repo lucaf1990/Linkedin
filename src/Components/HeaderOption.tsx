@@ -1,15 +1,20 @@
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { FC } from "react";
 import "../App.css";
 
 type HeaderProps = {
+  Icon: ReactJSXElement;
   title: String;
 };
 
-const HeaderOption: React.FunctionComponent<HeaderProps> = (props) => {
-  const { title } = props;
+const HeaderOption = (props: HeaderProps) => {
+  const { Icon, title } = props;
   return (
     <div className="HeaderOption">
-      {/* {Icon && <Icon className="headerOption_icon" />} */}
-      <p className="headerOption_title">{title}</p>
+      <>
+        {Icon}
+        <p className="headerOption_title">{title}</p>
+      </>
     </div>
   );
 };

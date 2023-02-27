@@ -1,3 +1,4 @@
+import React from "react";
 import "../App.css";
 import HeaderOption from "./HeaderOption";
 import Logo from "../linkedin.png";
@@ -19,11 +20,11 @@ function Navbar() {
         </div>
       </div>
       <div className="header_right">
-        <HeaderOption title="Home" />
-        <HeaderOption title="My Network" />
-        <HeaderOption title="Jobs" />
-        <HeaderOption title="Messaging" />
-        <HeaderOption title="Notifications" />
+        <HeaderOption Icon={<HomeIcon />} title="Home" />
+        <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />
+        <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />
+        <HeaderOption Icon={<ChatIcon />} title="Messaging" />
+        <HeaderOption Icon={<NotificationsIcon />} title="Notifications" />
       </div>
     </div>
   );
