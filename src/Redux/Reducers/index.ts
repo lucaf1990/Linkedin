@@ -1,8 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { PROFILES_FETCH, ME } from "../ActionTypes";
-import { Me } from "../Interfaces";
+import { Me, MyState } from "../Interfaces";
 
-const initialState = {
+const initialState: MyState = {
   profilesFetch: [],
   me: {},
 };

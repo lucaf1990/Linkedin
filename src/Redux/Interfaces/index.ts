@@ -12,3 +12,8 @@ export interface Me {
   updatedAt: Date;
   __v: number;
 }
+
+export interface MyState {
+  profilesFetch: Me[];
+  me: Me;
+}
