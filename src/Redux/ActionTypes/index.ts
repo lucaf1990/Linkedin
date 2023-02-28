@@ -1,3 +1,5 @@
+import { MyExperienceChanges } from "../Interfaces";
+
 export const PROFILES_FETCH = "PROFILES_FETCH";
 export const ME = "ME";
 
@@ -47,18 +49,21 @@ export const FetchMyExperience = async () => {
   }
 };
 
-export const changeMyInfo = async () => {
-  const requestOptions = {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
-    },
-
-    body: JSON.stringify({}),
-  };
+export const changeMyInfo = async (params: MyExperienceChanges) => {
+  const requestOptions = await fetch(
+    "https://striveschool-api.herokuapp.com/api/profile/5fc4af0bb708c200175de88e/experiences/5fc4af0bb708c200175de88e",
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: JSON.stringify(params),
+    }
+  );
 };
+
 // //const requestOptions = {
 //   method: 'PUT',
 //   headers: { 'Content-Type': 'application/json' },
