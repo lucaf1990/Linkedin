@@ -6,7 +6,6 @@ import { RootState } from "../Redux/Store";
 
 const ProfileSection = () => {
   const data = useSelector((state: RootState) => state.profile.me);
-  console.log(data);
 
   return (
     <Container>

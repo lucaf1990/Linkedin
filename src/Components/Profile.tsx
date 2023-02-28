@@ -5,6 +5,7 @@ import ActivityProfile from "./ActivityProfile";
 import ProfileSection from "./ProfileSection";
 import { Col, Row } from "react-bootstrap";
 import SideBar from "./SideBar";
+import About from "./About";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Profile = () => {
       <Col xs={7} className="ms-5">
         <ProfileSection />
         <ActivityProfile />
+        <About />
       </Col>
       <Col xs={3}>
         <SideBar />
