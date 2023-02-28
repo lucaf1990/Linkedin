@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Profile/>} />
+          <Route path="/" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>
