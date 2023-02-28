@@ -1,4 +1,7 @@
 import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { changeMyInfo } from "../../Redux/ActionTypes";
+import { RootState } from "../../Redux/Store";
 
 const ModalProfileSection = ({
   show,
@@ -20,9 +23,9 @@ const ModalProfileSection = ({
               <Form.Label className="mt-3">First name*</Form.Label>
               <Form.Control required type="text" placeholder="" autoFocus />
               <Form.Label className="mt-3">Last name*</Form.Label>
-              <Form.Control required type="text" placeholder="" autoFocus />
+              <Form.Control required type="text" placeholder="" />
               <Form.Label className="mt-3">Additional name</Form.Label>
-              <Form.Control type="text" placeholder="" autoFocus />
+              <Form.Control type="text" placeholder="" />
               <Form.Label className="mt-3">Name Pronunciation</Form.Label>
               <h6>ℹ This can only be added using our mobile app</h6>
               <Form.Label className="mt-3">Pronouns</Form.Label>
@@ -63,19 +66,14 @@ const ModalProfileSection = ({
               </Form.Label>
               <p></p>
               <Form.Label className="mt-3">Headline*</Form.Label>
-              <Form.Control required type="text" placeholder="" autoFocus />
+              <Form.Control required type="text" placeholder="" />
               <Form.Label className="mt-3">
                 {" "}
                 <h5> Current position</h5>{" "}
               </Form.Label>
               <p></p>
               <Form.Label className="mt-3">Industry*</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Ex: Retail"
-                autoFocus
-              />
+              <Form.Control required type="text" placeholder="Ex: Retail" />
               <p></p>
               <Form.Label className="mt-3">
                 Learn more about{" "}
@@ -101,12 +99,11 @@ const ModalProfileSection = ({
                 required
                 type="text"
                 placeholder="Ex: United State"
-                autoFocus
               />
               <Form.Label className="mt-3">Postal code</Form.Label>
-              <Form.Control type="text" placeholder="" autoFocus />
+              <Form.Control type="text" placeholder="" />
               <Form.Label className="mt-3">City*</Form.Label>
-              <Form.Control required type="text" placeholder="" autoFocus />
+              <Form.Control required type="text" placeholder="" />
               <Form.Label className="mt-3">
                 {" "}
                 <h5> Contact info</h5>{" "}
@@ -123,7 +120,7 @@ const ModalProfileSection = ({
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={() => {}}
+            // onClick={() => {changeMyInfo()}}
           >
             Save
           </Button>

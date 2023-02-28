@@ -8,7 +8,7 @@ const About = () => {
     <Container>
       {mystate.bio !== "" ? (
         <Row id="ActivityProfile">
-          <Col style={{ padding: "0" }}>
+          <Col style={{ padding: "0", marginTop: "10px" }}>
             <Col id="ActivityCol">
               <h5>About</h5>
             </Col>
