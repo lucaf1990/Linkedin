@@ -9,7 +9,7 @@ const Experience = () => {
     console.log(mystate);
 
     const moment = require('moment');
-    let now = moment().format();
+    let now = moment().format('LLLL');
     
   return (
     <Container>
@@ -27,7 +27,9 @@ const Experience = () => {
               <span style={{display:'block'}}>{}</span>
               <span>{e.area}</span>
               </div>
-              <div>{e.description}</div>
+              <div>
+                <span>{moment(e.startDate).format('MMM YYYY')}</span> - <span>{moment(e.updatedAt).format('MMM YYYY')}</span>
+              </div>
             </Col>
           ))}
         </Col>
