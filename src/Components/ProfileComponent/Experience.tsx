@@ -24,7 +24,7 @@ const Experience = () => {
   return (
     <Container>
       <Row id="ActivityProfile">
-        <Col xs={10} style={{ padding: "0", marginLeft: "30px" }}>
+        <Col xs={10} style={{ padding: "0", marginTop: "10px" }}>
           <Col id="ActivityCol">
             <h5>Experience</h5>
           </Col>

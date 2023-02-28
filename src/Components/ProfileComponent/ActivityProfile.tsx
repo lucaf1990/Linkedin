@@ -8,7 +8,7 @@ const ActivityProfile = () => {
   return (
     <Container>
       <Row id="ActivityProfile">
-        <Col style={{ padding: "0" }}>
+        <Col style={{ padding: "0", marginTop: "15px" }}>
           <Col id="ActivityCol">
             <h5>Activity</h5>
             <p className="p-activity">

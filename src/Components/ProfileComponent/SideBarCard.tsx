@@ -20,7 +20,7 @@ const SideBarCard = () => {
       <Col>
         <h6>Nome Cognome</h6>
         <p className="p-Profile">Qualche cosa da dire su di me, non saprei</p>
-        <span className="Profile-Btn3 btn-light text-secondary">Connect</span>
+        <span className="Profile-Btn3 btn-light text-secondary ">Connect</span>
       </Col>
     </Row>
   );
