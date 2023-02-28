@@ -30,3 +30,5 @@ export interface MyState {
   profilesFetch: ArrMe[];
   me: Me;
 }
+
+export interface ModalProfileSectionProps {}
