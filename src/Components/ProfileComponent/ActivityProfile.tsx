@@ -1,8 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useSelector } from "react-redux";
-
-import { RootState } from "../Redux/Store";
+import { RootState } from "../../Redux/Store";
 const ActivityProfile = () => {
   const mystate = useSelector((state: RootState) => state.profile.me);
   console.log(mystate);

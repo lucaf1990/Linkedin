@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { RootState } from "../Redux/Store";
+import { RootState } from "../../Redux/Store";
 
 const About = () => {
   const mystate = useSelector((state: RootState) => state.profile.me);

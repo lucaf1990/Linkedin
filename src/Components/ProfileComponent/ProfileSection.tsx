@@ -2,7 +2,8 @@ import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import { useSelector } from "react-redux";
-import { RootState } from "../Redux/Store";
+import { RootState } from "../../Redux/Store";
+
 
 const ProfileSection = () => {
   const data = useSelector((state: RootState) => state.profile.me);

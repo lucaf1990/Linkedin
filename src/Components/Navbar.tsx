@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import HeaderOption from "./HeaderOption";
+import HeaderOption from "./ProfileComponent/HeaderOption";
 import Logo from "../linkedin.png";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";

@@ -1,22 +1,29 @@
 import { useEffect } from "react";
-import { FetchMyProfile, ME } from "../Redux/ActionTypes";
+import { FetchMyExperience, FetchMyProfile, ME, PROFILES_FETCH } from "../Redux/ActionTypes";
 import { useDispatch } from "react-redux";
-import ActivityProfile from "./ActivityProfile";
-import ProfileSection from "./ProfileSection";
+import ActivityProfile from "./ProfileComponent/ActivityProfile";
+import ProfileSection from "./ProfileComponent/ProfileSection";
 import { Col, Row } from "react-bootstrap";
-import SideBar from "./SideBar";
-import About from "./About";
+import SideBar from "./ProfileComponent/SideBar";
+import About from "./ProfileComponent/About";
+import Experience from "./ProfileComponent/Experience";
+
 
 const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
       let data = await FetchMyProfile();
+      let data2= await FetchMyExperience()
+        dispatch({
+          type: ME,
+          payload: data,
+        });
+        dispatch({
+          type: PROFILES_FETCH,
+          payload: data2
+        })
       console.log(data);
-      dispatch({
-        type: ME,
-        payload: data,
-      });
     })();
   }, []);
   return (
@@ -25,6 +32,7 @@ const Profile = () => {
         <ProfileSection />
         <ActivityProfile />
         <About />
+        <Experience/>
       </Col>
       <Col xs={3}>
         <SideBar />

@@ -1,6 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { RootState } from "../Redux/Store";
+import { RootState } from "../../Redux/Store";
 
 const SideBarCard = () => {
   const data = useSelector((state: RootState) => state.profile.me);
