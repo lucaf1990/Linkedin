@@ -23,7 +23,7 @@ const Profile = () => {
           type: PROFILES_FETCH,
           payload: data2
         })
-      console.log(data);
+      console.log(data2);
     })();
   }, []);
   return (

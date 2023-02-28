@@ -6,8 +6,8 @@ const Experience = () => {
     return (
       <Container>
         <Row id="ActivityProfile">
-        {mystate.map((e)=>(
-            <Col style={{ padding: "0" }}>
+        {mystate.map((e,i)=>(
+            <Col style={{ padding: "0" }} key={i}>
               <Col id="ActivityCol">
                 <h5>Experience</h5>
               </Col>
