@@ -3,7 +3,8 @@ import { FetchMyProfile, ME } from "../Redux/ActionTypes";
 import { useDispatch } from "react-redux";
 import ActivityProfile from "./ActivityProfile";
 import ProfileSection from "./ProfileSection";
-import { Container } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
+import SideBar from "./SideBar";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,15 @@ const Profile = () => {
     })();
   }, []);
   return (
-    <Container>
-      <ProfileSection />
-      <ActivityProfile />;
-    </Container>
+    <Row>
+      <Col xs={7} className="ms-5">
+        <ProfileSection />
+        <ActivityProfile />
+      </Col>
+      <Col xs={3}>
+        <SideBar />
+      </Col>
+    </Row>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import { useSelector } from "react-redux";
@@ -32,7 +32,12 @@ const ProfileSection = () => {
           <img
             src={data.image}
             alt={data.name}
-            style={{ height: "200px", width: "100%" }}
+            style={{
+              height: "200px",
+              width: "100%",
+              borderTopLeftRadius: "15px",
+              borderTopRightRadius: "15px",
+            }}
           />
         </Col>
         <Col id="profileCol" className="mt-5">

@@ -1,6 +1,6 @@
 #ActivityProfile {
   border: lightgray solid 1px;
-  width: 65%;
+  width: 100%;
   border-radius: 15px;
   height: fit-content;
   margin-top: 1rem;
@@ -11,6 +11,15 @@
   margin-left: 1rem;
 }
 
+#SideBarToggle {
+  background: transparent;
+  color: black;
+  width: 100%;
+}
+#SideBarToggle:hover {
+  opacity: 0.7;
+  background-color: rgb(240.5, 240.5, 240.5);
+}
 #ActivityToggle:hover {
   opacity: 0.7;
   background-color: rgb(240.5, 240.5, 240.5);
@@ -32,7 +41,7 @@
 
 #profileProfile {
   border: lightgray solid 1px;
-  width: 65%;
+  width: 100%;
   border-radius: 15px;
   height: fit-content;
   margin-top: 1rem;
