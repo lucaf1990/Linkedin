@@ -14,9 +14,9 @@ export interface Me {
 }
 
 export interface MyExperienceChanges {
+  _id: string;
   role: string;
   company: string;
-  // startDate: Date;
   description: string | null;
   area: string;
 }

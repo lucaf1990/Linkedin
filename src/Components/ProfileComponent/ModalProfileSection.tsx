@@ -1,4 +1,7 @@
 import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { changeMyInfo } from "../../Redux/ActionTypes";
+import { RootState } from "../../Redux/Store";
 
 const ModalProfileSection = ({
   show,
@@ -117,7 +120,7 @@ const ModalProfileSection = ({
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={() => {}}
+            // onClick={() => {changeMyInfo()}}
           >
             Save
           </Button>
