@@ -150,3 +150,22 @@
   cursor: pointer;
 }
 /* Fine NAVBAR */
+/*DROPDWON*/
+#dropdown-basic-button {
+  width: 100% !important;
+  color: black;
+  background-color: white !important;
+  border: 1px solid black;
+}
+.dropdown-basic-button {
+  width: 464px !important;
+}
+#modal-btn {
+  border-radius: 100%;
+  border: none;
+  color: black;
+  background-color: transparent !important;
+}
+#modal-btn:hover {
+  background-color: rgb(226, 226, 226) !important;
+}

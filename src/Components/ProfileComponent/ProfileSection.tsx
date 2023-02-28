@@ -2,9 +2,11 @@ import { Button, Container } from "react-bootstrap";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/Store";
+
+import { GiPencil } from "react-icons/gi";
 import ModalProfileSection from "./ModalProfileSection";
 import { useState } from "react";
+import { RootState } from "../../Redux/Store";
 const ProfileSection = () => {
   const data = useSelector((state: RootState) => state.profile.me);
   const [showModal, setShowModal] = useState(false);
@@ -70,7 +72,10 @@ const ProfileSection = () => {
             </Col>
           </Col>{" "}
           <Col xs={1} className="mt-3">
-            <Button onClick={handleShowModal}> ✏</Button>
+            <Button id="modal-btn" onClick={handleShowModal}>
+              {" "}
+              <GiPencil />
+            </Button>
             <ModalProfileSection
               show={showModal}
               handleClose={handleCloseModal}
