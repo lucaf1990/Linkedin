@@ -5,7 +5,7 @@ import { GiPencil } from "react-icons/gi";
 import ModalExperiences from "./ModalExperiences";
 import { useState } from "react";
 import ModalModifyEperience from "./ModalModifyExperience";
-import { ArrMe } from "../../Redux/Interfaces";
+
 const Experience = () => {
   const mystate = useSelector(
     (state: RootState) => state.profile.profilesFetch
@@ -76,11 +76,13 @@ const Experience = () => {
             {" "}
             <GiPencil />
           </Button>
-          <ModalExperiences
+          {/* <ModalExperiences
             show={showModal}
             handleClose={handleCloseModal}
-            experienceId={mystate[0]}
-          />
+            experienceId={mystate} da risolvere fa rompere tutto chiede una proprietà experience id se mettiamo mystate[0] 
+            // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
+            // put fatto da kevin 
+          /> */}
         </Col>
       </Row>
     </Container>
