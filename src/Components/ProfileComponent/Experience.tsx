@@ -1,35 +1,52 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { GiPencil } from "react-icons/gi";
+import ModalExperiences from "./ModalExperiences";
+import { useState } from "react";
 const Experience = () => {
-
   const mystate = useSelector(
     (state: RootState) => state.profile.profilesFetch
-    );
-    console.log(mystate);
+  );
+  console.log(mystate);
 
-    const moment = require('moment');
-    let now = moment().format();
-    
+  const moment = require("moment");
+  let now = moment().format();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
     <Container>
       <Row id="ActivityProfile">
-        <Col style={{ padding: "0" }}>
+        <Col xs={10} style={{ padding: "0", marginLeft: "30px" }}>
           <Col id="ActivityCol">
             <h5>Experience</h5>
           </Col>
 
           {mystate.map((e, i) => (
-            <Col key={i} className='mb-4'>
+            <Col key={i} className="mb-4">
               <h5>{e.role}</h5>
               <div>
-              <span>{e.company}</span>
-              <span style={{display:'block'}}>{}</span>
-              <span>{e.area}</span>
+                <span>{e.company}</span>
+                <span style={{ display: "block" }}>{}</span>
+                <span>{e.area}</span>
               </div>
               <div>{e.description}</div>
             </Col>
           ))}
+        </Col>
+        <Col xs={1} className="mt-3">
+          <Button id="modal-btn" onClick={handleShowModal}>
+            {" "}
+            <GiPencil />
+          </Button>
+          <ModalExperiences show={showModal} handleClose={handleCloseModal} />
         </Col>
       </Row>
     </Container>

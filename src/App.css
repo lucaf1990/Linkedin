@@ -169,3 +169,11 @@
 #modal-btn:hover {
   background-color: rgb(226, 226, 226) !important;
 }
+
+.yearsDropdown {
+  height: 300px;
+  overflow-y: auto;
+  display: inline-block;
+  background-color: transparent !important;
+  margin: 0 40px;
+}
