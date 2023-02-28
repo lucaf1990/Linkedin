@@ -27,6 +27,6 @@ export interface ArrMe {
 }
 
 export interface MyState {
-  profilesFetch: Me[];
+  profilesFetch: ArrMe[];
   me: Me;
 }

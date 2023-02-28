@@ -3,19 +3,22 @@ import { RootState } from "../../Redux/Store";
 import { Container,Row,Col } from "react-bootstrap";
 const Experience = () => {
     const mystate = useSelector((state: RootState) => state.profile.profilesFetch);
+    console.log(mystate)
     return (
       <Container>
         <Row id="ActivityProfile">
-        {mystate.map((e,i)=>(
-            <Col style={{ padding: "0" }} key={i}>
-              <Col id="ActivityCol">
-                <h5>Experience</h5>
-              </Col>
-              <Col>
-                <p>{e.bio}</p>
-              </Col>
+          <Col style={{ padding: "0" }}>
+            <Col id="ActivityCol">
+              <h5>Experience</h5>
             </Col>
+            
+          
+        {mystate.map((e,i)=>(
+          <Col  key={i}>
+              <p>{e.company}</p>
+          </Col>
         ))}
+        </Col>
         </Row>
       </Container>
     );

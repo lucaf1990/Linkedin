@@ -7,17 +7,17 @@ const initialState: MyState = {
   me: {} as Me,
 };
 
-const profileReducer = (state = initialState, action: PayloadAction<Me>) => {
+const profileReducer = (state = initialState, action: PayloadAction<ArrMe[]|Me>) => {
   switch (action.type) {
     case PROFILES_FETCH:
       return {
         ...state,
-        profilesFetch: [...state.profilesFetch, action.payload],
-      };
+        profilesFetch: [...state.profilesFetch, ...action.payload as ArrMe[]]
+      };  
     case ME:
       return {
         ...state,
-        me: action.payload,
+        me: action.payload as Me,
       };
 
     default:
