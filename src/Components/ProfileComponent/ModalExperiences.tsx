@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Store";
+import { ArrMe, MyExperienceChanges } from "../../Redux/Interfaces";
+import { changeMyInfo } from "../../Redux/ActionTypes";
 const ModalExperiences = ({
   show,
   handleClose,
+  experienceId
 }: {
   show: boolean;
   handleClose: () => void;
+  experienceId: ArrMe;
 }) => {
+  
+
   const [myYears, setMyYears] = useState<number[]>([]);
   useEffect(() => {
     const myState = () => {
@@ -19,22 +27,53 @@ const ModalExperiences = ({
     };
     myState();
   }, []);
+  const [experiencePayload,setExperiencePayload] = useState<MyExperienceChanges>({
+    _id: experienceId._id,
+    role: experienceId.role,
+    company: experienceId.company,
+    description: experienceId.description,
+    area: experienceId.area
+  })
+  const handleChange = (e:any)=>{
+    console.log('changed payload',e.target.name,e.target.value);
+    
+      setExperiencePayload({
+        ...experiencePayload,
+        [e.target.name]: e.target.value
+      })
+  }
+  useEffect(()=>{
+    setExperiencePayload({
+      _id: experienceId._id,
+      role: experienceId.role,
+      company: experienceId.company,
+      description: experienceId.description,
+      area: experienceId.area
+    })
+  },[experienceId])
+  const handleSubmit = (obj:MyExperienceChanges)=>{
+    changeMyInfo(obj)
+  }
   return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Experiences</Modal.Title>
+          <Modal.Title>Title</Modal.Title>
         </Modal.Header>
         <h6>*Indicates required</h6>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label className="mt-3">Title*</Form.Label>
+              <Form.Label className="mt-3">Role*</Form.Label>
               <Form.Control
+                name="role"
                 required
                 type="text"
                 placeholder="Ex: Retail Sales Manager"
                 autoFocus
+                value={experiencePayload.role}
+                onChange={(e)=>handleChange(e)}
+
               />
               <Form.Label className="mt-3">Employment Type*</Form.Label>
               <DropdownButton id="dropdown-basic-button" title="Please select">
@@ -89,9 +128,9 @@ const ModalExperiences = ({
               </DropdownButton>
 
               <Form.Label className="mt-3">Company name</Form.Label>
-              <Form.Control type="text" placeholder="Ex: Microsoft" />
+              <Form.Control type="text" placeholder="Ex: Microsoft" name="company" value={experiencePayload.company} onChange={(e)=>handleChange(e)} />
               <Form.Label className="mt-3">Location</Form.Label>
-              <Form.Control type="text" placeholder="Ex: Muravera" />
+              <Form.Control type="text" placeholder="Ex: Muravera" name="area" value={experiencePayload.area} onChange={(e)=>handleChange(e)} />
               <Form.Label className="mt-3">Location Type</Form.Label>
               <DropdownButton id="dropdown-basic-button" title="Please select">
                 <Dropdown.Item
@@ -239,6 +278,9 @@ const ModalExperiences = ({
                 type="textArea"
                 placeholder=""
                 style={{ height: "150px" }}
+                name="description"
+                value={experiencePayload.description || ""}
+                onChange={(e)=>handleChange(e)}
               />
             </Form.Group>
             <Form.Label className="mt-3">Headline*</Form.Label>
@@ -252,7 +294,7 @@ const ModalExperiences = ({
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={() => {}}
+            onClick={() => handleSubmit(experiencePayload)}
           >
             Save
           </Button>

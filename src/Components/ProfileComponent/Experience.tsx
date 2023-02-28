@@ -4,14 +4,27 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { GiPencil } from "react-icons/gi";
 import ModalExperiences from "./ModalExperiences";
 import { useState } from "react";
+import { ArrMe } from "../../Redux/Interfaces";
 const Experience = () => {
   const mystate = useSelector(
     (state: RootState) => state.profile.profilesFetch
   );
-  console.log(mystate);
+ 
+    const [experience,setExperience] = useState<ArrMe>({
+      _id: "",
+      role: "",
+      company: "",
+      startDate: new Date,
+      description: "",
+      area:"",
+      username: "",
+      user: "",
+      createdAt: new Date,
+      updatedAt: new Date,
+      v: 0
+    })
 
   const moment = require("moment");
-
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -36,6 +49,13 @@ const Experience = () => {
                 <span>{e.company}</span>
                 <span style={{ display: "block" }}>{}</span>
                 <span>{e.area}</span>
+                <Button id="modal-btn" onClick={()=>{
+                  handleShowModal()
+                  setExperience(e)
+                  }}>
+                  {" "}
+                  <GiPencil />
+                </Button>
               </div>
               <div>
                 <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
@@ -45,11 +65,7 @@ const Experience = () => {
           ))}
         </Col>
         <Col xs={1} className="mt-3">
-          <Button id="modal-btn" onClick={handleShowModal}>
-            {" "}
-            <GiPencil />
-          </Button>
-          <ModalExperiences show={showModal} handleClose={handleCloseModal} />
+          <ModalExperiences show={showModal} handleClose={handleCloseModal} experienceId={experience} />
         </Col>
       </Row>
     </Container>
