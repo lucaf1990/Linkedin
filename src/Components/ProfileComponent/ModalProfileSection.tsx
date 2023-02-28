@@ -123,6 +123,7 @@ const ModalProfileSection = ({
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
+            onClick={() => {}}
           >
             Save
           </Button>

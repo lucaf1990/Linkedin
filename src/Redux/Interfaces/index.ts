@@ -12,6 +12,15 @@ export interface Me {
   updatedAt: Date;
   __v: number;
 }
+
+export interface MyExperienceChanges {
+  role: string;
+  company: string;
+  startDate: Date;
+  description: string;
+  area: string;
+}
+
 export interface ArrMe {
   _id: string;
   role: string;
