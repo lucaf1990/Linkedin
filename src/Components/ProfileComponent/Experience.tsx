@@ -63,18 +63,18 @@ const Experience = () => {
   startDate: Date;
   description: string | null;
   area: string; */}
-              <ModalExperiences
-                show={showModal}
-                handleClose={handleCloseModal}
-                experienceId={e}
-                // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
-                // put fatto da kevin 
-              />
+                <ModalExperiences
+                  show={showModal}
+                  handleClose={handleCloseModal}
+                  experienceId={e}
+                  // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
+                  // put fatto da kevin
+                />
               </Col>
             </>
           ))}
         </Col>
-          {/* <ModalModifyEperience
+        {/* <ModalModifyEperience
             show={showModalExperience}
             handleClose={handleCloseModalExperience}
           />

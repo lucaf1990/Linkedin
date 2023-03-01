@@ -1,15 +1,19 @@
 function NewsSideBar() {
-  const recentItem = (topic) => {
-    <div className="sidebar_recentItem">
-      <span className="sidebar_hash">#</span>
-      <p>{topic}</p>
-    </div>;
-  };
+  // type NavBarProps = {
+  //   title: String;
+  // };
+  // const recentItem = (props: NavBarProps) => {
+  //   const { title } = props;
+  //   console.log(props);
+  //   <div className="sidebar_recentItem">
+  //     <span className="sidebar_hash">#</span>
+  //     <p>{title}</p>
+  //   </div>;
+  // };
 
   return (
-    // <Col md={2}>
     <div className="contai">
-      <div classname="NewsSideBar">
+      <div className="NewsSideBar">
         <div className="sidebar_top">
           <img src="" alt="" />
           {/* AVATAR */}
@@ -27,15 +31,18 @@ function NewsSideBar() {
           </div>
         </div>
         <div className="sidebar_bottom">
-          <p>Recent</p>
-          {recentItem("programming")}
-          {recentItem("software")}
-          {recentItem("hardware")}
-          {recentItem("design")}
+          <p>#Recent</p>
+          <p>#Programming</p>
+          <p>#Software</p>
+          <p>#Hardware</p>
+          <p>#Design</p>
+          {/* {recentItem("programming")}
+            {recentItem("software")}
+            {recentItem("hardware")}
+            {recentItem("design")} */}
         </div>
       </div>
     </div>
-    // </Col>
   );
 }
 
