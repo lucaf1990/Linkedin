@@ -36,6 +36,7 @@ const ModalProfileSection = ({
       [e.target.name]: e.target.value,
     });
   };
+
   useEffect(() => {
     setprofilePayload({
       name: myProfile.name,
@@ -45,6 +46,7 @@ const ModalProfileSection = ({
       title: myProfile.title,
     });
   }, [changeProfileInfo]);
+
   const handleSubmit = (obj: MyProfileChanges) => {
     changeMyProfileInfo(obj);
     (async () => {
