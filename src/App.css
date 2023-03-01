@@ -1,4 +1,8 @@
+body {
+  background-color: lightgray;
+}
 #ActivityProfile {
+  background-color: #fff;
   border: lightgray solid 1px;
   width: 100%;
   border-radius: 15px;
@@ -48,6 +52,7 @@
   height: fit-content;
   margin-top: 1rem;
   margin-left: 4%;
+  background-color: #fff;
 }
 #profileProfile > h6 {
   cursor: pointer;
@@ -102,6 +107,7 @@
 .header {
   display: flex;
   justify-content: space-evenly;
+  background-color: white;
   border-bottom: 0.1px solid lightgrey;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -312,8 +318,7 @@ span {
 }
 .feed_inputContainer {
   border: 1px solid lightgray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
   background-color: white;
   padding: 10px;
 }
@@ -344,5 +349,42 @@ span {
   display: none;
 }
 .feed_inputOption {
+  justify-content: space-evenly;
+  display: flex;
+}
+.inputOption {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  color: grey;
+  padding: 10px;
+  cursor: pointer;
+}
+.inputOption:hover {
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+.inputOption > h4 {
+  margin-left: 5px;
+}
+.post {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 15px;
+}
+.post_header {
+  display: flex;
+  margin-bottom: 10px;
+}
+.post_info > p {
+  font-size: 12px;
+  color: gray;
+}
+.post_info > h2 {
+  font-size: 15px;
+}
+.post_buttons {
+  display: flex;
   justify-content: space-evenly;
 }
