@@ -5,8 +5,6 @@ import {
   addMyInfo,
   EXPERIENCE_FETCH,
   FetchMyExperience,
-  FetchMyProfile,
-  PROFILES_FETCH,
 } from "../../Redux/ActionTypes";
 import { MyExperienceChanges } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
