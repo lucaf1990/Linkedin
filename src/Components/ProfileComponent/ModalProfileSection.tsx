@@ -1,6 +1,10 @@
 import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { changeMyProfileInfo } from "../../Redux/ActionTypes";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeMyProfileInfo,
+  FetchMyProfile,
+  ME,
+} from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
 import { MyProfileChanges, Me } from "../../Redux/Interfaces";
 import { useEffect, useState } from "react";
@@ -15,7 +19,7 @@ const ModalProfileSection = ({
   changeProfileInfo: Me;
 }) => {
   const myProfile = useSelector((state: RootState) => state.profile.me);
-
+  const dispatch = useDispatch();
   // INIZIA
   const [profilePayload, setprofilePayload] = useState<MyProfileChanges>({
     name: myProfile.name,
@@ -43,7 +47,17 @@ const ModalProfileSection = ({
   }, [changeProfileInfo]);
   const handleSubmit = (obj: MyProfileChanges) => {
     changeMyProfileInfo(obj);
+    (async () => {
+      let data = await FetchMyProfile();
+
+      dispatch({
+        type: ME,
+        payload: data,
+      });
+      console.log("me", data);
+    })();
   };
+
   //FINE
   return (
     <>

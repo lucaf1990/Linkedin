@@ -27,7 +27,7 @@ export const FetchMyProfile = async () => {
   }
 };
 
-export const FetchMyExperience = async (params:string) => {
+export const FetchMyExperience = async (params: string) => {
   try {
     let res = await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${params}/experiences`,
@@ -102,8 +102,8 @@ export const changeMyProfileInfo = async (params: MyProfileChanges) => {
   );
 };
 export const addMyInfo = async (params: MyExperienceChanges) => {
-  const userId = params.user
-  delete params.user
+  const userId = params.user;
+  delete params.user;
   const requestOptions = await fetch(
     `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
     {
