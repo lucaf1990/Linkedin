@@ -3,7 +3,9 @@ import {
   EXPERIENCE_FETCH,
   FetchMyExperience,
   FetchMyProfile,
+  FetchProfiles,
   ME,
+  PROFILES_FETCH,
 } from "../Redux/ActionTypes";
 import { useDispatch } from "react-redux";
 import ActivityProfile from "./ProfileComponent/ActivityProfile";
@@ -19,6 +21,7 @@ const Profile = () => {
     (async () => {
       let data = await FetchMyProfile();
       let data2 = await FetchMyExperience();
+      let data3 = await FetchProfiles();
       dispatch({
         type: ME,
         payload: data,
@@ -27,7 +30,11 @@ const Profile = () => {
         type: EXPERIENCE_FETCH,
         payload: data2,
       });
-      console.log(data2);
+      dispatch({
+        type: PROFILES_FETCH,
+        payload: data3,
+      });
+      console.log(data3);
     })();
   }, []);
   return (

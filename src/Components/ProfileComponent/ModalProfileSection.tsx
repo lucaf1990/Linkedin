@@ -1,15 +1,50 @@
 import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { changeMyInfo } from "../../Redux/ActionTypes";
+import { changeMyProfileInfo } from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
+import { MyProfileChanges, Me } from "../../Redux/Interfaces";
+import { useEffect, useState } from "react";
 
 const ModalProfileSection = ({
   show,
   handleClose,
+  changeProfileInfo,
 }: {
   show: boolean;
   handleClose: () => void;
+  changeProfileInfo: Me;
 }) => {
+  const myProfile = useSelector((state: RootState) => state.profile.me);
+
+  // INIZIA
+  const [profilePayload, setprofilePayload] = useState<MyProfileChanges>({
+    name: myProfile.name,
+    surname: myProfile.username,
+    bio: myProfile.bio,
+    area: myProfile.area,
+    title: myProfile.title,
+  });
+  const handleChange = (e: any) => {
+    console.log("changed payload", e.target.name, e.target.value);
+
+    setprofilePayload({
+      ...profilePayload,
+      [e.target.name]: e.target.value,
+    });
+  };
+  useEffect(() => {
+    setprofilePayload({
+      name: myProfile.name,
+      surname: myProfile.surname,
+      bio: myProfile.bio,
+      area: myProfile.area,
+      title: myProfile.title,
+    });
+  }, [changeProfileInfo]);
+  const handleSubmit = (obj: MyProfileChanges) => {
+    changeMyProfileInfo(obj);
+  };
+  //FINE
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -21,9 +56,24 @@ const ModalProfileSection = ({
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label className="mt-3">First name*</Form.Label>
-              <Form.Control required type="text" placeholder="" autoFocus />
+              <Form.Control
+                name="name"
+                required
+                type="text"
+                placeholder=""
+                onChange={(e) => handleChange(e)}
+                value={profilePayload.name}
+                autoFocus
+              />
               <Form.Label className="mt-3">Last name*</Form.Label>
-              <Form.Control required type="text" placeholder="" />
+              <Form.Control
+                required
+                name="surname"
+                type="text"
+                placeholder=""
+                value={profilePayload.surname}
+                onChange={(e) => handleChange(e)}
+              />
               <Form.Label className="mt-3">Additional name</Form.Label>
               <Form.Control type="text" placeholder="" />
               <Form.Label className="mt-3">Name Pronunciation</Form.Label>
@@ -66,14 +116,28 @@ const ModalProfileSection = ({
               </Form.Label>
               <p></p>
               <Form.Label className="mt-3">Headline*</Form.Label>
-              <Form.Control required type="text" placeholder="" />
+              <Form.Control
+                name="bio"
+                required
+                type="text"
+                placeholder=""
+                value={profilePayload.bio}
+                onChange={(e) => handleChange(e)}
+              />
               <Form.Label className="mt-3">
                 {" "}
                 <h5> Current position</h5>{" "}
               </Form.Label>
               <p></p>
               <Form.Label className="mt-3">Industry*</Form.Label>
-              <Form.Control required type="text" placeholder="Ex: Retail" />
+              <Form.Control
+                required
+                name="title"
+                type="text"
+                placeholder="Ex: Retail"
+                value={profilePayload.title}
+                onChange={(e) => handleChange(e)}
+              />
               <p></p>
               <Form.Label className="mt-3">
                 Learn more about{" "}
@@ -97,13 +161,16 @@ const ModalProfileSection = ({
               <Form.Label className="mt-3">Country/Region*</Form.Label>
               <Form.Control
                 required
+                name="area"
                 type="text"
                 placeholder="Ex: United State"
+                value={profilePayload.area}
+                onChange={(e) => handleChange(e)}
               />
               <Form.Label className="mt-3">Postal code</Form.Label>
               <Form.Control type="text" placeholder="" />
-              <Form.Label className="mt-3">City*</Form.Label>
-              <Form.Control required type="text" placeholder="" />
+              <Form.Label className="mt-3">City</Form.Label>
+              <Form.Control type="text" placeholder="" />
               <Form.Label className="mt-3">
                 {" "}
                 <h5> Contact info</h5>{" "}
@@ -120,7 +187,10 @@ const ModalProfileSection = ({
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            // onClick={() => {changeMyInfo()}}
+            onClick={() => {
+              handleSubmit(profilePayload);
+              handleClose();
+            }}
           >
             Save
           </Button>

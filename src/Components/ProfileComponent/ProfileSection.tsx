@@ -77,6 +77,7 @@ const ProfileSection = () => {
               <GiPencil />
             </Button>
             <ModalProfileSection
+              changeProfileInfo={data}
               show={showModal}
               handleClose={handleCloseModal}
             />

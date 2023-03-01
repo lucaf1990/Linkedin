@@ -21,6 +21,14 @@ export interface MyExperienceChanges {
   area: string;
 }
 
+export interface MyProfileChanges {
+  name: string;
+  surname: string;
+  area: string;
+  bio: string;
+  title: string;
+}
+
 export interface ArrMe {
   _id: string;
   role: string;

@@ -16,7 +16,7 @@ const profileReducer = (
     case PROFILES_FETCH:
       return {
         ...state,
-        profilesFetch: [...state.profilesFetch, ...(action.payload as Me[])],
+        profilesFetch: action.payload as Me[],
       };
     case EXPERIENCE_FETCH:
       return {
