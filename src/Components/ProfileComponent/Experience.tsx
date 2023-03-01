@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import ModalModifyEperience from "./ModalModifyExperience";
 import ModalExperiencePOST from "./ModalExperiencePOST";
 import { FetchMyProfile } from "../../Redux/ActionTypes";
@@ -10,13 +10,10 @@ const Experience = () => {
   const myState = useSelector(
     (state: RootState) => state.profile.experiencesFetch
   );
-  const mystateMe = useSelector(
-    (state: RootState) => state.profile.me
-  );
+  const mystateMe = useSelector((state: RootState) => state.profile.me);
 
   const moment = require("moment");
 
- 
   const [showModalPOST, setShowModalPOST] = useState(false);
   const handleShowModalPOST = () => {
     setShowModalPOST(true);
@@ -26,11 +23,8 @@ const Experience = () => {
   };
 
   const [showModal, setShowModal] = useState(false);
-  
-  useEffect(()=>{
-   
-    
-  },[myState])
+
+  useEffect(() => {}, [myState]);
   return (
     <Container>
       <Row id="ActivityProfile">
@@ -39,7 +33,7 @@ const Experience = () => {
             <h5>Experience</h5>
           </Col>
 
-          {myState.map((e, i) => (
+          {myState?.map((e, i) => (
             <div key={i}>
               <Col className="mb-4" key={i}>
                 <h5>{e.role}</h5>
@@ -63,20 +57,13 @@ const Experience = () => {
   startDate: Date;
   description: string | null;
   area: string; */}
-                 <ModalModifyEperience
-                    experienceId={e}
-                  />
-                
-                 
+                <ModalModifyEperience experienceId={e} />
               </Col>
             </div>
           ))}
         </Col>
         <Col xs={1} className="mt-3">
-          <Button  onClick={handleShowModalPOST}>
-            A
-            
-          </Button>
+          <Button onClick={handleShowModalPOST}>A</Button>
           <ModalExperiencePOST
             show={showModalPOST}
             handleClose={handleCloseModalPOST}
@@ -89,4 +76,3 @@ const Experience = () => {
 };
 
 export default Experience;
-
