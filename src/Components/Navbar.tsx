@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 import HeaderOption from "./ProfileComponent/HeaderOption";
 import Logo from "../linkedin.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -20,7 +21,9 @@ function Navbar() {
         </div>
       </div>
       <div className="header_right">
-        <HeaderOption Icon={<HomeIcon />} title="Home" />
+        <Link to={"/Home"}>
+          <HeaderOption Icon={<HomeIcon />} title="Home" />
+        </Link>
         <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />
         <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />
         <HeaderOption Icon={<ChatIcon />} title="Messaging" />

@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./Components/Footer";
+import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
 import Profile from "./Components/Profile";
 
@@ -12,6 +13,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Profile />} />
+          <Route path="/Home" element={<Home />} />
         </Routes>
         <Footer />
       </BrowserRouter>
