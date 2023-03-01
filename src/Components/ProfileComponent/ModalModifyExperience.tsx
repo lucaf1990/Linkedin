@@ -3,12 +3,12 @@ import { Button, Form, Modal } from "react-bootstrap";
 import {
   changeMyInfo,
   deleteExp,
+  EXPERIENCE_FETCH,
   FetchMyExperience,
-  FetchMyProfile,
 } from "../../Redux/ActionTypes";
 import { ArrMe, MyExperienceChanges } from "../../Redux/Interfaces";
 import { GiPencil } from "react-icons/gi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 
 const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
@@ -17,7 +17,7 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const dispatch = useDispatch();
   const [experiencePayload, setExperiencePayload] =
     useState<MyExperienceChanges>({
       _id: experienceId._id,
@@ -47,10 +47,23 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
       user: experienceId.user,
     });
   }, [experienceId]);
-  const handleSubmit = (obj: MyExperienceChanges) => {
-    changeMyInfo(obj);
+  const handleSubmit = async (obj: MyExperienceChanges) => {
+    let x = await changeMyInfo(obj);
+    let data = await FetchMyExperience(myState._id);
+    dispatch({
+      type: EXPERIENCE_FETCH,
+      payload: data,
+    });
+    console.log("me", data);
   };
-
+  const handleDelete = async(obj:MyExperienceChanges)=>{
+    let x = await deleteExp(obj)
+    let data = await FetchMyExperience(myState._id);
+    dispatch({
+      type: EXPERIENCE_FETCH,
+      payload: data,
+    });
+  }
   return (
     <>
       {/* role: string;
@@ -62,7 +75,7 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
         {" "}
         <GiPencil />
       </Button>
-      <Button id="modal-btn" onClick={()=>deleteExp(experiencePayload)}>
+      <Button id="modal-btn" onClick={() => handleDelete(experiencePayload)}>
         X
       </Button>
       <Modal show={show} onHide={handleClose}>
@@ -118,9 +131,8 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
             onClick={() => {
-              handleSubmit(experiencePayload)
-              handleClose()
-              
+              handleSubmit(experiencePayload);
+              handleClose();
             }}
           >
             Save

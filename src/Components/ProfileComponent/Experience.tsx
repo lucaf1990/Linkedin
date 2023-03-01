@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import ModalModifyEperience from "./ModalModifyExperience";
 import ModalExperiencePOST from "./ModalExperiencePOST";
 
-
 const Experience = () => {
   const myState = useSelector(
     (state: RootState) => state.profile.experiencesFetch
@@ -32,25 +31,26 @@ const Experience = () => {
           <Col id="ActivityCol">
             <h5>Experience</h5>
           </Col>
-          {myState?.map((e, i) => (
-            <div key={i}>
-              <Col className="mb-4" key={i}>
-                <h5>{e.role}</h5>
-                <div>
-                  <span>{e.company}</span>
-                  <span style={{ display: "block" }}>{}</span>
-                  <span>{e.area}</span>
-                </div>
-                <div>
-                  <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
-                  <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
-                </div>
-              </Col>
-              <Col xs={1} className="mt-3">
-                <ModalModifyEperience experienceId={e} />
-              </Col>
-            </div>
-          ))}
+          {myState.length > 0 &&
+            myState.map((e, i) => (
+              <div key={i}>
+                <Col className="mb-4" key={i}>
+                  <h5>{e.role}</h5>
+                  <div>
+                    <span>{e.company}</span>
+                    <span style={{ display: "block" }}>{e.description}</span>
+                    <span>{e.area}</span>
+                  </div>
+                  <div>
+                    <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
+                    <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
+                  </div>
+                </Col>
+                <Col xs={1} className="mt-3">
+                  <ModalModifyEperience experienceId={e} />
+                </Col>
+              </div>
+            ))}
         </Col>
         <Col xs={1} className="mt-3">
           <Button onClick={handleShowModalPOST}>A</Button>
