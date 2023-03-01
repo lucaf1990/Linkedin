@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import ModalModifyEperience from "./ModalModifyExperience";
 import ModalExperiencePOST from "./ModalExperiencePOST";
-import { FetchMyProfile } from "../../Redux/ActionTypes";
+
 
 const Experience = () => {
   const myState = useSelector(
@@ -32,7 +32,6 @@ const Experience = () => {
           <Col id="ActivityCol">
             <h5>Experience</h5>
           </Col>
-
           {myState?.map((e, i) => (
             <div key={i}>
               <Col className="mb-4" key={i}>
@@ -48,15 +47,6 @@ const Experience = () => {
                 </div>
               </Col>
               <Col xs={1} className="mt-3">
-                {/* <Button id="modal-btn" onClick={handleShowModal}>
-                  {" "}
-                  <GiPencil />
-                </Button> */}
-                {/* role: string;
-  company: string;
-  startDate: Date;
-  description: string | null;
-  area: string; */}
                 <ModalModifyEperience experienceId={e} />
               </Col>
             </div>
