@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
 import { useEffect } from "react";
 import { ArrMe, MyExperienceChanges } from "../../Redux/Interfaces";
-import { changeMyInfo } from "../../Redux/ActionTypes";
+import { changeMyInfo, FetchMyExperience } from "../../Redux/ActionTypes";
 const ModalExperiences = ({
   show,
   handleClose,
@@ -28,8 +28,10 @@ const ModalExperiences = ({
       _id: experienceId._id,
       role: experienceId.role,
       company: experienceId.company,
+      startDate: new Date(),
       description: experienceId.description,
       area: experienceId.area,
+      user: experienceId.user
     });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
@@ -44,8 +46,10 @@ const ModalExperiences = ({
       _id: experienceId._id,
       role: experienceId.role,
       company: experienceId.company,
+      startDate: new Date(),
       description: experienceId.description,
       area: experienceId.area,
+      user: experienceId.user
     });
   }, [experienceId]);
   const handleSubmit = (obj: MyExperienceChanges) => {

@@ -1,36 +1,36 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { GiPencil } from "react-icons/gi";
-import ModalExperiences from "./ModalExperiences";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ModalModifyEperience from "./ModalModifyExperience";
+import ModalExperiencePOST from "./ModalExperiencePOST";
+import { FetchMyProfile } from "../../Redux/ActionTypes";
 
 const Experience = () => {
-  const mystate = useSelector(
+  const myState = useSelector(
     (state: RootState) => state.profile.experiencesFetch
+  );
+  const mystateMe = useSelector(
+    (state: RootState) => state.profile.me
   );
 
   const moment = require("moment");
 
-  const [showModalExperience, setShowModalExperience] = useState(false);
-
-  const handleShowModalExperience = () => {
-    setShowModalExperience(true);
+ 
+  const [showModalPOST, setShowModalPOST] = useState(false);
+  const handleShowModalPOST = () => {
+    setShowModalPOST(true);
+  };
+  const handleCloseModalPOST = () => {
+    setShowModalPOST(false);
   };
 
-  const handleCloseModalExperience = () => {
-    setShowModalExperience(false);
-  };
   const [showModal, setShowModal] = useState(false);
-
-  const handleShowModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  
+  useEffect(()=>{
+   
+    
+  },[myState])
   return (
     <Container>
       <Row id="ActivityProfile">
@@ -39,9 +39,9 @@ const Experience = () => {
             <h5>Experience</h5>
           </Col>
 
-          {mystate.map((e, i) => (
-            <>
-              <Col key={i} className="mb-4">
+          {myState.map((e, i) => (
+            <div key={i}>
+              <Col className="mb-4" key={i}>
                 <h5>{e.role}</h5>
                 <div>
                   <span>{e.company}</span>
@@ -54,39 +54,45 @@ const Experience = () => {
                 </div>
               </Col>
               <Col xs={1} className="mt-3">
-                <Button id="modal-btn" onClick={handleShowModal}>
+                {/* <Button id="modal-btn" onClick={handleShowModal}>
                   {" "}
                   <GiPencil />
-                </Button>
+                </Button> */}
                 {/* role: string;
-  company: string;
-  startDate: Date;
-  description: string | null;
-  area: string; */}
-              <ModalExperiences
+                    company: string;
+                    startDate: Date;
+                    description: string | null;
+                    area: string; */}
+                {/* <ModalExperiences
                 show={showModal}
                 handleClose={handleCloseModal}
                 experienceId={e}
                 // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
                 // put fatto da kevin 
-              />
+              /> */}
+                <ModalModifyEperience
+                  experienceId={e}
+                />
+                
               </Col>
-            </>
+            </div>
           ))}
         </Col>
-          {/* <ModalModifyEperience
-            show={showModalExperience}
-            handleClose={handleCloseModalExperience}
-          />
         <Col xs={1} className="mt-3">
-          <Button id="modal-btn" onClick={handleShowModal}>
-            {" "}
-            <GiPencil />
+          <Button  onClick={handleShowModalPOST}>
+            A
+            
           </Button>
-        </Col> */}
+          <ModalExperiencePOST
+            show={showModalPOST}
+            handleClose={handleCloseModalPOST}
+            experienceId={mystateMe._id}
+          />
+        </Col>
       </Row>
     </Container>
   );
 };
 
 export default Experience;
+

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 const ActivityProfile = () => {
   const mystate = useSelector((state: RootState) => state.profile.me);
-  console.log(mystate);
   return (
     <Container>
       <Row id="ActivityProfile">
