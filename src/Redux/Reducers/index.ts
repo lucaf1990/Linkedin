@@ -21,10 +21,7 @@ const profileReducer = (
     case EXPERIENCE_FETCH:
       return {
         ...state,
-        experiencesFetch: [
-          ...state.experiencesFetch,
-          ...(action.payload as ArrMe[]),
-        ],
+        experiencesFetch: action.payload as ArrMe[],
       };
     case ME:
       return {
