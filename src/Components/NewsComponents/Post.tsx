@@ -35,6 +35,7 @@ const Post = () => {
                 alt=""
                 style={{
                   height: "40px",
+                  width: "40px",
                   marginRight: "10px",
                   borderRadius: "100%",
                 }}
