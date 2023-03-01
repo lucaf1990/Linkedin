@@ -2,6 +2,7 @@ import { MyExperienceChanges } from "../Interfaces";
 
 export const PROFILES_FETCH = "PROFILES_FETCH";
 export const ME = "ME";
+export const EXPERIENCE_FETCH= "EXPERIENCE_FETCH"
 
 export const FetchMyProfile = async () => {
   try {
@@ -63,9 +64,3 @@ export const changeMyInfo = async (params: MyExperienceChanges) => {
     }
   );
 };
-
-// //const requestOptions = {
-//   method: 'PUT',
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify({ title: 'React PUT Request Example' })
-// };//
