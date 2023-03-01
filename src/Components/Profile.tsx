@@ -45,7 +45,7 @@ const Profile = () => {
         <About />
         <Experience />
       </Col>
-      <Col xs={2}>
+      <Col xs={3}>
         <SideBar />
       </Col>
     </Row>

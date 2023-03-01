@@ -7,12 +7,11 @@ const SideBarCard = () => {
   console.log(data);
 
   return (
-    <Row className="border-bottom py-3">
+    <>
       {data.slice(0, 4).map((profile, i) => {
         return (
-          <>
+          <Row className="border-bottom py-3" key={i}>
             <img
-              key={i}
               className="ms-4"
               src={profile.image}
               alt={profile.name}
@@ -24,16 +23,16 @@ const SideBarCard = () => {
               }}
             />
             <Col>
-              <h6>{profile.name} </h6>
-              <p className="p-Profile text-truncate">{profile.bio}</p>
-              <span className="Profile-Btn3 btn-light text-secondary ">
+              <h6>{profile.name}</h6>
+              <p className="p-Profile text-truncate ">{profile.bio}</p>
+              <span className="Profile-Btn3 btn-light text-secondary">
                 Connect
               </span>
-            </Col>{" "}
-          </>
+            </Col>
+          </Row>
         );
       })}
-    </Row>
+    </>
   );
 };
 

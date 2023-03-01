@@ -12,9 +12,7 @@ const SideBar = () => {
       <Col id="profileProfile">
         <h4>People you may Know</h4>
         <SideBarCard />
-        <SideBarCard />
-        <SideBarCard />
-        <SideBarCard />
+
         <Col
           xs={12}
           id="SideBarToggle"
