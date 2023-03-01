@@ -388,3 +388,7 @@ span {
   display: flex;
   justify-content: space-evenly;
 }
+
+.sideBar {
+  max-height: 600px !important;
+}

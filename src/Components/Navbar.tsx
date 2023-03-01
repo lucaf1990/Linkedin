@@ -22,7 +22,7 @@ function Navbar() {
         </div>
       </div>
       <div className="header_right">
-        <Link to={"/Home"}>
+        <Link to={"/"}>
           <HeaderOption Icon={<HomeIcon />} title="Home" />
         </Link>
         <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />

@@ -9,7 +9,6 @@ import Post from "./Post";
 import { useState } from "react";
 
 function Feed() {
-  const [posts, setPosts] = useState();
   return (
     <div className="feed">
       <div className="feed_inputContainer">
@@ -39,11 +38,7 @@ function Feed() {
           />
         </div>
       </div>
-      <Post
-        name="nome dinamico"
-        description="description dinamica"
-        message="message dinamica"
-      />
+      <Post />
     </div>
   );
 }
