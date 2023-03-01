@@ -54,7 +54,7 @@ const Experience = () => {
                 </div>
               </Col>
               <Col xs={1} className="mt-3">
-                <Button id="modal-btn" onClick={handleShowModalExperience}>
+                <Button id="modal-btn" onClick={handleShowModal}>
                   {" "}
                   <GiPencil />
                 </Button>
@@ -63,27 +63,27 @@ const Experience = () => {
   startDate: Date;
   description: string | null;
   area: string; */}
-                <ModalModifyEperience
-                  show={showModalExperience}
-                  handleClose={handleCloseModalExperience}
-                />
+              <ModalExperiences
+                show={showModal}
+                handleClose={handleCloseModal}
+                experienceId={e}
+                // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
+                // put fatto da kevin 
+              />
               </Col>
             </>
           ))}
         </Col>
+          {/* <ModalModifyEperience
+            show={showModalExperience}
+            handleClose={handleCloseModalExperience}
+          />
         <Col xs={1} className="mt-3">
           <Button id="modal-btn" onClick={handleShowModal}>
             {" "}
             <GiPencil />
           </Button>
-          {/* <ModalExperiences
-            show={showModal}
-            handleClose={handleCloseModal}
-            experienceId={mystate} da risolvere fa rompere tutto chiede una proprietà experience id se mettiamo mystate[0] 
-            // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
-            // put fatto da kevin 
-          /> */}
-        </Col>
+        </Col> */}
       </Row>
     </Container>
   );
