@@ -117,7 +117,11 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
           <Button
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
-            onClick={() => handleSubmit(experiencePayload)}
+            onClick={() => {
+              handleSubmit(experiencePayload)
+              handleClose()
+              
+            }}
           >
             Save
           </Button>
