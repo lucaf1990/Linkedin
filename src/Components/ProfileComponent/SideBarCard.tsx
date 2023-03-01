@@ -6,9 +6,11 @@ const SideBarCard = () => {
   const data = useSelector((state: RootState) => state.profile.profilesFetch);
   console.log(data);
 
+  const shuffledData = data.sort(() => Math.random() - 0.5);
+
   return (
     <>
-      {data.slice(0, 4).map((profile, i) => {
+      {shuffledData.slice(0, 4).map((profile, i) => {
         return (
           <Row className="border-bottom py-3" key={i}>
             <img
@@ -24,7 +26,7 @@ const SideBarCard = () => {
             />
             <Col>
               <h6>{profile.name}</h6>
-              <p className="p-Profile text-truncate ">{profile.bio}</p>
+              <p className="p-Profile text-truncate ">{profile.title}</p>
               <span className="Profile-Btn3 btn-light text-secondary">
                 Connect
               </span>

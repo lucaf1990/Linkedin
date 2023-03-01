@@ -51,4 +51,30 @@ export interface MyState {
   experiencesFetch: ArrMe[];
 }
 
+export interface MyHomeState {
+  postsFetch: postFetch[];
+}
 export interface ModalProfileSectionProps {}
+
+export interface postFetch {
+  _id: string;
+  text: string;
+  username: string;
+  user: {
+    _id: string;
+    name: string;
+    surname: string;
+    email: string;
+    username: string;
+    title: string;
+    bio: string;
+    area: string;
+    image: string;
+    createdAt: Date;
+    updatedAt: Date;
+    v: number;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+  v: number;
+}

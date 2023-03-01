@@ -3,8 +3,8 @@ import SideBarCard from "../ProfileComponent/SideBarCard";
 
 const RightBar = () => {
   return (
-    <Row className="flex-column ms-3">
-      <Col id="profileProfile">
+    <Row className="flex-column ms-3 ">
+      <Col id="profileProfile" className=".sideBar">
         <h4>Add to your feed</h4>
         <SideBarCard />
         <Col

@@ -3,7 +3,7 @@ import SideBarCard from "./SideBarCard";
 
 const SideBar = () => {
   return (
-    <Row className="flex-column ms-3">
+    <Row className="flex-column ms-3 ">
       <Col id="profileProfile">
         <h6 className="pt-3 ps-1">Edit public profile & URL</h6>
         <hr />
