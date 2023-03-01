@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { addMyInfo, changeMyInfo, FetchMyExperience, FetchMyProfile } from "../../Redux/ActionTypes";
-import { ArrMe, Me, MyExperienceChanges } from "../../Redux/Interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { addMyInfo, EXPERIENCE_FETCH,FetchMyProfile} from "../../Redux/ActionTypes";
+import { MyExperienceChanges } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
 
 const ModalExperiencePOST = ({
@@ -15,7 +15,6 @@ const ModalExperiencePOST = ({
   experienceId: string
 }) => {
   const myState = useSelector((state:RootState)=>state.profile.me)
-  const [update,setUpdate] = useState(0)
   const [experiencePayload, setExperiencePayload] =
     useState<MyExperienceChanges>({
       role: "",
@@ -28,14 +27,14 @@ const ModalExperiencePOST = ({
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
 
+    const dispatch = useDispatch()
+
     setExperiencePayload({
       ...experiencePayload,
       [e.target.name]: e.target.value,
     });
   };
-  useEffect(()=>{
-    
-  },[update])
+  
   useEffect(() => {
     setExperiencePayload({
       role: "",
@@ -46,9 +45,11 @@ const ModalExperiencePOST = ({
       user: experienceId
     });
   }, []);
-  const handleSubmit = (obj: MyExperienceChanges) => {
-    addMyInfo(obj);
-    setUpdate(update+1)
+  const handleSubmit = async (obj: MyExperienceChanges) => {
+    
+    let changes = await addMyInfo(obj);
+      let data = await FetchMyProfile();
+     
 
   };
   return (

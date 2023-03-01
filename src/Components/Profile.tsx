@@ -24,27 +24,28 @@ const Profile = () => {
   useEffect(() => {
     (async () => {
       let data = await FetchMyProfile();
-      
-      
       dispatch({
         type: ME,
         payload: data,
+      });
+      let data3 = await FetchProfiles();
+      dispatch({
+        type: PROFILES_FETCH,
+        payload: data3,
       });
       console.log("me",data);
     })();
   }, []);
   useEffect(()=>{
     (async()=>{
-      let data2 = await FetchMyExperience(myState._id);
-      let data3 = await FetchProfiles();
-      dispatch({
-        type: EXPERIENCE_FETCH,
-        payload: data2,
-      });
-      dispatch({
-        type: PROFILES_FETCH,
-        payload: data3,
-      });
+      if(myState._id){
+        let data2 = await FetchMyExperience(myState._id);
+        dispatch({
+          type: EXPERIENCE_FETCH,
+          payload: data2,
+        });
+      }
+      
       
     })();
   }, [myState._id]);
