@@ -60,7 +60,7 @@ export const changeMyInfo = async (params: MyExperienceChanges) => {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
       },
-      body: JSON.stringify({ params }),
+      body: JSON.stringify( params ),
     }
   );
 };

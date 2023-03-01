@@ -46,18 +46,15 @@ const ModalProfileSection = ({
       title: myProfile.title,
     });
   }, [changeProfileInfo]);
-
-  const handleSubmit = (obj: MyProfileChanges) => {
-    changeMyProfileInfo(obj);
-    (async () => {
+  const handleSubmit = async(obj: MyProfileChanges) => {
+      let changes = await changeMyProfileInfo(obj);
       let data = await FetchMyProfile();
-
       dispatch({
         type: ME,
         payload: data,
       });
       console.log("me", data);
-    })();
+  
   };
 
   //FINE

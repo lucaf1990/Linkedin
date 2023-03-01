@@ -4,7 +4,6 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import ModalModifyEperience from "./ModalModifyExperience";
 import ModalExperiencePOST from "./ModalExperiencePOST";
-import { FetchMyProfile } from "../../Redux/ActionTypes";
 
 const Experience = () => {
   const myState = useSelector(
@@ -32,35 +31,26 @@ const Experience = () => {
           <Col id="ActivityCol">
             <h5>Experience</h5>
           </Col>
-
-          {myState?.map((e, i) => (
-            <div key={i}>
-              <Col className="mb-4" key={i}>
-                <h5>{e.role}</h5>
-                <div>
-                  <span>{e.company}</span>
-                  <span style={{ display: "block" }}>{}</span>
-                  <span>{e.area}</span>
-                </div>
-                <div>
-                  <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
-                  <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
-                </div>
-              </Col>
-              <Col xs={1} className="mt-3">
-                {/* <Button id="modal-btn" onClick={handleShowModal}>
-                  {" "}
-                  <GiPencil />
-                </Button> */}
-                {/* role: string;
-  company: string;
-  startDate: Date;
-  description: string | null;
-  area: string; */}
-                <ModalModifyEperience experienceId={e} />
-              </Col>
-            </div>
-          ))}
+          {myState.length > 0 &&
+            myState.map((e, i) => (
+              <div key={i}>
+                <Col className="mb-4" key={i}>
+                  <h5>{e.role}</h5>
+                  <div>
+                    <span>{e.company}</span>
+                    <span style={{ display: "block" }}>{e.description}</span>
+                    <span>{e.area}</span>
+                  </div>
+                  <div>
+                    <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
+                    <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
+                  </div>
+                </Col>
+                <Col xs={1} className="mt-3">
+                  <ModalModifyEperience experienceId={e} />
+                </Col>
+              </div>
+            ))}
         </Col>
         <Col xs={1} className="mt-3">
           <Button onClick={handleShowModalPOST}>A</Button>
