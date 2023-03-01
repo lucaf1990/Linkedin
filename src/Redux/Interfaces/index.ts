@@ -36,8 +36,9 @@ export interface ArrMe {
 }
 
 export interface MyState {
-  profilesFetch: ArrMe[];
+  profilesFetch: Me[];
   me: Me;
+  experiencesFetch: ArrMe[];
 }
 
 export interface ModalProfileSectionProps {}

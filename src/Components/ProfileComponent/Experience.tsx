@@ -8,7 +8,7 @@ import ModalModifyEperience from "./ModalModifyExperience";
 
 const Experience = () => {
   const mystate = useSelector(
-    (state: RootState) => state.profile.profilesFetch
+    (state: RootState) => state.profile.experiencesFetch
   );
 
   const moment = require("moment");
