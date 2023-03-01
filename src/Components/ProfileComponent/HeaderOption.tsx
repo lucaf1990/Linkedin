@@ -1,5 +1,4 @@
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-import { FC } from "react";
 import "../../App.css";
 
 type HeaderProps = {

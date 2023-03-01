@@ -59,21 +59,15 @@ const Experience = () => {
                   <GiPencil />
                 </Button> */}
                 {/* role: string;
-                    company: string;
-                    startDate: Date;
-                    description: string | null;
-                    area: string; */}
-                {/* <ModalExperiences
-                show={showModal}
-                handleClose={handleCloseModal}
-                experienceId={e}
-                // non da piu nessun errore sul codice pero cmq non va errori in console non so se dipende dalle nmììmodifiche del
-                // put fatto da kevin 
-              /> */}
-                <ModalModifyEperience
-                  experienceId={e}
-                />
+  company: string;
+  startDate: Date;
+  description: string | null;
+  area: string; */}
+                 <ModalModifyEperience
+                    experienceId={e}
+                  />
                 
+                 
               </Col>
             </div>
           ))}
