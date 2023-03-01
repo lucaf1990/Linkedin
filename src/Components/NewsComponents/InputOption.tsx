@@ -10,7 +10,9 @@ const InputOption = (props: InputProps) => {
   return (
     <div className="inputOption">
       {Icon}
-      <p className="inputOption_title">{title}</p>
+      <p className="inputOption_title" style={{ margin: "0" }}>
+        {title}
+      </p>
     </div>
   );
 };

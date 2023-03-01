@@ -4,7 +4,7 @@ import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
   return (
-    <div className="d-flex mt-3">
+    <div className="d-flex mt-3 justify-content-center">
       <NewsSideBar />
       <Feed />
       <RightBar />

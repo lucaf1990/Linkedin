@@ -15,6 +15,7 @@ import SideBar from "./ProfileComponent/SideBar";
 import About from "./ProfileComponent/About";
 import Experience from "./ProfileComponent/Experience";
 import { RootState } from "../Redux/Store";
+import Footer from "./Footer";
 
 const Profile = () => {
   const myState = useSelector((state: RootState) => state.profile.me);
@@ -32,20 +33,18 @@ const Profile = () => {
         type: PROFILES_FETCH,
         payload: data3,
       });
-      console.log("me",data);
+      console.log("me", data);
     })();
   }, []);
-  useEffect(()=>{
-    (async()=>{
-      if(myState._id){
+  useEffect(() => {
+    (async () => {
+      if (myState._id) {
         let data2 = await FetchMyExperience(myState._id);
         dispatch({
           type: EXPERIENCE_FETCH,
           payload: data2,
         });
       }
-      
-      
     })();
   }, [myState._id]);
 
@@ -60,6 +59,7 @@ const Profile = () => {
       <Col xs={3}>
         <SideBar />
       </Col>
+      <Footer />
     </Row>
   );
 };

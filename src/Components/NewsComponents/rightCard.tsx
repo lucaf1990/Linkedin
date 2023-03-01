@@ -7,7 +7,6 @@ const RightBar = () => {
       <Col id="profileProfile">
         <h4>Add to your feed</h4>
         <SideBarCard />
-
         <Col
           xs={12}
           id="SideBarToggle"
