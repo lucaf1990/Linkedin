@@ -229,7 +229,7 @@ footer .copyright {
 }
 
 .contai {
-  display: flex;
+  /* display: flex; */
   width: 20%;
 }
 
@@ -287,5 +287,62 @@ footer .copyright {
   background-color: white;
   padding: 10px;
 }
+.sidebar_bottom p,
+span {
+  margin-bottom: 0;
+}
+
+.sidebar_bottom p {
+  display: flex;
+  font-size: 13px;
+  color: grey;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+/* .sidebar_bottom p:hover {
+} */
 
 /*FINE SIDEBAR MENU*/
+/*MAIN PAGINA HOME*/
+.feed {
+  flex: 0.6;
+  margin: 0 20px;
+}
+.feed_inputContainer {
+  border: 1px solid lightgray;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: white;
+  padding: 10px;
+}
+.feed_input {
+  display: flex;
+  border: 1px solid lightgray;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: white;
+  padding: 10px;
+  color: grey;
+  padding-left: 15px;
+}
+.feed_input > form {
+  display: flex;
+  width: 100%;
+}
+.feed_input > form > input {
+  border: none;
+  margin-left: 10px;
+  flex: 1;
+  outline-width: 0;
+  font-weight: 600;
+}
+.feed_input > form > button {
+  display: none;
+}
+.feed_inputOption {
+  justify-content: space-evenly;
+}
