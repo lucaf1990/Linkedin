@@ -9,6 +9,7 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function Navbar() {
   return (
@@ -28,6 +29,9 @@ function Navbar() {
         <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />
         <HeaderOption Icon={<ChatIcon />} title="Messaging" />
         <HeaderOption Icon={<NotificationsIcon />} title="Notifications" />
+        <Link to={"/Profile"}>
+          <HeaderOption Icon={<AccountCircleIcon />} title="Profile" />
+        </Link>
       </div>
     </div>
   );
