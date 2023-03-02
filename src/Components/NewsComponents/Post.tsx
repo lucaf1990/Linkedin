@@ -75,7 +75,7 @@ const Post = () => {
                           href="#/action-5"
                           onClick={handleShowModalPOST}
                         >
-                          <ModifyPostModal modifyPost={post.text} />
+                          <ModifyPostModal modifyPost={post} />
                           <EditIcon /> Edit post
                         </Dropdown.Item>
                         <Dropdown.Item href="#/action-6">

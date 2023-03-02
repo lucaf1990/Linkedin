@@ -37,12 +37,11 @@ const ModalNewPost = () => {
   useEffect(() => {
     setpostPayload({
       text: "",
-      _id: "",
     });
   }, []);
   const handleSubmit = async (obj: newPost) => {
     let post = await addMyPost(obj);
-    // let x = await addMyPostImg(post._id,formData) perche non funziona???
+    let x = await addMyPostImg(post._id,formData) 
     console.log(post._id);
 
     let data = await FetchHome();
@@ -53,8 +52,7 @@ const ModalNewPost = () => {
     console.log("sono modale");
 
     setpostPayload({
-      text: "",
-      _id: "",
+      text: ""
     });
   };
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -104,6 +102,10 @@ const ModalNewPost = () => {
               />
             </Form.Group>
             <hr />
+            <Form.Group controlId="formFile">
+              <Form.Label>Aggiungi Immagine:</Form.Label>
+              <Form.Control type="file" onChange={handleFile} />
+            </Form.Group>
           </Form>
         </Modal.Body>
 

@@ -42,7 +42,7 @@ const ModalProfileSection = ({
   };
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => {
-      prev.delete("post");
+      prev.delete("profile");
       prev.append("profile", e.target.files![0]);
       return prev;
     });
@@ -58,7 +58,11 @@ const ModalProfileSection = ({
   }, [changeProfileInfo]);
   const handleSubmit = async(obj: MyProfileChanges) => {
       let changes = await changeMyProfileInfo(obj);
-      let imgPost = await uploadPost(myProfile._id, formData);
+      console.log(formData.get('profile'));
+      for(const coppia of formData.entries()){
+        let imgPost = await uploadPost(myProfile._id, formData);
+      }
+      
       let data = await FetchMyProfile();
       dispatch({
         type: ME,
