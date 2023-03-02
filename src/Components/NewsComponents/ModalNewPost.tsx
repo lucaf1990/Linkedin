@@ -11,7 +11,6 @@ import {
 import { newPost } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
 
-
 const ModalNewPost = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -20,11 +19,11 @@ const ModalNewPost = () => {
   const dispatch = useDispatch();
 
   const myState = useSelector((state: RootState) => state.profile.me);
-  
-  const [formData, setFormData] = useState(new FormData());
 
+  const [formData, setFormData] = useState(new FormData());
   const [postPayload, setpostPayload] = useState<newPost>({
     text: "",
+    _id: "",
   });
 
   const handleChange = (e: any) => {
@@ -34,17 +33,18 @@ const ModalNewPost = () => {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   useEffect(() => {
     setpostPayload({
       text: "",
+      _id: "",
     });
   }, []);
   const handleSubmit = async (obj: newPost) => {
     let post = await addMyPost(obj);
     // let x = await addMyPostImg(post._id,formData) perche non funziona???
     console.log(post._id);
-    
+
     let data = await FetchHome();
     dispatch({
       type: HOME_FETCH,
@@ -54,6 +54,7 @@ const ModalNewPost = () => {
 
     setpostPayload({
       text: "",
+      _id: "",
     });
   };
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -103,11 +104,6 @@ const ModalNewPost = () => {
               />
             </Form.Group>
             <hr />
-            <Form.Group controlId="formFile">
-              <Form.Label>Aggiungi immagine:</Form.Label>
-              <Form.Control type="file" onChange={handleFile} />
-            </Form.Group>
-            
           </Form>
         </Modal.Body>
 
