@@ -4,11 +4,12 @@ import {
   changeMyProfileInfo,
   FetchMyProfile,
   ME,
+  uploadPost,
 } from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
 import { MyProfileChanges, Me } from "../../Redux/Interfaces";
 import { useEffect, useState,ChangeEvent, FormEvent } from "react";
-import { uploadPost } from "../../Redux/ActionTypes/homeAction";
+
 
 const ModalProfileSection = ({
   show,

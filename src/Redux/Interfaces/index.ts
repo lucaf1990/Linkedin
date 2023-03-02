@@ -21,6 +21,7 @@ export interface MyExperienceChanges {
   description: string | null;
   area: string;
   user?: string;
+  image: string
 }
 
 export interface MyProfileChanges {
@@ -42,6 +43,7 @@ export interface ArrMe {
   user: string;
   createdAt: Date;
   updatedAt: Date;
+  image?: string
   __v: number;
 }
 
@@ -81,4 +83,5 @@ export interface postFetch {
 
 export interface newPost {
   text: string;
+  _id?: string;
 }

@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Button, Form, FormGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { uploadPost } from "../../Redux/ActionTypes";
 import {
   FetchHome,
   HOME_FETCH,
-  uploadPost,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";

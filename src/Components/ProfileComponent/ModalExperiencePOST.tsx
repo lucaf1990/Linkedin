@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,ChangeEvent } from "react";
 import {
   Button,
   Col,
@@ -10,9 +10,11 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addMyImg,
   addMyInfo,
   EXPERIENCE_FETCH,
   FetchMyExperience,
+  uploadExpImg,
 } from "../../Redux/ActionTypes";
 import { MyExperienceChanges } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
@@ -38,6 +40,9 @@ const ModalExperiencePOST = ({
     myState();
   }, []);
   const myState = useSelector((state: RootState) => state.profile.me);
+  
+  const [formData, setFormData] = useState(new FormData());
+
   const [experiencePayload, setExperiencePayload] =
     useState<MyExperienceChanges>({
       role: "",
@@ -46,6 +51,7 @@ const ModalExperiencePOST = ({
       description: "",
       area: "",
       user: experienceId,
+      image:""
     });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
@@ -63,12 +69,15 @@ const ModalExperiencePOST = ({
       description: "",
       area: "",
       user: experienceId,
+      image:""
     });
   }, []);
   const dispatch = useDispatch();
+
   const handleSubmit = async (obj: MyExperienceChanges) => {
     let x = await addMyInfo(obj);
-    let data = await FetchMyExperience(myState._id);
+    let modifyImg = await addMyImg(x._id,formData,myState._id)
+    let data = await FetchMyExperience(experienceId);
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,
@@ -81,6 +90,14 @@ const ModalExperiencePOST = ({
       description: "",
       area: "",
       user: experienceId,
+      image:""
+    });
+  };
+  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => {
+      prev.delete("post");
+      prev.append("experience", e.target.files![0]);
+      return prev;
     });
   };
   return (
@@ -230,6 +247,10 @@ const ModalExperiencePOST = ({
                 </DropdownButton>
               </Col>
             </Row>
+            <Form.Group controlId="formFile">
+              <Form.Label>Aggiungi Immagine:</Form.Label>
+              <Form.Control type="file" onChange={handleFile} />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
