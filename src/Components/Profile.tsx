@@ -28,7 +28,7 @@ const Profile = () => {
       });
       console.log("me", data);
     })();
-  },[]);
+  },[myState._id]);
   useEffect(() => {
     (async () => {
       if (myState._id) {
