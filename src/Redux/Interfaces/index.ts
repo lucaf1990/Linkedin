@@ -78,3 +78,7 @@ export interface postFetch {
   updatedAt: Date;
   v: number;
 }
+
+export interface newPost {
+  text: string;
+}

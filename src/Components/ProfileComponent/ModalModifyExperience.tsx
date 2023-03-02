@@ -56,21 +56,16 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
     });
     console.log("me", data);
   };
-  const handleDelete = async(obj:MyExperienceChanges)=>{
-    let x = await deleteExp(obj)
+  const handleDelete = async (obj: MyExperienceChanges) => {
+    let x = await deleteExp(obj);
     let data = await FetchMyExperience(myState._id);
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,
     });
-  }
+  };
   return (
     <>
-      {/* role: string;
-  company: string;
-  // startDate: Date;
-  description: string | null;
-  area: string; */}
       <Button id="modal-btn" onClick={handleShow}>
         {" "}
         <GiPencil />

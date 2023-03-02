@@ -7,6 +7,8 @@ import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay";
 import Post from "./Post";
 import { useState } from "react";
+import ModalNewPost from "./ModalNewPost";
+import { Button } from "react-bootstrap";
 
 function Feed() {
   return (
@@ -14,10 +16,7 @@ function Feed() {
       <div className="feed_inputContainer">
         <div className="feed_input">
           <CreateIcon />
-          <form>
-            <input type="text" placeholder="write a post" />
-            <button type="submit">Send</button>
-          </form>
+          <ModalNewPost />
         </div>
         <div className="feed_inputOption" style={{ display: "flex" }}>
           <InputOption

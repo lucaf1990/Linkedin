@@ -63,7 +63,6 @@ const ModalExperiencePOST = ({
       area: "",
       user: experienceId,
     });
-
   };
   return (
     <>

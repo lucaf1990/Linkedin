@@ -389,5 +389,7 @@ span {
 }
 
 .sideBar {
-  max-height: 600px !important;
+  flex: 0 1;
+  position: sticky;
+  top: 10;
 }

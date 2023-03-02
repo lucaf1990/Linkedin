@@ -11,28 +11,16 @@ import { FetchHome, HOME_FETCH } from "../../Redux/ActionTypes/homeAction";
 
 const Post = () => {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      let data = await FetchHome();
-      dispatch({
-        type: HOME_FETCH,
-        payload: data,
-      });
-    })();
-    console.log(myState);
-  }, []);
 
   return (
     <>
-      {myState.slice(60, 80).map((post, i) => {
+      {myState.slice(0, 20).map((post, i) => {
         return (
           <div key={i} className="post">
             <div className="post_header">
               <img
                 src={post.user.image}
-                alt=""
+                alt="profile"
                 style={{
                   height: "40px",
                   width: "40px",
