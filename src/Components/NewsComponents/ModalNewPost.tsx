@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { FetchMyProfile, ME } from "../../Redux/ActionTypes";
 import {
   addMyPost,
   FetchHome,
   HOME_FETCH,
+  uploadPost,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
-import FileUpload from "./FileUpload";
+
 
 const ModalNewPost = () => {
   const [show, setShow] = useState(false);
@@ -18,6 +20,7 @@ const ModalNewPost = () => {
   const dispatch = useDispatch();
 
   const myState = useSelector((state: RootState) => state.profile.me);
+  
 
   const [postPayload, setpostPayload] = useState<newPost>({
     text: "",
@@ -30,21 +33,21 @@ const ModalNewPost = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+  
   useEffect(() => {
     setpostPayload({
       text: "",
     });
   }, []);
   const handleSubmit = async (obj: newPost) => {
-    let x = await addMyPost(obj);
+    let post = await addMyPost(obj);
     let data = await FetchHome();
     dispatch({
       type: HOME_FETCH,
       payload: data,
     });
     console.log("sono modale");
-    
+
     setpostPayload({
       text: "",
     });
@@ -90,14 +93,7 @@ const ModalNewPost = () => {
               />
             </Form.Group>
             <hr />
-            {/* <Form.Group controlId="formFile">
-              <Form.Label>Aggiungi un file:</Form.Label>
-              <Form.Control type="file" multiple />
-              <Form.Text className="text-muted">
-                Accetta solo file di tipo immagine, video o documento.
-              </Form.Text>
-            </Form.Group> */}
-            <FileUpload/>
+            
           </Form>
         </Modal.Body>
 

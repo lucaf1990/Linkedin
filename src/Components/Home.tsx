@@ -15,7 +15,7 @@ import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
-  const myStateMe = useSelector((state: RootState) => state.profile.profilesFetch);
+  const myStateMe = useSelector((state: RootState) => state.profile.me);
 
   const dispatch = useDispatch();
 
@@ -42,7 +42,7 @@ function Home() {
     })();
     console.log("sono state");
     
-  }, [myStateMe]);
+  }, [myStateMe._id]);
 
   return (
     <div className="d-flex mt-3 justify-content-center">
