@@ -15,36 +15,34 @@ import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
+  const myStateMe = useSelector((state: RootState) => state.profile.profilesFetch);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      let data = await FetchHome();
-      dispatch({
-        type: HOME_FETCH,
-        payload: data,
-      });
-    })();
-
-    console.log(myState);
-
     (async () => {
       let data = await FetchMyProfile();
       dispatch({
         type: ME,
         payload: data,
       });
-
+      console.log("me", data);
+    })();
+    (async () => {
+      let data = await FetchHome();
+      dispatch({
+        type: HOME_FETCH,
+        payload: data,
+      });
       let data3 = await FetchProfiles();
       dispatch({
         type: PROFILES_FETCH,
         payload: data3,
-      });
-
-      console.log("me", data);
+      })
     })();
-  }, []);
+    console.log("sono state");
+    
+  }, [myStateMe]);
 
   return (
     <div className="d-flex mt-3 justify-content-center">

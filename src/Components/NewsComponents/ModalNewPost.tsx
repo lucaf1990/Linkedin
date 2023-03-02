@@ -42,6 +42,8 @@ const ModalNewPost = () => {
       type: HOME_FETCH,
       payload: data,
     });
+    console.log("sono modale");
+    
     setpostPayload({
       text: "",
     });
