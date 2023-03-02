@@ -15,7 +15,9 @@ import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     (async () => {
       let data = await FetchHome();
@@ -24,18 +26,22 @@ function Home() {
         payload: data,
       });
     })();
+
     console.log(myState);
+
     (async () => {
       let data = await FetchMyProfile();
       dispatch({
         type: ME,
         payload: data,
       });
+
       let data3 = await FetchProfiles();
       dispatch({
         type: PROFILES_FETCH,
         payload: data3,
       });
+
       console.log("me", data);
     })();
   }, []);
