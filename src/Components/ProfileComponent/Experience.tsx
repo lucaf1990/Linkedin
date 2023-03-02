@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { Container, Row, Col, Button } from "react-bootstrap";

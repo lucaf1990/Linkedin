@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Row,
+  Dropdown,
+  DropdownButton,
+  Form,
+  Modal,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addMyInfo,
@@ -18,6 +26,17 @@ const ModalExperiencePOST = ({
   handleClose: () => void;
   experienceId: string;
 }) => {
+  const [myYears, setMyYears] = useState<number[]>([]);
+  useEffect(() => {
+    const myState = () => {
+      const yearsArray = [];
+      for (let i = 1923; i < 2024; i++) {
+        yearsArray.push(i);
+      }
+      setMyYears(yearsArray.reverse());
+    };
+    myState();
+  }, []);
   const myState = useSelector((state: RootState) => state.profile.me);
   const [experiencePayload, setExperiencePayload] =
     useState<MyExperienceChanges>({
@@ -112,6 +131,105 @@ const ModalExperiencePOST = ({
                 onChange={(e) => handleChange(e)}
               />
             </Form.Group>
+            <Row className="justify-content-around">
+              <Col xs={5}>
+                <DropdownButton
+                  variant="white"
+                  className="yearsDropdown ms-5"
+                  title="Month"
+                >
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-1"
+                  >
+                    January
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-2"
+                  >
+                    February
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-3"
+                  >
+                    March
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-1"
+                  >
+                    April
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-2"
+                  >
+                    May
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-3"
+                  >
+                    June
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-1"
+                  >
+                    July
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-2"
+                  >
+                    August
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-3"
+                  >
+                    September
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-1"
+                  >
+                    October
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-2"
+                  >
+                    November
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    className="dropdown-basic-button"
+                    href="#/action-3"
+                  >
+                    December
+                  </Dropdown.Item>
+                </DropdownButton>
+              </Col>
+              <Col xs={5}>
+                <DropdownButton
+                  variant="white"
+                  className="yearsDropdown ms-5"
+                  title="Year"
+                >
+                  {myYears.map((elem, i) => (
+                    <Dropdown.Item
+                      key={i}
+                      className="dropdown-basic-button"
+                      href="#/action-1"
+                    >
+                      {elem}
+                    </Dropdown.Item>
+                  ))}
+                </DropdownButton>
+              </Col>
+            </Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
