@@ -49,8 +49,8 @@ const ModalNewPost = () => {
 
   return (
     <>
-      <Button variant="light" onClick={handleShow}>
-        Aggiungi Post
+      <Button variant="white" className="text-start w-100" onClick={handleShow}>
+        Start a post
       </Button>
 
       <Modal show={show} onHide={handleClose}>
