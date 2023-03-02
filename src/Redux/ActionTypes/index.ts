@@ -116,6 +116,8 @@ export const addMyInfo = async (params: MyExperienceChanges) => {
       body: JSON.stringify(params),
     }
   );
+  let newExp = await requestOptions.json()
+  return newExp
 };
 
 export const deleteExp = async (params: MyExperienceChanges) => {
@@ -129,6 +131,45 @@ export const deleteExp = async (params: MyExperienceChanges) => {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
       },
       body: JSON.stringify(params),
+    }
+  );
+};
+export const uploadPost = async (id:string,fd:FormData) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`,
+    {
+      method: "POST",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: fd,
+    }
+  );
+};
+export const uploadExpImg = async (id:string,expId:string,fd:FormData) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences/${expId}/picture`,
+    {
+      method: "POST",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: fd,
+    }
+  );
+};
+export const addMyImg = async (id:string,fd:FormData,userId:string) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${id}/picture`,
+    {
+      method: "POST",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: fd,
     }
   );
 };

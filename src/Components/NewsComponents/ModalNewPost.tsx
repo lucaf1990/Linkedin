@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchMyProfile, ME } from "../../Redux/ActionTypes";
 import {
   addMyPost,
+  addMyPostImg,
   FetchHome,
   HOME_FETCH,
-  uploadPost,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
@@ -21,6 +21,7 @@ const ModalNewPost = () => {
 
   const myState = useSelector((state: RootState) => state.profile.me);
   
+  const [formData, setFormData] = useState(new FormData());
 
   const [postPayload, setpostPayload] = useState<newPost>({
     text: "",
@@ -41,6 +42,9 @@ const ModalNewPost = () => {
   }, []);
   const handleSubmit = async (obj: newPost) => {
     let post = await addMyPost(obj);
+    // let x = await addMyPostImg(post._id,formData) perche non funziona???
+    console.log(post._id);
+    
     let data = await FetchHome();
     dispatch({
       type: HOME_FETCH,
@@ -52,7 +56,13 @@ const ModalNewPost = () => {
       text: "",
     });
   };
-
+  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => {
+      prev.delete("post");
+      prev.append("post", e.target.files![0]);
+      return prev;
+    });
+  };
   return (
     <>
       <Button variant="white" className="text-start w-100" onClick={handleShow}>
@@ -93,6 +103,10 @@ const ModalNewPost = () => {
               />
             </Form.Group>
             <hr />
+            <Form.Group controlId="formFile">
+              <Form.Label>Aggiungi immagine:</Form.Label>
+              <Form.Control type="file" onChange={handleFile} />
+            </Form.Group>
             
           </Form>
         </Modal.Body>

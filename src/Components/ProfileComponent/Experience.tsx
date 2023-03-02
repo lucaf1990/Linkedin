@@ -45,6 +45,17 @@ const Experience = () => {
                     <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
                     <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
                   </div>
+                  <div>
+                    <img
+                      src={e.image}
+                      alt={'ciao'}
+                      style={{
+                        height: "30px",
+                        borderTopLeftRadius: "15px",
+                        borderTopRightRadius: "15px",
+                      }}
+                    />
+                  </div>
                 </Col>
                 <Col xs={1} className="mt-3">
                   <ModalModifyEperience experienceId={e} />

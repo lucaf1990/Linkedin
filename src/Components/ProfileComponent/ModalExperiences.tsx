@@ -31,7 +31,8 @@ const ModalExperiences = ({
       startDate: new Date(),
       description: experienceId.description,
       area: experienceId.area,
-      user: experienceId.user
+      user: experienceId.user,
+      image:""
     });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
@@ -49,7 +50,8 @@ const ModalExperiences = ({
       startDate: new Date(),
       description: experienceId.description,
       area: experienceId.area,
-      user: experienceId.user
+      user: experienceId.user,
+      image:""
     });
   }, [experienceId]);
   const handleSubmit = (obj: MyExperienceChanges) => {

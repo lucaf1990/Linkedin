@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import {
   changeMyInfo,
   deleteExp,
   EXPERIENCE_FETCH,
   FetchMyExperience,
+  uploadExpImg,
 } from "../../Redux/ActionTypes";
 import { ArrMe, MyExperienceChanges } from "../../Redux/Interfaces";
 import { GiPencil } from "react-icons/gi";
@@ -15,9 +16,13 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
   const myState = useSelector((state: RootState) => state.profile.me);
   const [show, setShow] = useState(false);
 
+  const [formData, setFormData] = useState(new FormData());
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const dispatch = useDispatch();
+
   const [experiencePayload, setExperiencePayload] =
     useState<MyExperienceChanges>({
       _id: experienceId._id,
@@ -27,6 +32,7 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
       description: experienceId.description,
       area: experienceId.area,
       user: experienceId.user,
+      image:experienceId.image || ""
     });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
@@ -45,16 +51,18 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
       description: experienceId.description,
       area: experienceId.area,
       user: experienceId.user,
+      image:experienceId.image || ""
     });
   }, [experienceId]);
   const handleSubmit = async (obj: MyExperienceChanges) => {
     let x = await changeMyInfo(obj);
+    let modifyImg = await uploadExpImg(myState._id,experienceId._id,formData)
     let data = await FetchMyExperience(myState._id);
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,
     });
-    console.log("me", data);
+    console.log("AOOOOOOOOOO", data);
   };
   const handleDelete = async (obj: MyExperienceChanges) => {
     let x = await deleteExp(obj);
@@ -62,6 +70,13 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,
+    });
+  };
+  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => {
+      prev.delete("post");
+      prev.append("experience", e.target.files![0]);
+      return prev;
     });
   };
   return (
@@ -118,6 +133,10 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
                 value={experiencePayload.area}
                 onChange={(e) => handleChange(e)}
               />
+            </Form.Group>
+            <Form.Group controlId="formFile">
+              <Form.Label>Cambia immagine dell'experience:</Form.Label>
+              <Form.Control type="file" onChange={handleFile} />
             </Form.Group>
           </Form>
         </Modal.Body>
