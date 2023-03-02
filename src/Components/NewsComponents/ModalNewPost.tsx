@@ -43,7 +43,7 @@ const ModalNewPost = () => {
       payload: data,
     });
     console.log("sono modale");
-    
+
     setpostPayload({
       text: "",
     });
@@ -68,8 +68,8 @@ const ModalNewPost = () => {
               className="rounded-circle mr-3"
               style={{ height: "40px" }}
             />
-            <div>
-              <p className="mb-0 font-weight-bold">
+            <div className="d-flex justify-content-between">
+              <p className="mb-0 mt-4 ml-3 font-weight-bold">
                 {myState.name}
                 {myState.surname}
               </p>
