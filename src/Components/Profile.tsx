@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { EXPERIENCE_FETCH, FetchMyExperience } from "../Redux/ActionTypes";
+import {
+  EXPERIENCE_FETCH,
+  FetchMyExperience,
+  FetchMyProfile,
+  ME,
+} from "../Redux/ActionTypes";
 import { useDispatch, useSelector } from "react-redux";
 import ActivityProfile from "./ProfileComponent/ActivityProfile";
 import ProfileSection from "./ProfileComponent/ProfileSection";
@@ -14,7 +19,16 @@ const Profile = () => {
   const myState = useSelector((state: RootState) => state.profile.me);
 
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    (async () => {
+      let data = await FetchMyProfile();
+      dispatch({
+        type: ME,
+        payload: data,
+      });
+      console.log("me", data);
+    })();
+  },[]);
   useEffect(() => {
     (async () => {
       if (myState._id) {

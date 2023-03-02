@@ -7,7 +7,8 @@ import {
 } from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
 import { MyProfileChanges, Me } from "../../Redux/Interfaces";
-import { useEffect, useState } from "react";
+import { useEffect, useState,ChangeEvent, FormEvent } from "react";
+import { uploadPost } from "../../Redux/ActionTypes/homeAction";
 
 const ModalProfileSection = ({
   show,
@@ -20,6 +21,8 @@ const ModalProfileSection = ({
 }) => {
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const dispatch = useDispatch();
+  const [formData, setFormData] = useState(new FormData());
+
   // INIZIA
   const [profilePayload, setprofilePayload] = useState<MyProfileChanges>({
     name: myProfile.name,
@@ -36,7 +39,13 @@ const ModalProfileSection = ({
       [e.target.name]: e.target.value,
     });
   };
-
+  const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => {
+      prev.delete("post");
+      prev.append("profile", e.target.files![0]);
+      return prev;
+    });
+  };
   useEffect(() => {
     setprofilePayload({
       name: myProfile.name,
@@ -48,6 +57,7 @@ const ModalProfileSection = ({
   }, [changeProfileInfo]);
   const handleSubmit = async(obj: MyProfileChanges) => {
       let changes = await changeMyProfileInfo(obj);
+      let imgPost = await uploadPost(myProfile._id, formData);
       let data = await FetchMyProfile();
       dispatch({
         type: ME,
@@ -87,8 +97,15 @@ const ModalProfileSection = ({
                 value={profilePayload.surname}
                 onChange={(e) => handleChange(e)}
               />
+              
+              <Form.Group controlId="formFile">
+                <Form.Label>Cambia immagine profilo:</Form.Label>
+                <Form.Control type="file" onChange={handleFile} />
+              </Form.Group>
+
               <Form.Label className="mt-3">Additional name</Form.Label>
               <Form.Control type="text" placeholder="" />
+
               <Form.Label className="mt-3">Name Pronunciation</Form.Label>
               <h6>ℹ This can only be added using our mobile app</h6>
               <Form.Label className="mt-3">Pronouns</Form.Label>

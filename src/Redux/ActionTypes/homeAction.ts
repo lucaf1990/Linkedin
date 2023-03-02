@@ -36,3 +36,17 @@ export const addMyPost = async (params: newPost) => {
     }
   );
 };
+
+export const uploadPost = async (id:string,fd:FormData) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`,
+    {
+      method: "POST",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: fd,
+    }
+  );
+};
