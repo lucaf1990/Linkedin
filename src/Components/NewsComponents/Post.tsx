@@ -14,7 +14,7 @@ const Post = () => {
   
   return (
     <>
-      {myState?.slice(0, 10).map((post, i) => {
+      {myState?.slice(0, 100).map((post, i) => {
         return (
           <div key={i} className="post">
             <div className="post_header">
