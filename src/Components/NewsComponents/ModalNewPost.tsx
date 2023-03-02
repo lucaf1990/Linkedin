@@ -37,13 +37,16 @@ const ModalNewPost = () => {
   useEffect(() => {
     setpostPayload({
       text: "",
+      image:"",
     });
   }, []);
   const handleSubmit = async (obj: newPost) => {
     let post = await addMyPost(obj);
-    let x = await addMyPostImg(post._id,formData) 
-    console.log(post._id);
-
+    for(const coppia of formData.entries()){
+      let x = await addMyPostImg(post._id,formData)
+    }
+    console.log("sono home fetch");
+    
     let data = await FetchHome();
     dispatch({
       type: HOME_FETCH,
@@ -52,7 +55,8 @@ const ModalNewPost = () => {
     console.log("sono modale");
 
     setpostPayload({
-      text: ""
+      text: "",
+      image:""
     });
   };
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {

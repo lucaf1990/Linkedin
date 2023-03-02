@@ -98,6 +98,9 @@ const Post = () => {
             <div className="post_body">
               <p>{post.text}</p>
             </div>
+            <div>
+              <img src={post.image ? post.image : ""} alt="" style={{width:'350px'}}/>
+            </div>
             <div className="post_buttons">
               <InputOption Icon={<ThumbUpOffAltIcon />} title="Like" />
               <InputOption

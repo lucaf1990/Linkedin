@@ -62,6 +62,7 @@ export interface postFetch {
   _id: string;
   text: string;
   username: string;
+  image?:string
   user: {
     _id: string;
     name: string;
@@ -84,4 +85,5 @@ export interface postFetch {
 export interface newPost {
   text: string;
   _id?: string;
+  image?:string
 }
