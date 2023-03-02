@@ -8,6 +8,7 @@ import {
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
+import FileUpload from "./FileUpload";
 
 const ModalNewPost = () => {
   const [show, setShow] = useState(false);
@@ -89,13 +90,14 @@ const ModalNewPost = () => {
               />
             </Form.Group>
             <hr />
-            <Form.Group controlId="formFile">
+            {/* <Form.Group controlId="formFile">
               <Form.Label>Aggiungi un file:</Form.Label>
               <Form.Control type="file" multiple />
               <Form.Text className="text-muted">
                 Accetta solo file di tipo immagine, video o documento.
               </Form.Text>
-            </Form.Group>
+            </Form.Group> */}
+            <FileUpload/>
           </Form>
         </Modal.Body>
 
