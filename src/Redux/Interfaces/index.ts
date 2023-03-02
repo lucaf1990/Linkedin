@@ -81,4 +81,5 @@ export interface postFetch {
 
 export interface newPost {
   text: string;
+  _id: string;
 }

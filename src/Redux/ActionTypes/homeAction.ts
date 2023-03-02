@@ -1,4 +1,4 @@
-import { newPost } from "../Interfaces";
+import { newPost, postFetch } from "../Interfaces";
 
 export const HOME_FETCH = "HOME_FETCH";
 
@@ -37,7 +37,7 @@ export const addMyPost = async (params: newPost) => {
   );
 };
 
-export const uploadPost = async (id:string,fd:FormData) => {
+export const uploadPost = async (id: string, fd: FormData) => {
   const requestOptions = await fetch(
     `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`,
     {
@@ -47,6 +47,22 @@ export const uploadPost = async (id:string,fd:FormData) => {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
       },
       body: fd,
+    }
+  );
+};
+
+//FUNZIONE FETCH API PUT POST
+export const changeMyPost = async (params: newPost) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/posts/${params._id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: JSON.stringify(params),
     }
   );
 };

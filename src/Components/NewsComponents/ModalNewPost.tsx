@@ -11,7 +11,6 @@ import {
 import { newPost } from "../../Redux/Interfaces";
 import { RootState } from "../../Redux/Store";
 
-
 const ModalNewPost = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -20,10 +19,10 @@ const ModalNewPost = () => {
   const dispatch = useDispatch();
 
   const myState = useSelector((state: RootState) => state.profile.me);
-  
 
   const [postPayload, setpostPayload] = useState<newPost>({
     text: "",
+    _id: "",
   });
 
   const handleChange = (e: any) => {
@@ -33,10 +32,11 @@ const ModalNewPost = () => {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   useEffect(() => {
     setpostPayload({
       text: "",
+      _id: "",
     });
   }, []);
   const handleSubmit = async (obj: newPost) => {
@@ -50,6 +50,7 @@ const ModalNewPost = () => {
 
     setpostPayload({
       text: "",
+      _id: "",
     });
   };
 
@@ -93,7 +94,6 @@ const ModalNewPost = () => {
               />
             </Form.Group>
             <hr />
-            
           </Form>
         </Modal.Body>
 
