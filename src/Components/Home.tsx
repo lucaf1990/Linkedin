@@ -38,10 +38,9 @@ function Home() {
       dispatch({
         type: PROFILES_FETCH,
         payload: data3,
-      })
+      });
     })();
     console.log("sono state");
-    
   }, [myStateMe._id]);
 
   return (

@@ -1,24 +1,27 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/Store";
+
 function NewsSideBar() {
-  // type NavBarProps = {
-  //   title: String;
-  // };
-  // const recentItem = (props: NavBarProps) => {
-  //   const { title } = props;
-  //   console.log(props);
-  //   <div className="sidebar_recentItem">
-  //     <span className="sidebar_hash">#</span>
-  //     <p>{title}</p>
-  //   </div>;
-  // };
+  const data = useSelector((state: RootState) => state.profile.me);
 
   return (
     <div className="contai">
       <div className="NewsSideBar">
         <div className="sidebar_top">
-          <img src="" alt="" />
-          {/* AVATAR */}
-          <h2>Nome e cognome</h2>
-          <h4>EMAIL</h4>
+          <img
+            src={data.image}
+            alt="img"
+            style={{
+              height: "120px",
+              width: "100%",
+              borderTopLeftRadius: "10px",
+              borderTopRightRadius: "10px",
+            }}
+          />
+          <h2>
+            {data.name} {data.surname}
+          </h2>
+          <h6>{data.email}</h6>
         </div>
         <div className="sidebar_stats">
           <div className="sidebar_stat">
