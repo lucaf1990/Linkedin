@@ -13,7 +13,7 @@ import {
   addMyImg,
   addMyInfo,
   EXPERIENCE_FETCH,
-  FetchMyExperience,
+  fetchMyExperience,
   uploadExpImg,
 } from "../../Redux/ActionTypes";
 import { MyExperienceChanges } from "../../Redux/Interfaces";
@@ -81,7 +81,7 @@ const ModalExperiencePOST = ({
     for(const coppia of formData.entries()){
       let modifyImg = await addMyImg(x._id, formData, myState._id);
     }
-    let data = await FetchMyExperience(experienceId);
+    let data = await fetchMyExperience(experienceId);
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,

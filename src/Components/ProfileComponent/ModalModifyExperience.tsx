@@ -4,7 +4,7 @@ import {
   changeMyInfo,
   deleteExp,
   EXPERIENCE_FETCH,
-  FetchMyExperience,
+  fetchMyExperience,
   uploadExpImg,
 } from "../../Redux/ActionTypes";
 import { ArrMe, MyExperienceChanges } from "../../Redux/Interfaces";
@@ -59,7 +59,7 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
     for(const coppia of formData.entries()){
       let modifyImg = await uploadExpImg(myState._id, experienceId._id, formData);
     }
-    let data = await FetchMyExperience(myState._id);
+    let data = await fetchMyExperience(myState._id);
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,
@@ -68,7 +68,7 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
   };
   const handleDelete = async (obj: MyExperienceChanges) => {
     let x = await deleteExp(obj);
-    let data = await FetchMyExperience(myState._id);
+    let data = await fetchMyExperience(myState._id);
     dispatch({
       type: EXPERIENCE_FETCH,
       payload: data,

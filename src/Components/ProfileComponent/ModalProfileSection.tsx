@@ -2,7 +2,7 @@ import { Button, Form, Modal, DropdownButton, Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeMyProfileInfo,
-  FetchMyProfile,
+  fetchMyProfile,
   ME,
   uploadPost,
 } from "../../Redux/ActionTypes";
@@ -63,7 +63,7 @@ const ModalProfileSection = ({
         let imgPost = await uploadPost(myProfile._id, formData);
       }
       
-      let data = await FetchMyProfile();
+      let data = await fetchMyProfile();
       dispatch({
         type: ME,
         payload: data,

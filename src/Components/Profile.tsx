@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import {
   EXPERIENCE_FETCH,
-  FetchMyExperience,
-  FetchMyProfile,
+  fetchMyExperience,
+  fetchMyProfile,
   ME,
 } from "../Redux/ActionTypes";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +21,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
-      let data = await FetchMyProfile();
+      let data = await fetchMyProfile();
       dispatch({
         type: ME,
         payload: data,
@@ -32,12 +32,13 @@ const Profile = () => {
   useEffect(() => {
     (async () => {
       if (myState._id) {
-        let data2 = await FetchMyExperience(myState._id);
+        let data2 = await fetchMyExperience(myState._id);
         dispatch({
           type: EXPERIENCE_FETCH,
           payload: data2,
         });
       }
+      
     })();
   }, [myState._id]);
 

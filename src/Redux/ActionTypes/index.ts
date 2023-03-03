@@ -4,7 +4,7 @@ export const PROFILES_FETCH = "PROFILES_FETCH";
 export const ME = "ME";
 export const EXPERIENCE_FETCH = "EXPERIENCE_FETCH";
 
-export const FetchMyProfile = async () => {
+export const fetchMyProfile = async () => {
   try {
     let res = await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/me`,
@@ -27,7 +27,7 @@ export const FetchMyProfile = async () => {
   }
 };
 
-export const FetchMyExperience = async (params: string) => {
+export const fetchMyExperience = async (params: string) => {
   try {
     let res = await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${params}/experiences`,
@@ -64,7 +64,7 @@ export const changeMyInfo = async (params: MyExperienceChanges) => {
     }
   );
 };
-export const FetchProfiles = async () => {
+export const fetchProfiles = async () => {
   try {
     let res = await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/`,

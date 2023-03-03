@@ -13,7 +13,7 @@ const homeReducer = (
   switch (action.type) {
     case HOME_FETCH:
       return {
-        ...state,
+        
         postsFetch: action.payload as postFetch[],
       };
 

@@ -3,7 +3,7 @@ import { Button, Form, FormGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadPost } from "../../Redux/ActionTypes";
 import {
-  FetchHome,
+  fetchHome,
   HOME_FETCH,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";

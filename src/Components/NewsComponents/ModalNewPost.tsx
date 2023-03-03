@@ -1,11 +1,11 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchMyProfile, ME } from "../../Redux/ActionTypes";
+import { fetchMyProfile, ME } from "../../Redux/ActionTypes";
 import {
   addMyPost,
   addMyPostImg,
-  FetchHome,
+  fetchHome,
   HOME_FETCH,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";
@@ -47,7 +47,7 @@ const ModalNewPost = () => {
     }
     console.log("sono home fetch");
     
-    let data = await FetchHome();
+    let data = await fetchHome();
     dispatch({
       type: HOME_FETCH,
       payload: data,

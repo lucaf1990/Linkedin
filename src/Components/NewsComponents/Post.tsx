@@ -18,7 +18,7 @@ import ModifyPostModal from "./ModifyPostModal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
   deletePost,
-  FetchHome,
+  fetchHome,
   HOME_FETCH,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost } from "../../Redux/Interfaces";
@@ -30,7 +30,7 @@ const Post = () => {
 
   const handleDelete = async (obj: newPost) => {
     let x = await deletePost(obj);
-    let data = await FetchHome();
+    let data = await fetchHome();
     dispatch({
       type: HOME_FETCH,
       payload: data,

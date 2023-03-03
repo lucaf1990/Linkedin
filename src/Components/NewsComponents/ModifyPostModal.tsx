@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newPost, postFetch } from "../../Redux/Interfaces";
 import {
-  FetchHome,
+  fetchHome,
   HOME_FETCH,
   changeMyPost,
 } from "../../Redux/ActionTypes/homeAction";
@@ -37,7 +37,7 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   }, [modifyPost]);
   const handleSubmit = async (obj: newPost) => {
     let x = await changeMyPost(obj);
-    let data = await FetchHome();
+    let data = await fetchHome();
     dispatch({
       type: HOME_FETCH,
       payload: data,
