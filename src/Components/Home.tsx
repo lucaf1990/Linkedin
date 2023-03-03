@@ -25,9 +25,16 @@ function Home() {
         payload: data,
       });
       console.log("me", data);
+      let data3 = await fetchProfiles();
+      dispatch({
+        type: PROFILES_FETCH,
+        payload: data3,
+      });
     })();
 
     console.log("sono state");
+  }, []);
+  useEffect(() => {
     (async () => {
       let data2 = await fetchHome();
       console.log(data2);
@@ -36,14 +43,7 @@ function Home() {
         payload: data2,
       });
     })();
-    (async () => {
-      let data3 = await fetchProfiles();
-      dispatch({
-        type: PROFILES_FETCH,
-        payload: data3,
-      });
-    })();
-  }, [myState._id]);
+  }, [myState]);
 
   return (
     <div className="d-flex mt-3 justify-content-center">
