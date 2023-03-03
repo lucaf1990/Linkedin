@@ -77,7 +77,10 @@ const ModalExperiencePOST = ({
 
   const handleSubmit = async (obj: MyExperienceChanges) => {
     let x = await addMyInfo(obj);
-    let modifyImg = await addMyImg(x._id, formData, myState._id);
+    
+    for(const coppia of formData.entries()){
+      let modifyImg = await addMyImg(x._id, formData, myState._id);
+    }
     let data = await FetchMyExperience(experienceId);
     dispatch({
       type: EXPERIENCE_FETCH,
