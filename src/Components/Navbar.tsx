@@ -35,7 +35,7 @@ function Navbar() {
     <div className="header">
       <div className="header_left">
         <img src={Logo} alt="LinkedIn icon" />
-        <div className="header_search">
+        <div className="header_search" style={{ height: "1.8rem" }}>
           <SearchIcon />
           <input type="text" placeholder="Cerca" />
         </div>

@@ -33,19 +33,17 @@ function Home() {
       });
     })();
 
-    console.log("sono state")
+    console.log("sono state");
   }, []);
   useEffect(() => {
-    
-      (async () => {
-        let data2 = await fetchHome();
-        console.log(data2);
-        dispatch({
-          type: HOME_FETCH,
-          payload: data2,
-        });
-      })();
-    
+    (async () => {
+      let data2 = await fetchHome();
+      console.log(data2);
+      dispatch({
+        type: HOME_FETCH,
+        payload: data2,
+      });
+    })();
   }, [myState]);
 
   return (

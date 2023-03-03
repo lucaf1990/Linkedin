@@ -52,7 +52,7 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <Row style={{ justifyContent: "center" }}>
+    <Row className="mt-3" style={{ justifyContent: "center" }}>
       <Col xs={6} className="ms-5">
         <ProfileSection />
         <ActivityProfile />

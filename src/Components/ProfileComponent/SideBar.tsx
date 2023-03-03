@@ -9,8 +9,8 @@ const SideBar = () => {
         <hr />
         <h6 className="pb-2 ps-1">Add profile in another language</h6>
       </Col>
-      <Col id="profileProfile">
-        <h4>People you may Know</h4>
+      <Col className="mt-3" id="profileProfile">
+        <h6>People you may Know</h6>
         <SideBarCard />
 
         <Col
@@ -18,7 +18,7 @@ const SideBar = () => {
           id="SideBarToggle"
           className="m-0 p-0 text-center pt-3 pb-2 "
         >
-          <h5>Show More 👇</h5>
+          <h6>Show More 👇</h6>
         </Col>
       </Col>
     </Row>
