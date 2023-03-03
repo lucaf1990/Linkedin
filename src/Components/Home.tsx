@@ -41,7 +41,7 @@ function Home() {
       });
     })();
     console.log("sono state");
-  }, [myStateMe._id]);
+  }, []);
 
   return (
     <div className="d-flex mt-3 justify-content-center">

@@ -56,7 +56,9 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
   }, [experienceId]);
   const handleSubmit = async (obj: MyExperienceChanges) => {
     let x = await changeMyInfo(obj);
-    let modifyImg = await uploadExpImg(myState._id, experienceId._id, formData);
+    for(const coppia of formData.entries()){
+      let modifyImg = await uploadExpImg(myState._id, experienceId._id, formData);
+    }
     let data = await FetchMyExperience(myState._id);
     dispatch({
       type: EXPERIENCE_FETCH,
@@ -82,6 +84,10 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
   return (
     <>
       <div className="d-flex">
+      <Button id="modal-btn" onClick={handleShow}>
+          {" "}
+          <GiPencil />
+        </Button>
         <Button id="modal-btn" onClick={() => handleDelete(experiencePayload)}>
           X
         </Button>

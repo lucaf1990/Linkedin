@@ -108,6 +108,7 @@ const ModalExperiencePOST = ({
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
+          
           <Modal.Title>Edit work experiences</Modal.Title>
         </Modal.Header>
         <h6>*Indicates required</h6>
