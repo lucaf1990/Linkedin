@@ -16,6 +16,9 @@ body {
   margin-top: 1rem;
   margin-left: 1rem;
 }
+a {
+  text-decoration: none;
+}
 
 #SideBarToggle {
   background: transparent;
@@ -235,7 +238,7 @@ footer .copyright {
 
 .contai {
   /* display: flex; */
-  width: 13%;
+  width: 18%;
 }
 
 .sidebar_top {
@@ -319,9 +322,11 @@ span {
   border-radius: 10px;
   background-color: white;
   padding: 10px;
+  color: gray;
 }
 .feed_input {
   display: flex;
+  align-items: center;
   border: 1px solid lightgray;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

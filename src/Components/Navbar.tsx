@@ -16,21 +16,39 @@ function Navbar() {
     <div className="header">
       <div className="header_left">
         <img src={Logo} alt="LinkedIn icon" />
-        <div className="header_search">
+        <div className="header_search" style={{ height: "1.8rem" }}>
           <SearchIcon />
           <input type="text" placeholder="Cerca" />
         </div>
       </div>
       <div className="header_right">
         <Link to={"/"}>
-          <HeaderOption Icon={<HomeIcon />} title="Home" />
+          <HeaderOption
+            Icon={<HomeIcon style={{ fontSize: "1.5em" }} />}
+            title="Home"
+          />
         </Link>
-        <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />
-        <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />
-        <HeaderOption Icon={<ChatIcon />} title="Messaging" />
-        <HeaderOption Icon={<NotificationsIcon />} title="Notifications" />
+        <HeaderOption
+          Icon={<SupervisorAccountIcon style={{ fontSize: "1.5em" }} />}
+          title="My Network"
+        />
+        <HeaderOption
+          Icon={<BusinessCenterIcon style={{ fontSize: "1.5em" }} />}
+          title="Jobs"
+        />
+        <HeaderOption
+          Icon={<ChatIcon style={{ fontSize: "1.5em" }} />}
+          title="Messaging"
+        />
+        <HeaderOption
+          Icon={<NotificationsIcon style={{ fontSize: "1.5em" }} />}
+          title="Notifications"
+        />
         <Link to={"/Profile"}>
-          <HeaderOption Icon={<AccountCircleIcon />} title="Profile" />
+          <HeaderOption
+            Icon={<AccountCircleIcon style={{ fontSize: "1.5em" }} />}
+            title="Profile"
+          />
         </Link>
       </div>
     </div>

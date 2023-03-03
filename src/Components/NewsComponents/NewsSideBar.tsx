@@ -18,10 +18,10 @@ function NewsSideBar() {
               borderTopRightRadius: "10px",
             }}
           />
-          <h2>
+          <h2 className="m-1">
             {data.name} {data.surname}
           </h2>
-          <h6>{data.email}</h6>
+          <h6 style={{ fontSize: "0.8em" }}>{data.email}</h6>
         </div>
         <div className="sidebar_stats">
           <div className="sidebar_stat">

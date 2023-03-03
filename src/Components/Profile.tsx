@@ -28,7 +28,7 @@ const Profile = () => {
       });
       console.log("me", data);
     })();
-  },[myState._id]);
+  }, [myState._id]);
   useEffect(() => {
     (async () => {
       if (myState._id) {
@@ -38,12 +38,11 @@ const Profile = () => {
           payload: data2,
         });
       }
-      
     })();
   }, [myState._id]);
 
   return (
-    <Row style={{ justifyContent: "center" }}>
+    <Row className="mt-3" style={{ justifyContent: "center" }}>
       <Col xs={6} className="ms-5">
         <ProfileSection />
         <ActivityProfile />
