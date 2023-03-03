@@ -4,7 +4,7 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import InsertCommentOutlinedIcon from "@mui/icons-material/InsertCommentOutlined";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import { BsThreeDots } from "react-icons/bs";
 import { ImEmbed2 } from "react-icons/im";
@@ -12,15 +12,30 @@ import { Dropdown } from "react-bootstrap";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import StarIcon from "@mui/icons-material/Star";
 import LinkIcon from "@mui/icons-material/Link";
-
-import DeleteIcon from "@mui/icons-material/Delete";
 import SmsIcon from "@mui/icons-material/Sms";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModifyPostModal from "./ModifyPostModal";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  deletePost,
+  FetchHome,
+  HOME_FETCH,
+} from "../../Redux/ActionTypes/homeAction";
+import { newPost } from "../../Redux/Interfaces";
 
 const Post = () => {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
   const myProfile = useSelector((state: RootState) => state.profile.me);
+  const dispatch = useDispatch();
+
+  const handleDelete = async (obj: newPost) => {
+    let x = await deletePost(obj);
+    let data = await FetchHome();
+    dispatch({
+      type: HOME_FETCH,
+      payload: data,
+    });
+  };
 
   return (
     <>
@@ -64,14 +79,18 @@ const Post = () => {
                       <ImEmbed2 /> Embed this post
                     </Dropdown.Item>
                     {post.user._id === myProfile._id ? (
-                      <div key={post._id}>
-                        <Dropdown.Item href="#/action-5">
-                          <ModifyPostModal modifyPost={post} />
-                        </Dropdown.Item>
-                        <Dropdown.Item href="#/action-6">
-                          <DeleteIcon /> Delete post
-                        </Dropdown.Item>
-                      </div>
+                      <>
+                        <div key={post._id}>
+                          <Dropdown.Item href="#/action-5">
+                            <ModifyPostModal modifyPost={post} />
+                          </Dropdown.Item>
+                        </div>
+                        <div onClick={() => handleDelete(post)}>
+                          <Dropdown.Item href="#/action-6">
+                            <DeleteIcon /> Delete post
+                          </Dropdown.Item>
+                        </div>
+                      </>
                     ) : (
                       ""
                     )}

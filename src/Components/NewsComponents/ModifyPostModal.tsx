@@ -12,7 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   const [show, setShow] = useState(false);
-  const mystate = useSelector((state: RootState) => state.home.postsFetch);
+
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,17 +44,13 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
     });
     console.log("me", data);
   };
-  //   const handleDelete = async (obj:  newPost, ) => {
-  //     let x = await changeMyPost(obj);
-  //     let data = await FetchHome();
-  //     dispatch({
-  //       type: post_FETCH,
-  //       payload: data,
-  //    });
-  //   };
+
   return (
-    <div onClick={handleShow}>
-      <EditIcon /> Edit post
+    <>
+      <div onClick={handleShow}>
+        <EditIcon /> Edit post
+      </div>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit post</Modal.Title>
@@ -100,7 +96,7 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 export default ModifyPostModal;

@@ -40,7 +40,6 @@ export const addMyPost = async (params: newPost) => {
 };
 
 export const addMyPostImg = async (id: string, fd: FormData) => {
-  
   const requestOptions = await fetch(
     `https://striveschool-api.herokuapp.com/api/posts/${id}`,
     {
@@ -58,6 +57,21 @@ export const changeMyPost = async (params: newPost) => {
     `https://striveschool-api.herokuapp.com/api/posts/${params._id}`,
     {
       method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+      },
+      body: JSON.stringify(params),
+    }
+  );
+};
+
+export const deletePost = async (params: newPost) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/posts/${params._id}`,
+    {
+      method: "DELETE",
       headers: {
         "Content-type": "application/json",
         Authorization:

@@ -23,18 +23,17 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
 
   const dispatch = useDispatch();
 
-  const [experiencePayload, setExperiencePayload] = useState<
-    MyExperienceChanges
-  >({
-    _id: experienceId._id,
-    role: experienceId.role,
-    company: experienceId.company,
-    startDate: new Date(),
-    description: experienceId.description,
-    area: experienceId.area,
-    user: experienceId.user,
-    image: experienceId.image || "",
-  });
+  const [experiencePayload, setExperiencePayload] =
+    useState<MyExperienceChanges>({
+      _id: experienceId._id,
+      role: experienceId.role,
+      company: experienceId.company,
+      startDate: new Date(),
+      description: experienceId.description,
+      area: experienceId.area,
+      user: experienceId.user,
+      image: experienceId.image || "",
+    });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
 
@@ -83,10 +82,6 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
   return (
     <>
       <div className="d-flex">
-        <Button id="modal-btn" onClick={handleShow}>
-          {" "}
-          <GiPencil />
-        </Button>
         <Button id="modal-btn" onClick={() => handleDelete(experiencePayload)}>
           X
         </Button>
