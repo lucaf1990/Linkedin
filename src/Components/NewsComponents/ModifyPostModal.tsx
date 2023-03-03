@@ -8,6 +8,7 @@ import {
 } from "../../Redux/ActionTypes/homeAction";
 import { RootState } from "../../Redux/Store";
 import { Button, Form, Modal } from "react-bootstrap";
+import EditIcon from "@mui/icons-material/Edit";
 
 const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   const [show, setShow] = useState(false);
@@ -16,20 +17,20 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
-  const [experiencePayload, setExperiencePayload] = useState<newPost>({
+  const [postPayload, setpostPayload] = useState<newPost>({
     text: modifyPost.text,
     _id: modifyPost._id,
   });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
 
-    setExperiencePayload({
-      ...experiencePayload,
+    setpostPayload({
+      ...postPayload,
       [e.target.name]: e.target.value,
     });
   };
   useEffect(() => {
-    setExperiencePayload({
+    setpostPayload({
       text: modifyPost.text,
       _id: modifyPost._id,
     });
@@ -47,12 +48,13 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   //     let x = await changeMyPost(obj);
   //     let data = await FetchHome();
   //     dispatch({
-  //       type: EXPERIENCE_FETCH,
+  //       type: post_FETCH,
   //       payload: data,
   //    });
   //   };
   return (
-    <>
+    <div onClick={handleShow}>
+      <EditIcon /> Edit post
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit post</Modal.Title>
@@ -79,8 +81,8 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
               required
               type="textarea"
               placeholder=""
-              name="area"
-              value={modifyPost.text}
+              name="text"
+              value={postPayload.text}
               onChange={(e) => handleChange(e)}
             />
           </Form>
@@ -90,7 +92,7 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
             className="Profile-Btn1"
             style={{ margin: "0", fontSize: "1.2em", fontWeight: "bolder" }}
             onClick={() => {
-              handleSubmit(experiencePayload);
+              handleSubmit(postPayload);
               handleClose();
             }}
           >
@@ -98,7 +100,7 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 };
 export default ModifyPostModal;

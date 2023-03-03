@@ -12,7 +12,7 @@ import { Dropdown } from "react-bootstrap";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import StarIcon from "@mui/icons-material/Star";
 import LinkIcon from "@mui/icons-material/Link";
-import EditIcon from "@mui/icons-material/Edit";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import SmsIcon from "@mui/icons-material/Sms";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -20,13 +20,7 @@ import ModifyPostModal from "./ModifyPostModal";
 
 const Post = () => {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
-  const [showModalPOST, setShowModalPOST] = useState(false);
-  const handleShowModalPOST = () => {
-    setShowModalPOST(true);
-  };
-  const handleCloseModalPOST = () => {
-    setShowModalPOST(false);
-  };
+  const myProfile = useSelector((state: RootState) => state.profile.me);
 
   return (
     <>
@@ -69,14 +63,10 @@ const Post = () => {
                     <Dropdown.Item href="#/action-4">
                       <ImEmbed2 /> Embed this post
                     </Dropdown.Item>
-                    {post.user._id === "63fc65b1f193e60013807f4e" ? (
+                    {post.user._id === myProfile._id ? (
                       <div key={post._id}>
-                        <Dropdown.Item
-                          href="#/action-5"
-                          onClick={handleShowModalPOST}
-                        >
+                        <Dropdown.Item href="#/action-5">
                           <ModifyPostModal modifyPost={post} />
-                          <EditIcon /> Edit post
                         </Dropdown.Item>
                         <Dropdown.Item href="#/action-6">
                           <DeleteIcon /> Delete post
@@ -99,7 +89,11 @@ const Post = () => {
               <p>{post.text}</p>
             </div>
             <div>
-              <img src={post.image ? post.image : ""} alt="" style={{width:'350px'}}/>
+              <img
+                src={post.image ? post.image : ""}
+                alt=""
+                style={{ width: "350px" }}
+              />
             </div>
             <div className="post_buttons">
               <InputOption Icon={<ThumbUpOffAltIcon />} title="Like" />
