@@ -9,6 +9,7 @@ import {
 import { RootState } from "../../Redux/Store";
 import { MyProfileChanges, Me } from "../../Redux/Interfaces";
 import { useEffect, useState,ChangeEvent, FormEvent } from "react";
+import { useParams } from "react-router-dom";
 
 
 const ModalProfileSection = ({
@@ -23,7 +24,7 @@ const ModalProfileSection = ({
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(new FormData());
-
+  const {user} = useParams()
   // INIZIA
   const [profilePayload, setprofilePayload] = useState<MyProfileChanges>({
     name: myProfile.name,
@@ -63,12 +64,12 @@ const ModalProfileSection = ({
         let imgPost = await uploadPost(myProfile._id, formData);
       }
       
-      let data = await fetchMyProfile();
+      let data = await fetchMyProfile(user);
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAA", data);
       dispatch({
         type: ME,
         payload: data,
       });
-      console.log("me", data);
   
   };
 

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   fetchMyProfile,
   fetchProfiles,
@@ -16,10 +17,10 @@ import RightBar from "./NewsComponents/rightCard";
 function Home() {
   const myState = useSelector((state: RootState) => state.profile.me);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     (async () => {
-      let data = await fetchMyProfile();
+      let data = await fetchMyProfile("me");
       dispatch({
         type: ME,
         payload: data,

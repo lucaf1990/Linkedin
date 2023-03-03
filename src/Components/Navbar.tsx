@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import HeaderOption from "./ProfileComponent/HeaderOption";
 import Logo from "../linkedin.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -10,9 +10,28 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { fetchMyProfile, ME } from "../Redux/ActionTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../Redux/Store";
 
 function Navbar() {
-  return (
+  const myState = useSelector((state:RootState)=> state.profile.me)
+  const dispatch = useDispatch()
+
+  const profileFetch= async () => {
+    if(myState._id){
+      let data = await fetchMyProfile("me");
+      console.log("SONO USER!",data);
+      dispatch({
+        type: ME,
+        payload: data,
+      });     
+    }
+  }
+  
+  
+  useEffect(()=>{},[myState._id])
+    return (
     <div className="header">
       <div className="header_left">
         <img src={Logo} alt="LinkedIn icon" />
@@ -22,14 +41,14 @@ function Navbar() {
         </div>
       </div>
       <div className="header_right">
-        <Link to={"/"}>
+        <Link to={"/"} onClick={profileFetch}>
           <HeaderOption Icon={<HomeIcon />} title="Home" />
         </Link>
         <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />
         <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />
         <HeaderOption Icon={<ChatIcon />} title="Messaging" />
         <HeaderOption Icon={<NotificationsIcon />} title="Notifications" />
-        <Link to={"/Profile"}>
+        <Link to={`/Profile/me`} onClick={profileFetch} >
           <HeaderOption Icon={<AccountCircleIcon />} title="Profile" />
         </Link>
       </div>
@@ -38,3 +57,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
+

@@ -1,13 +1,14 @@
+import { Params } from "react-router-dom";
 import { MyExperienceChanges, MyProfileChanges } from "../Interfaces";
 
 export const PROFILES_FETCH = "PROFILES_FETCH";
 export const ME = "ME";
 export const EXPERIENCE_FETCH = "EXPERIENCE_FETCH";
 
-export const fetchMyProfile = async () => {
+export const fetchMyProfile = async (id:string|undefined) => {
   try {
     let res = await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/me`,
+      `https://striveschool-api.herokuapp.com/api/profile/${id}`,
       {
         method: "GET",
         headers: {
