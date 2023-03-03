@@ -6,7 +6,7 @@ import {
   ME,
   PROFILES_FETCH,
 } from "../Redux/ActionTypes";
-import {  fetchHome, HOME_FETCH } from "../Redux/ActionTypes/homeAction";
+import { fetchHome, HOME_FETCH } from "../Redux/ActionTypes/homeAction";
 import { RootState } from "../Redux/Store";
 
 import Feed from "./NewsComponents/Feed";
@@ -14,7 +14,6 @@ import NewsSideBar from "./NewsComponents/NewsSideBar";
 import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
- 
   const myState = useSelector((state: RootState) => state.profile.me);
   const dispatch = useDispatch();
 
@@ -26,26 +25,25 @@ function Home() {
         payload: data,
       });
       console.log("me", data);
-    })();
-    
-    console.log("sono state");
-    (async()=>{
-        let data2 = await fetchHome();
-        console.log(data2);
-        dispatch({
-          type: HOME_FETCH,
-          payload: data2,
-        });
-    })();
-    (async () => {
       let data3 = await fetchProfiles();
       dispatch({
         type: PROFILES_FETCH,
         payload: data3,
       });
-      
     })();
-  }, [myState._id]);
+
+    console.log("sono state")
+  }, []);
+  useEffect(() => {
+    (async () => {
+      let data2 = await fetchHome();
+      console.log(data2);
+      dispatch({
+        type: HOME_FETCH,
+        payload: data2,
+      });
+    })();
+  }, [myState]);
 
   return (
     <div className="d-flex mt-3 justify-content-center">

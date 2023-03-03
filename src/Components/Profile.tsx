@@ -27,20 +27,14 @@ const Profile = () => {
         payload: data,
       });
       console.log("me", data);
+      let data2 = await fetchMyExperience(data._id);
+      dispatch({
+        type: EXPERIENCE_FETCH,
+        payload: data2,
+      });
+
     })();
-  },[myState._id]);
-  useEffect(() => {
-    (async () => {
-      if (myState._id) {
-        let data2 = await fetchMyExperience(myState._id);
-        dispatch({
-          type: EXPERIENCE_FETCH,
-          payload: data2,
-        });
-      }
-      
-    })();
-  }, [myState._id]);
+  }, []);
 
   return (
     <Row style={{ justifyContent: "center" }}>
