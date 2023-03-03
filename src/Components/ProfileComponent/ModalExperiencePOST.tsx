@@ -1,4 +1,4 @@
-import { useState, useEffect,ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import {
   Button,
   Col,
@@ -40,19 +40,20 @@ const ModalExperiencePOST = ({
     myState();
   }, []);
   const myState = useSelector((state: RootState) => state.profile.me);
-  
+
   const [formData, setFormData] = useState(new FormData());
 
-  const [experiencePayload, setExperiencePayload] =
-    useState<MyExperienceChanges>({
-      role: "",
-      company: "",
-      startDate: new Date(),
-      description: "",
-      area: "",
-      user: experienceId,
-      image:""
-    });
+  const [experiencePayload, setExperiencePayload] = useState<
+    MyExperienceChanges
+  >({
+    image: "",
+    role: "",
+    company: "",
+    startDate: new Date(),
+    description: "",
+    area: "",
+    user: experienceId,
+  });
   const handleChange = (e: any) => {
     console.log("changed payload", e.target.name, e.target.value);
     setExperiencePayload({
@@ -63,20 +64,20 @@ const ModalExperiencePOST = ({
 
   useEffect(() => {
     setExperiencePayload({
+      image: "",
       role: "",
       company: "",
       startDate: new Date(),
       description: "",
       area: "",
       user: experienceId,
-      image:""
     });
   }, []);
   const dispatch = useDispatch();
 
   const handleSubmit = async (obj: MyExperienceChanges) => {
     let x = await addMyInfo(obj);
-    let modifyImg = await addMyImg(x._id,formData,myState._id)
+    let modifyImg = await addMyImg(x._id, formData, myState._id);
     let data = await FetchMyExperience(experienceId);
     dispatch({
       type: EXPERIENCE_FETCH,
@@ -84,13 +85,13 @@ const ModalExperiencePOST = ({
     });
     console.log("me", data);
     setExperiencePayload({
+      image: "",
       role: "",
       company: "",
       startDate: new Date(),
       description: "",
       area: "",
       user: experienceId,
-      image:""
     });
   };
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {

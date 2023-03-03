@@ -28,44 +28,51 @@ const Experience = () => {
   return (
     <Container>
       <Row id="ActivityProfile">
-        <Col xs={10} style={{ padding: "0", marginLeft: "30px" }}>
-          <Col id="ActivityCol">
+        <Col xs={10} style={{ padding: "0" }}>
+          <Col id="ActivityCol" className="my-4 ms-0">
             <h5>Experience</h5>
           </Col>
           {myState.length > 0 &&
             myState.map((e, i) => (
-              <div key={i}>
-                <Col className="mb-4" key={i}>
-                  <h5>{e.role}</h5>
-                  <div>
-                    <span>{e.company}</span>
-                    <span style={{ display: "block" }}>{e.description}</span>
-                    <span>{e.area}</span>
-                  </div>
-                  <div>
-                    <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
-                    <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
-                  </div>
+              <div key={i} className="d-flex">
+                <Col className="mb-4 d-flex" xs={5} key={i}>
                   <div>
                     <img
                       src={e.image}
-                      alt={'ciao'}
+                      alt={"ciao"}
                       style={{
-                        height: "30px",
-                        borderTopLeftRadius: "15px",
-                        borderTopRightRadius: "15px",
+                        height: "50px",
+                        width: "50px",
+                        borderRadius: "100%",
                       }}
                     />
                   </div>
+                  <div className="ms-4">
+                    <h5>{e.role}</h5>
+                    <div>
+                      <span>{e.company}</span>
+                      <span style={{ display: "block" }}>{e.description}</span>
+                      <span>{e.area}</span>
+                    </div>
+                    <div>
+                      <span>{moment(e.startDate).format("MMM YYYY")}</span> -{" "}
+                      <span>{moment(e.updatedAt).format("MMM YYYY")}</span>
+                    </div>
+                  </div>
                 </Col>
-                <Col xs={1} className="mt-3">
+                <Col xs={1} className="mt-1">
                   <ModalModifyEperience experienceId={e} />
                 </Col>
               </div>
             ))}
         </Col>
         <Col xs={1} className="mt-3">
-          <Button onClick={handleShowModalPOST}>A</Button>
+          <Button
+            onClick={handleShowModalPOST}
+            className="btn btn-light rounded-circle"
+          >
+            +
+          </Button>
           <ModalExperiencePOST
             show={showModalPOST}
             handleClose={handleCloseModalPOST}
