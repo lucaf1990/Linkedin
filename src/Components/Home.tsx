@@ -24,7 +24,6 @@ function Home() {
         type: ME,
         payload: data,
       });
-      console.log("me", data);
       let data3 = await fetchProfiles();
       dispatch({
         type: PROFILES_FETCH,
@@ -32,12 +31,10 @@ function Home() {
       });
     })();
 
-    console.log("sono state");
   }, []);
   useEffect(() => {
     (async () => {
       let data2 = await fetchHome();
-      console.log(data2);
       dispatch({
         type: HOME_FETCH,
         payload: data2,

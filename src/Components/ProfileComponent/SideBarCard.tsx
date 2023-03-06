@@ -19,8 +19,6 @@ const SideBarCard = () => {
  
     const aga= async (id:string) => {
       let data = await fetchMyProfile(id);
-      console.log("DATAAAAA", data);
-      
       dispatch({
         type: ME,
         payload: data,
