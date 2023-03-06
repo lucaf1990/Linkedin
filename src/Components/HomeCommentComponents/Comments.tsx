@@ -97,7 +97,7 @@ const Comments = ({ postId }: { postId: string }) => {
                       }}
                     />
                     <MDBInput
-                      label="Rate"
+                      label="Rate from 1 to 5"
                       type="text"
                       name="rate"
                       value={commentPayload.rate}
