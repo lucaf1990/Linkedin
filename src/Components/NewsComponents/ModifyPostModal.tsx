@@ -22,7 +22,7 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
     _id: modifyPost._id,
   });
   const handleChange = (e: any) => {
-    console.log("changed payload", e.target.name, e.target.value);
+    
 
     setpostPayload({
       ...postPayload,
@@ -42,7 +42,7 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
       type: HOME_FETCH,
       payload: data,
     });
-    console.log("me", data);
+    
   };
 
   return (

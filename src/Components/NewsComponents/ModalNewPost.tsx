@@ -27,7 +27,7 @@ const ModalNewPost = () => {
   });
 
   const handleChange = (e: any) => {
-    console.log("changed payload", e.target.name, e.target.value);
+    
     setpostPayload({
       ...postPayload,
       [e.target.name]: e.target.value,
@@ -45,14 +45,14 @@ const ModalNewPost = () => {
     for(const coppia of formData.entries()){
       let x = await addMyPostImg(post._id,formData)
     }
-    console.log("sono home fetch");
+   
     
     let data = await fetchHome();
     dispatch({
       type: HOME_FETCH,
       payload: data,
     });
-    console.log("sono modale");
+    
 
     setpostPayload({
       text: "",

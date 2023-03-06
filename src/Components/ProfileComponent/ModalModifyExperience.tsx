@@ -35,7 +35,6 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
       image: experienceId.image || "",
     });
   const handleChange = (e: any) => {
-    console.log("changed payload", e.target.name, e.target.value);
 
     setExperiencePayload({
       ...experiencePayload,
@@ -64,7 +63,6 @@ const ModalModifyEperience = ({ experienceId }: { experienceId: ArrMe }) => {
       type: EXPERIENCE_FETCH,
       payload: data,
     });
-    console.log("AOOOOOOOOOO", data);
   };
   const handleDelete = async (obj: MyExperienceChanges) => {
     let x = await deleteExp(obj);
