@@ -106,3 +106,11 @@ export interface comments {
 export interface showComments {
   showComments: boolean;
 }
+
+export interface NewComments {
+  _id: string;
+  comment: string;
+  rate: number;
+  elementId?: string;
+  author: string;
+}

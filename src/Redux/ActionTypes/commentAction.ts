@@ -3,7 +3,7 @@ export const COMMENTS_FETCH = "COMMENTS_FETCH";
 export const fetchComments = async () => {
   try {
     let res = await fetch(
-      "https://striveschool-api.herokuapp.com/api/put-your-endpoint-here/",
+      `https://striveschool-api.herokuapp.com/api/comments/`,
       {
         headers: {
           Authorization:
