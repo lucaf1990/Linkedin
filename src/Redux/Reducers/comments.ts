@@ -19,6 +19,7 @@ const commentsReducer = (
   switch (action.type) {
     case COMMENTS_FETCH:
       return {
+        ...state,
         commentsFetch: action.payload as comments[],
       };
 

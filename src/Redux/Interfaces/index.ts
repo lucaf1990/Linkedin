@@ -93,7 +93,7 @@ export interface myComments {
 }
 
 export interface comments {
-  _id: string;
+  _id?: string;
   comment: string;
   rate: number;
   elementId: string;
@@ -108,9 +108,9 @@ export interface showComments {
 }
 
 export interface NewComments {
-  _id: string;
+  _id?: string;
   comment: string;
-  rate: number;
-  elementId?: string;
+  rate: string;
+  elementId: string;
   author: string;
 }

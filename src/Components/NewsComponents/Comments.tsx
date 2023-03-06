@@ -14,28 +14,50 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import {
+  addMyComment,
   COMMENTS_FETCH,
   fetchComments,
 } from "../../Redux/ActionTypes/commentAction";
+import { NewComments } from "../../Redux/Interfaces";
 
 const Comments = ({ postId }: { postId: string }) => {
-  const [comment, setComment] = useState("");
+  const myProfile = useSelector((state: RootState) => state.profile.me);
 
   const myComments = useSelector(
     (state: RootState) => state.comments.commentsFetch
   );
+  const [commentPayload, setCommentPayload] = useState<NewComments>({
+    comment: "",
+    rate: "",
+    elementId: postId,
+    author: myProfile.email,
+  });
+  console.log(commentPayload.elementId);
+
+  const handleChange = (e: any) => {
+    setCommentPayload({
+      ...commentPayload,
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.name);
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
-      let data = await fetchComments();
-
+      let data = await fetchComments(postId);
       dispatch({
         type: COMMENTS_FETCH,
         payload: data,
       });
     })();
   }, []);
+
+  const handleSubmit = async (obj: NewComments) => {
+    let data = await addMyComment(obj);
+
+    let data2 = await fetchComments(postId);
+  };
 
   return (
     <section className="gradient-custom ">
@@ -53,7 +75,20 @@ const Comments = ({ postId }: { postId: string }) => {
                     <MDBInput
                       label="Add a comment"
                       type="text"
-                      value={comment}
+                      name="comment"
+                      value={commentPayload.comment}
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    <MDBInput
+                      label="Rate"
+                      type="text"
+                      name="rate"
+                      value={commentPayload.rate}
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
                     />
                   </MDBCol>
                 </MDBRow>
@@ -68,26 +103,24 @@ const Comments = ({ postId }: { postId: string }) => {
 
                 <MDBRow>
                   <MDBCol>
-                    <MDBBtn>Submit</MDBBtn>
+                    <MDBBtn
+                      onClick={() => {
+                        handleSubmit(commentPayload);
+                      }}
+                    >
+                      Submit
+                    </MDBBtn>
                   </MDBCol>
                 </MDBRow>
 
                 <MDBRow>
                   <MDBCol>
-                    <div className="d-flex flex-start">
-                      <MDBCardImage
-                        className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                        alt="avatar"
-                        width="65"
-                        height="65"
-                      />
-
-                      <div className="flex-grow-1 flex-shrink-1">
+                    {myComments?.map((comment, i) => (
+                      <div key={i} className="flex-grow-1 flex-shrink-1">
                         <div>
                           <div className="d-flex justify-content-between align-items-center">
                             <p className="mb-1">
-                              Maria Smantha{" "}
+                              {comment?.author}
                               <span className="small">- 2 hours ago</span>
                             </p>
                             <a href="#!">
@@ -95,14 +128,11 @@ const Comments = ({ postId }: { postId: string }) => {
                               <span className="small"> reply</span>
                             </a>
                           </div>
-                          <p className="small mb-0">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page.
-                          </p>
+                          <p className="small mb-0">{comment?.comment}</p>
                         </div>
-                        5"
+                        {comment?.rate}
                       </div>
-                    </div>
+                    ))}
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
