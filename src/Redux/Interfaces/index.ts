@@ -21,7 +21,7 @@ export interface MyExperienceChanges {
   description: string | null;
   area: string;
   user?: string;
-  image: string
+  image: string;
 }
 
 export interface MyProfileChanges {
@@ -43,7 +43,7 @@ export interface ArrMe {
   user: string;
   createdAt: Date;
   updatedAt: Date;
-  image?: string
+  image?: string;
   __v: number;
 }
 
@@ -62,7 +62,7 @@ export interface postFetch {
   _id: string;
   text: string;
   username: string;
-  image?:string
+  image?: string;
   user: {
     _id: string;
     name: string;
@@ -85,5 +85,24 @@ export interface postFetch {
 export interface newPost {
   text: string;
   _id?: string;
-  image?:string
+  image?: string;
+}
+
+export interface myComments {
+  commentsFetch: comments[];
+}
+
+export interface comments {
+  _id: string;
+  comment: string;
+  rate: number;
+  elementId: string;
+  author: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+}
+
+export interface showComments {
+  showComments: boolean;
 }

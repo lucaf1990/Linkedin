@@ -21,11 +21,19 @@ import {
   fetchHome,
   HOME_FETCH,
 } from "../../Redux/ActionTypes/homeAction";
-import { newPost } from "../../Redux/Interfaces";
+import { newPost, showComments } from "../../Redux/Interfaces";
+import Comments from "./Comments";
 
 const Post = () => {
   const myState = useSelector((state: RootState) => state.home.postsFetch);
   const myProfile = useSelector((state: RootState) => state.profile.me);
+
+  const [showComments, setShowComments] = useState(false);
+
+  const handleChange = (i: number) => {
+    setShowComments(!showComments);
+  };
+
   const dispatch = useDispatch();
 
   const handleDelete = async (obj: newPost) => {
@@ -116,13 +124,24 @@ const Post = () => {
             </div>
             <div className="post_buttons">
               <InputOption Icon={<ThumbUpOffAltIcon />} title="Like" />
-              <InputOption
-                Icon={<InsertCommentOutlinedIcon />}
-                title="Comment"
-              />
+              <span
+                onClick={() => {
+                  handleChange(i);
+                }}
+              >
+                <InputOption
+                  Icon={<InsertCommentOutlinedIcon />}
+                  title="Comment"
+                />
+              </span>
               <InputOption Icon={<ShareOutlinedIcon />} title="Share" />
               <InputOption Icon={<SendOutlinedIcon />} title="Send" />
             </div>
+            {showComments && (
+              <div>
+                <Comments />
+              </div>
+            )}
           </div>
         );
       })}
