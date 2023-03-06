@@ -20,33 +20,32 @@ import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const myState = useSelector((state: RootState) => state.profile.me);
+<<<<<<< HEAD
+  console.log(myState);
+  const { user } = useParams();
+=======
   const {user} = useParams()
+>>>>>>> 8a6d0233b5b76bd57390fd70dccc9c37981f24f6
 
-  
-  
-  
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
-      
-        let data = await fetchMyProfile(user);
- 
-        dispatch({
-          type: ME,
-          payload: data,
-        });
-        let data2 = await fetchMyExperience(data._id);
-        dispatch({
-          type: EXPERIENCE_FETCH,
-          payload: data2,
-        });
-        let data3 = await fetchProfiles();
-        dispatch({
-          type: PROFILES_FETCH,
-          payload: data3,
-        });
-      
+      let data = await fetchMyProfile(user);
 
+      dispatch({
+        type: ME,
+        payload: data,
+      });
+      let data2 = await fetchMyExperience(data._id);
+      dispatch({
+        type: EXPERIENCE_FETCH,
+        payload: data2,
+      });
+      let data3 = await fetchProfiles();
+      dispatch({
+        type: PROFILES_FETCH,
+        payload: data3,
+      });
     })();
   }, [user]);
 
