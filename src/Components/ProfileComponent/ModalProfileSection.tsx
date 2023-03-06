@@ -34,7 +34,7 @@ const ModalProfileSection = ({
     title: myProfile.title,
   });
   const handleChange = (e: any) => {
-    console.log("changed payload", e.target.name, e.target.value);
+    
 
     setprofilePayload({
       ...profilePayload,
@@ -59,13 +59,12 @@ const ModalProfileSection = ({
   }, [changeProfileInfo]);
   const handleSubmit = async(obj: MyProfileChanges) => {
       let changes = await changeMyProfileInfo(obj);
-      console.log(formData.get('profile'));
       for(const coppia of formData.entries()){
         let imgPost = await uploadPost(myProfile._id, formData);
       }
       
       let data = await fetchMyProfile(user);
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAA", data);
+      
       dispatch({
         type: ME,
         payload: data,

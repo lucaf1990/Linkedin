@@ -11,7 +11,7 @@ import { RootState } from "../../Redux/Store";
 
 const FileUploader = () => {
   const myId = useSelector((state: RootState) => state.profile.me._id);
-  console.log("AAAAAAAAAAAAAAAAAA", myId);
+  
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(new FormData());
 

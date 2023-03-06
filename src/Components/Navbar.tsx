@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import "../App.css";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 import HeaderOption from "./ProfileComponent/HeaderOption";
 import Logo from "../linkedin.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -10,7 +9,7 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { fetchMyProfile, ME } from "../Redux/ActionTypes";
+import { EXPERIENCE_FETCH, fetchMyExperience, fetchMyProfile, ME } from "../Redux/ActionTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/Store";
 
@@ -24,7 +23,12 @@ function Navbar() {
       dispatch({
         type: ME,
         payload: data,
-      });     
+      });
+      let data2 = await fetchMyExperience(data._id);
+      dispatch({
+        type: EXPERIENCE_FETCH,
+        payload: data2,
+      });
     }
   }
   

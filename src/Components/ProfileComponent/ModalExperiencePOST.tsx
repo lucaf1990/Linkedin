@@ -55,7 +55,7 @@ const ModalExperiencePOST = ({
     user: experienceId,
   });
   const handleChange = (e: any) => {
-    console.log("changed payload", e.target.name, e.target.value);
+    
     setExperiencePayload({
       ...experiencePayload,
       [e.target.name]: e.target.value,
