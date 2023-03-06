@@ -30,7 +30,7 @@ function Navbar() {
   }
   
   
-  useEffect(()=>{},[myState._id])
+
     return (
     <div className="header">
       <div className="header_left">
