@@ -95,7 +95,7 @@ export interface myComments {
 export interface comments {
   _id?: string;
   comment: string;
-  rate: number;
+  rate: string;
   elementId: string;
   author: string;
   createdAt: Date;

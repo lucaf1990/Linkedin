@@ -22,7 +22,7 @@ import {
   HOME_FETCH,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost, showComments, postFetch } from "../../Redux/Interfaces";
-import Comments from "./Comments";
+import Comments from "../HomeCommentComponents/Comments";
 import { RootState } from "../../Redux/Store";
 
 const SinglePost = ({ post }: { post: postFetch }) => {

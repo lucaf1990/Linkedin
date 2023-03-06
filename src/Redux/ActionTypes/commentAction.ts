@@ -37,4 +37,35 @@ export const addMyComment = async (obj: NewComments) => {
       body: JSON.stringify(obj),
     }
   );
+  let newRequest = await requestOptions.json();
+  return newRequest;
+};
+
+export const modifyMyComment = async (obj: NewComments) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/comments/${obj._id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YTk4ODAyY2FjZDAwMTMyZjE5NzgiLCJpYXQiOjE2NzgwOTI2ODEsImV4cCI6MTY3OTMwMjI4MX0.aFKPwWmLXrcaMPRDZ_XC1Efysfso80qFYtHm1VKZbrs",
+      },
+      body: JSON.stringify(obj),
+    }
+  );
+};
+export const deleteMyComment = async (obj: NewComments) => {
+  const requestOptions = await fetch(
+    `https://striveschool-api.herokuapp.com/api/comments/${obj._id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA1YTk4ODAyY2FjZDAwMTMyZjE5NzgiLCJpYXQiOjE2NzgwOTI2ODEsImV4cCI6MTY3OTMwMjI4MX0.aFKPwWmLXrcaMPRDZ_XC1Efysfso80qFYtHm1VKZbrs",
+      },
+      body: JSON.stringify(obj),
+    }
+  );
 };
