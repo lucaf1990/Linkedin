@@ -1,6 +1,12 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { COMMENTS_FETCH } from "../ActionTypes/commentAction";
-import { comments, myComments, MyHomeState, postFetch } from "../Interfaces";
+import {
+  comments,
+  myComments,
+  MyHomeState,
+  NewComments,
+  postFetch,
+} from "../Interfaces";
 
 const initialState: myComments = {
   commentsFetch: [],
@@ -13,6 +19,7 @@ const commentsReducer = (
   switch (action.type) {
     case COMMENTS_FETCH:
       return {
+        ...state,
         commentsFetch: action.payload as comments[],
       };
 

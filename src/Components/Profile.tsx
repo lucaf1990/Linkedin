@@ -20,6 +20,7 @@ import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const myState = useSelector((state: RootState) => state.profile.me);
+
   const { user } = useParams();
 
   const dispatch = useDispatch();

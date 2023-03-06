@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -9,15 +8,59 @@ import {
   MDBTypography,
   MDBCardImage,
   MDBIcon,
+  MDBInput,
+  MDBBtn,
 } from "mdb-react-ui-kit";
-export default function Comments() {
-  const [comment, setComment] = useState("");
-  const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(event.target.value);
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../Redux/Store";
+import {
+  addMyComment,
+  COMMENTS_FETCH,
+  fetchComments,
+} from "../../Redux/ActionTypes/commentAction";
+import { NewComments } from "../../Redux/Interfaces";
+
+const Comments = ({ postId }: { postId: string }) => {
+  const myProfile = useSelector((state: RootState) => state.profile.me);
+
+  const myComments = useSelector(
+    (state: RootState) => state.comments.commentsFetch
+  );
+  const [commentPayload, setCommentPayload] = useState<NewComments>({
+    comment: "",
+    rate: "",
+    elementId: postId,
+    author: myProfile.email,
+  });
+  console.log(commentPayload.elementId);
+
+  const handleChange = (e: any) => {
+    setCommentPayload({
+      ...commentPayload,
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.name);
+  };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    (async () => {
+      let data = await fetchComments(postId);
+      dispatch({
+        type: COMMENTS_FETCH,
+        payload: data,
+      });
+    })();
+  }, []);
+
+  const handleSubmit = async (obj: NewComments) => {
+    let data = await addMyComment(obj);
+
+    let data2 = await fetchComments(postId);
   };
 
   return (
-    <section className="gradient-custom vh-100">
+    <section className="gradient-custom ">
       <MDBContainer className="py-5" style={{ maxWidth: "1000px" }}>
         <MDBRow className="justify-content-center">
           <MDBCol md="12">
@@ -26,34 +69,58 @@ export default function Comments() {
                 <MDBTypography tag="h4" className="text-center mb-4 pb-2">
                   Comments
                 </MDBTypography>
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="comment"
-                    name="comment"
-                    placeholder="Add a comment..."
-                    value={comment}
-                    onChange={handleCommentChange}
-                  />
-                </div>
 
                 <MDBRow>
                   <MDBCol>
-                    <div className="d-flex flex-start">
-                      <MDBCardImage
-                        className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                        alt="avatar"
-                        width="65"
-                        height="65"
-                      />
+                    <MDBInput
+                      label="Add a comment"
+                      type="text"
+                      name="comment"
+                      value={commentPayload.comment}
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    <MDBInput
+                      label="Rate"
+                      type="text"
+                      name="rate"
+                      value={commentPayload.rate}
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                  </MDBCol>
+                </MDBRow>
 
-                      <div className="flex-grow-1 flex-shrink-1">
+                <MDBRow>
+                  <MDBCol>
+                    <div className="form-file">
+                      <input type="file" id="fileInput" />
+                    </div>
+                  </MDBCol>
+                </MDBRow>
+
+                <MDBRow>
+                  <MDBCol>
+                    <MDBBtn
+                      onClick={() => {
+                        handleSubmit(commentPayload);
+                      }}
+                    >
+                      Submit
+                    </MDBBtn>
+                  </MDBCol>
+                </MDBRow>
+
+                <MDBRow>
+                  <MDBCol>
+                    {myComments?.map((comment, i) => (
+                      <div key={i} className="flex-grow-1 flex-shrink-1">
                         <div>
                           <div className="d-flex justify-content-between align-items-center">
                             <p className="mb-1">
-                              Maria Smantha{" "}
+                              {comment?.author}
                               <span className="small">- 2 hours ago</span>
                             </p>
                             <a href="#!">
@@ -61,14 +128,11 @@ export default function Comments() {
                               <span className="small"> reply</span>
                             </a>
                           </div>
-                          <p className="small mb-0">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page.
-                          </p>
+                          <p className="small mb-0">{comment?.comment}</p>
                         </div>
-                        5"
+                        {comment?.rate}
                       </div>
-                    </div>
+                    ))}
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
@@ -78,4 +142,5 @@ export default function Comments() {
       </MDBContainer>
     </section>
   );
-}
+};
+export default Comments;
