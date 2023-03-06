@@ -2,12 +2,7 @@ import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import {
-  EXPERIENCE_FETCH,
-  fetchMyExperience,
-  fetchMyProfile,
-  ME,
-} from "../../Redux/ActionTypes";
+import { fetchMyProfile, ME } from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
 
 const SideBarCard = () => {
@@ -21,23 +16,18 @@ const SideBarCard = () => {
 
   const shuffledData = random.sort(() => Math.random() - 0.5);
 
-  const sidebarProfile = async (id: string) => {
+  const aga = async (id: string) => {
     let data = await fetchMyProfile(id);
     dispatch({
       type: ME,
       payload: data,
     });
-    let data2 = await fetchMyExperience(id);
-    dispatch({
-      type: EXPERIENCE_FETCH,
-      payload: data2,
-    });
-    console.log("sono sidebar");
   };
+  useEffect(() => {}, [myState._id]);
 
   return (
     <>
-      {random.slice(0, 4).map((profile, i) => {
+      {shuffledData.slice(0, 4).map((profile, i) => {
         return (
           <Row className="border-bottom py-3" key={i}>
             <img
@@ -54,7 +44,7 @@ const SideBarCard = () => {
             <Col>
               <Link
                 to={`/Profile/${profile._id}`}
-                onClick={() => sidebarProfile(profile._id)}
+                onClick={() => aga(profile._id)}
               >
                 <h6>{profile.name}</h6>
               </Link>
