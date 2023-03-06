@@ -12,13 +12,13 @@ const SideBarCard = () => {
   const {user} = useParams()
   const dispatch = useDispatch()
  
+  const random = [...data]
+ 
   
-  const shuffledData = data.sort(() => Math.random() - 0.5);
+  const shuffledData = random.sort(() => Math.random() - 0.5);
  
     const aga= async (id:string) => {
       let data = await fetchMyProfile(id);
-      console.log("DATAAAAA", data);
-      
       dispatch({
         type: ME,
         payload: data,
@@ -28,7 +28,7 @@ const SideBarCard = () => {
   
   return (
     <>
-      {shuffledData.slice(0, 4).map((profile, i) => {
+      {random.slice(0, 4).map((profile, i) => {
         return (
             <Row className="border-bottom py-3" key={i}>
               <img

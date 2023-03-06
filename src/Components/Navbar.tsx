@@ -21,7 +21,6 @@ function Navbar() {
   const profileFetch= async () => {
     if(myState._id){
       let data = await fetchMyProfile("me");
-      console.log("SONO USER!",data);
       dispatch({
         type: ME,
         payload: data,
@@ -30,7 +29,7 @@ function Navbar() {
   }
   
   
-  useEffect(()=>{},[myState._id])
+
     return (
     <div className="header">
       <div className="header_left">
