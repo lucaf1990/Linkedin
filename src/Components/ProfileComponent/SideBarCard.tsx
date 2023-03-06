@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchMyProfile, ME } from "../../Redux/ActionTypes";
+import { EXPERIENCE_FETCH, fetchMyExperience, fetchMyProfile, ME } from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
 
 const SideBarCard = () => {
@@ -17,14 +17,20 @@ const SideBarCard = () => {
   
   const shuffledData = random.sort(() => Math.random() - 0.5);
  
-    const aga= async (id:string) => {
+    const sidebarProfile= async (id:string) => {
       let data = await fetchMyProfile(id);
       dispatch({
         type: ME,
         payload: data,
       });     
+      let data2 = await fetchMyExperience(id)
+      dispatch({
+        type: EXPERIENCE_FETCH,
+        payload: data2,
+      })
+    console.log("sono sidebar");
+    
     }
-    useEffect(()=>{},[myState._id])
   
   return (
     <>
@@ -43,7 +49,7 @@ const SideBarCard = () => {
                 }}
               />
               <Col>
-                <Link to={`/Profile/${profile._id}`} onClick={()=>aga(profile._id)} ><h6>{profile.name}</h6></Link>
+                <Link to={`/Profile/${profile._id}`} onClick={()=>sidebarProfile(profile._id)} ><h6>{profile.name}</h6></Link>
                 <p className="p-Profile text-truncate ">{profile.title}</p>
                 <span className="Profile-Btn3 btn-light text-secondary">
                   Connect

@@ -40,7 +40,7 @@ function Home() {
         payload: data2,
       });
     })();
-  }, [myState]);
+  }, []);
 
   return (
     <div className="d-flex mt-3 justify-content-center">
