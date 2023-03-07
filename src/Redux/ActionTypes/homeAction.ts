@@ -1,7 +1,7 @@
 import { newPost, postFetch } from "../Interfaces";
 
 export const HOME_FETCH = "HOME_FETCH";
-
+export const FOLLOWER_POST = "FOLLOWER_POST";
 export const fetchHome = async () => {
   try {
     let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {

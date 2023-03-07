@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchMyProfile, ME } from "../../Redux/ActionTypes";
 import { RootState } from "../../Redux/Store";
+import { FOLLOWER_POST } from "../../Redux/ActionTypes/homeAction";
 
 const SideBarCard = () => {
   const data = useSelector((state: RootState) => state.profile.profilesFetch);
@@ -49,7 +50,15 @@ const SideBarCard = () => {
                 <h6>{profile.name}</h6>
               </Link>
               <p className="p-Profile text-truncate ">{profile.title}</p>
-              <span className="Profile-Btn3 btn-light text-secondary">
+              <span
+                className="Profile-Btn3 btn-light text-secondary"
+                onClick={() => {
+                  dispatch({
+                    type: FOLLOWER_POST,
+                    payload: profile,
+                  });
+                }}
+              >
                 Connect
               </span>
             </Col>

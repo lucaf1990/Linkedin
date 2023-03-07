@@ -55,7 +55,9 @@ export interface MyState {
 
 export interface MyHomeState {
   postsFetch: postFetch[];
+  followers: Me[];
 }
+
 export interface ModalProfileSectionProps {}
 
 export interface postFetch {
