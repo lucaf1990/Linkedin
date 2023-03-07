@@ -12,7 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   const [show, setShow] = useState(false);
-
+  const followers = useSelector((state: RootState) => state.home.followers);
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,8 +22,6 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
     _id: modifyPost._id,
   });
   const handleChange = (e: any) => {
-    
-
     setpostPayload({
       ...postPayload,
       [e.target.name]: e.target.value,
@@ -37,12 +35,11 @@ const ModifyPostModal = ({ modifyPost }: { modifyPost: newPost }) => {
   }, [modifyPost]);
   const handleSubmit = async (obj: newPost) => {
     let x = await changeMyPost(obj);
-    let data = await fetchHome();
+    let data = await fetchHome(followers);
     dispatch({
       type: HOME_FETCH,
       payload: data,
     });
-    
   };
 
   return (

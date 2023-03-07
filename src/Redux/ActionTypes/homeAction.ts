@@ -1,8 +1,9 @@
-import { newPost, postFetch } from "../Interfaces";
+import { Me, newPost, postFetch } from "../Interfaces";
 
 export const HOME_FETCH = "HOME_FETCH";
 export const FOLLOWER_POST = "FOLLOWER_POST";
-export const fetchHome = async () => {
+
+export const fetchHome = async (followers: Me[]) => {
   try {
     let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       method: "GET",
@@ -13,7 +14,10 @@ export const fetchHome = async () => {
     });
     if (res.ok) {
       let data = await res.json();
-      return data.reverse();
+
+      return data.filter(
+        (sing: postFetch) => sing._id === "640731e2c5bc3b00135e7182"
+      );
     } else {
       console.log("error");
     }

@@ -1,9 +1,4 @@
-import {
-  Reducer,
-  combineReducers,
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import profileReducer from "../Reducers";
 import commentsReducer from "../Reducers/comments";
 import homeReducer from "../Reducers/home";
@@ -13,7 +8,7 @@ import { persistReducer, persistStore } from "redux-persist";
 
 const reducers = combineReducers({
   profile: profileReducer,
-  home: homeReducer as Reducer,
+  home: homeReducer,
   comments: commentsReducer,
 });
 

@@ -27,7 +27,7 @@ import { RootState } from "../../Redux/Store";
 
 const SinglePost = ({ post }: { post: postFetch }) => {
   const myProfile = useSelector((state: RootState) => state.profile.me);
-
+  const followers = useSelector((state: RootState) => state.home.followers);
   const [showComments, setShowComments] = useState(false);
 
   const handleChange = () => {
@@ -38,7 +38,7 @@ const SinglePost = ({ post }: { post: postFetch }) => {
 
   const handleDelete = async (obj: newPost) => {
     let x = await deletePost(obj);
-    let data = await fetchHome();
+    let data = await fetchHome(followers);
     dispatch({
       type: HOME_FETCH,
       payload: data,

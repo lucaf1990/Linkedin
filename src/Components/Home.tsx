@@ -1,3 +1,4 @@
+import { async } from "q";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,6 +16,9 @@ import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
   const myState = useSelector((state: RootState) => state.profile.me);
+  const followers = useSelector((state: RootState) => state.home.followers);
+  console.log(followers);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +37,9 @@ function Home() {
   }, []);
   useEffect(() => {
     (async () => {
-      let data2 = await fetchHome();
+      let data2 = await fetchHome(followers);
+      console.log(data2);
+
       dispatch({
         type: HOME_FETCH,
         payload: data2,

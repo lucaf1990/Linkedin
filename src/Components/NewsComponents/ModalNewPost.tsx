@@ -15,7 +15,7 @@ const ModalNewPost = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const followers = useSelector((state: RootState) => state.home.followers);
   const dispatch = useDispatch();
 
   const myState = useSelector((state: RootState) => state.profile.me);
@@ -27,7 +27,6 @@ const ModalNewPost = () => {
   });
 
   const handleChange = (e: any) => {
-    
     setpostPayload({
       ...postPayload,
       [e.target.name]: e.target.value,
@@ -37,26 +36,24 @@ const ModalNewPost = () => {
   useEffect(() => {
     setpostPayload({
       text: "",
-      image:"",
+      image: "",
     });
   }, []);
   const handleSubmit = async (obj: newPost) => {
     let post = await addMyPost(obj);
-    for(const coppia of formData.entries()){
-      let x = await addMyPostImg(post._id,formData)
+    for (const coppia of formData.entries()) {
+      let x = await addMyPostImg(post._id, formData);
     }
-   
-    
-    let data = await fetchHome();
+
+    let data = await fetchHome(followers);
     dispatch({
       type: HOME_FETCH,
       payload: data,
     });
-    
 
     setpostPayload({
       text: "",
-      image:""
+      image: "",
     });
   };
   const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
