@@ -6,9 +6,8 @@ import EventIcon from "@mui/icons-material/Event";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay";
 import Post from "./Post";
-import { useState } from "react";
+
 import ModalNewPost from "./ModalNewPost";
-import { Button } from "react-bootstrap";
 
 function Feed() {
   return (
