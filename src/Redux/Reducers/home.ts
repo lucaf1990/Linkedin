@@ -9,7 +9,7 @@ const initialState: MyHomeState = {
 
 const homeReducer = (
   state = initialState,
-  action: PayloadAction<postFetch[] | Me>
+  action: PayloadAction<postFetch[] | string>
 ) => {
   switch (action.type) {
     case HOME_FETCH:
@@ -20,7 +20,7 @@ const homeReducer = (
     case FOLLOWER_POST:
       return {
         ...state,
-        followers: [...state.followers, action.payload as Me],
+        followers: [...state.followers, action.payload as string],
       };
 
     default:

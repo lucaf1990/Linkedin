@@ -55,7 +55,7 @@ const SideBarCard = () => {
                 onClick={() => {
                   dispatch({
                     type: FOLLOWER_POST,
-                    payload: profile,
+                    payload: profile._id,
                   });
                 }}
               >
