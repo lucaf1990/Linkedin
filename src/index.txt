@@ -1,0 +1,21 @@
+
+- GET https://striveschool-api.herokuapp.com/api/profile/
+Ritorna la lista dei profili utente
+
+- GET https://striveschool-api.herokuapp.com/api/profile/me
+Ritorna il tuo profilo
+
+- GET https://striveschool-api.herokuapp.com/api/profile/{userId}
+Ritorna un profilo specifico
+
+- PUT https://striveschool-api.herokuapp.com/api/profile/
+Aggiorna il profilo utente
+
+KEY
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg
+
+Suggerimenti:
+
+    Dividi la pagina in componenti riutilizzabili
+    Definisci come team chi farà cosa
+    Quando fai il fetch dell’utente attuale, salva l’informazione nel Redux Store cosicché ogni componente possa accedere all’informazione successivamente (es. il componente Navbar)
