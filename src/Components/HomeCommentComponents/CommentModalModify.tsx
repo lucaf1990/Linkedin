@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { NewComments } from "../../Redux/Interfaces";

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import {
   MDBContainer,
@@ -57,21 +59,21 @@ const Comments = ({ postId }: { postId: string }) => {
 
   const handleSubmit = async (obj: NewComments) => {
     let data = await addMyComment(obj);
-  
+
     let data2 = await fetchComments(postId);
     dispatch({
       type: COMMENTS_FETCH,
-      payload: data2
-    })
+      payload: data2,
+    });
   };
-  const handleDelete = async (obj:any) => {
+  const handleDelete = async (obj: any) => {
     let data = await deleteMyComment(obj);
-  
+
     let data2 = await fetchComments(postId);
     dispatch({
       type: COMMENTS_FETCH,
-      payload: data2
-    })
+      payload: data2,
+    });
   };
 
   return (
@@ -125,7 +127,6 @@ const Comments = ({ postId }: { postId: string }) => {
                     >
                       Submit
                     </MDBBtn>
-                    
                   </MDBCol>
                 </MDBRow>
 
@@ -133,9 +134,9 @@ const Comments = ({ postId }: { postId: string }) => {
                   <MDBCol>
                     {myComments?.map((comment, i) => (
                       <div key={i} className="flex-grow-1 flex-shrink-1">
-                        <button onClick={()=>handleDelete(comment)}>X</button>
+                        <button onClick={() => handleDelete(comment)}>X</button>
                         <div>
-                          <CommentModalModify comment={comment}/>
+                          <CommentModalModify comment={comment} />
                         </div>
                         <div>
                           <div className="d-flex justify-content-between align-items-center">
