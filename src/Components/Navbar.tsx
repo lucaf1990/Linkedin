@@ -9,6 +9,7 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useNavigate } from "react-router-dom";
 import {
   EXPERIENCE_FETCH,
   fetchMyExperience,
@@ -17,11 +18,13 @@ import {
 } from "../Redux/ActionTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/Store";
+import { useState } from "react";
+import { SEARCH_FETCH } from "../Redux/ActionTypes/jobsAction";
 
 function Navbar() {
   const myState = useSelector((state: RootState) => state.profile.me);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const profileFetch = async () => {
     if (myState._id) {
       let data = await fetchMyProfile("me");
@@ -37,13 +40,38 @@ function Navbar() {
     }
   };
 
+  const [search, setSearch] = useState("");
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    navigate(`/Search/${search}`);
+    console.log("enter");
+  };
+
   return (
     <div className="header">
       <div className="header_left">
         <img src={Logo} alt="LinkedIn icon" />
         <div className="header_search" style={{ height: "1.8rem" }}>
           <SearchIcon />
-          <input type="text" placeholder="Cerca" />
+          <input
+            type="text"
+            value={search}
+            placeholder="Cerca"
+            onChange={(e) => {
+              handleSearch(e);
+            }}
+            onKeyUp={(e) => {
+              if (e.key === "Enter" || e.keyCode === 13) {
+                handleSubmit(e);
+              }
+            }}
+          />
         </div>
       </div>
       <div className="header_right">

@@ -9,7 +9,7 @@ const Post = () => {
   const posts = useSelector((state: RootState) => state.home.postsFetch);
 
   const handleShowMore = () => {
-    setPostsToShow(postsToShow + 20);
+    setPostsToShow(postsToShow + 5);
   };
 
   return (

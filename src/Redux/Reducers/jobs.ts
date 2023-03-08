@@ -1,5 +1,10 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { JOBS_FETCH } from "../ActionTypes/jobsAction";
+import {
+  CATEGORY_FETCH,
+  COMPANY_FETCH,
+  JOBS_FETCH,
+  SEARCH_FETCH,
+} from "../ActionTypes/jobsAction";
 import { Jobs, MyJobs } from "../Interfaces";
 
 const initialState: MyJobs = {
@@ -12,6 +17,19 @@ const jobsReducer = (state = initialState, action: PayloadAction<Jobs[]>) => {
       return {
         Jobs: action.payload as Jobs[],
       };
+    case COMPANY_FETCH:
+      return {
+        Jobs: action.payload as Jobs[],
+      };
+    case CATEGORY_FETCH:
+      return {
+        Jobs: action.payload as Jobs[],
+      };
+    case SEARCH_FETCH:
+      return {
+        Jobs: action.payload as Jobs[],
+      };
+
     default:
       return state;
   }
