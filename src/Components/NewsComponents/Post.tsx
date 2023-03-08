@@ -5,11 +5,11 @@ import { RootState } from "../../Redux/Store";
 import SinglePost from "./SinglePost";
 
 const Post = () => {
-  const [postsToShow, setPostsToShow] = useState<number>(5);
+  const [postsToShow, setPostsToShow] = useState<number>(10);
   const posts = useSelector((state: RootState) => state.home.postsFetch);
 
   const handleShowMore = () => {
-    setPostsToShow(postsToShow + 5);
+    setPostsToShow(postsToShow + 10);
   };
 
   return (
