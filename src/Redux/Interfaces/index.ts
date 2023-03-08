@@ -116,3 +116,20 @@ export interface NewComments {
   elementId: string;
   author: string;
 }
+
+export interface Jobs {
+  _id: string;
+  url: string;
+  title: string;
+  company_name: string;
+  category: string;
+  job_type: string;
+  publication_date: string;
+  candidate_required_location: string;
+  salary: string;
+  description: string;
+}
+
+export interface MyJobs {
+  Jobs: Jobs[];
+}

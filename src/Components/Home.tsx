@@ -9,7 +9,6 @@ import {
 } from "../Redux/ActionTypes";
 import { fetchHome, HOME_FETCH } from "../Redux/ActionTypes/homeAction";
 import { RootState } from "../Redux/Store";
-
 import Feed from "./NewsComponents/Feed";
 import NewsSideBar from "./NewsComponents/NewsSideBar";
 import RightBar from "./NewsComponents/rightCard";
