@@ -1,13 +1,5 @@
-import { Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
-import {
-  COMPANY_FETCH,
-  fetchCompany,
-  fetchJobs,
-  JOBS_FETCH,
-  SEARCH_FETCH,
-  searchJob,
-} from "../../Redux/ActionTypes/jobsAction";
+import { SEARCH_FETCH, searchJob } from "../../Redux/ActionTypes/jobsAction";
 import { useDispatch, useSelector } from "react-redux";
 import NewsSideBar from "../NewsComponents/NewsSideBar";
 import RightBar from "../NewsComponents/rightCard";
