@@ -20,7 +20,7 @@ import {
   fetchHome,
   HOME_FETCH,
 } from "../../Redux/ActionTypes/homeAction";
-import { newPost, showComments, postFetch } from "../../Redux/Interfaces";
+import { newPost, postFetch } from "../../Redux/Interfaces";
 import Comments from "../HomeCommentComponents/Comments";
 import { RootState } from "../../Redux/Store";
 
@@ -36,6 +36,7 @@ const SinglePost = ({ post }: { post: postFetch }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async (obj: newPost) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     let x = await deletePost(obj);
     let data = await fetchHome(followers);
     dispatch({

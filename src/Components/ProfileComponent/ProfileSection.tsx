@@ -71,17 +71,21 @@ const ProfileSection = () => {
               <div className="Profile-Btn3 btn-light text-secondary">Altro</div>
             </Col>
           </Col>{" "}
-          <Col xs={1} className="mt-3">
-            <Button id="modal-btn" onClick={handleShowModal}>
-              {" "}
-              <GiPencil />
-            </Button>
-            <ModalProfileSection
-              changeProfileInfo={data}
-              show={showModal}
-              handleClose={handleCloseModal}
-            />
-          </Col>{" "}
+          {data._id === "63fc65b1f193e60013807f4e" ? (
+            <Col xs={1} className="mt-3">
+              <Button id="modal-btn" onClick={handleShowModal}>
+                {" "}
+                <GiPencil />
+              </Button>
+              <ModalProfileSection
+                changeProfileInfo={data}
+                show={showModal}
+                handleClose={handleCloseModal}
+              />
+            </Col>
+          ) : (
+            ""
+          )}
         </Row>
       </Row>
     </Container>

@@ -60,25 +60,33 @@ const Experience = () => {
                     </div>
                   </div>
                 </Col>
-                <Col xs={1} className="mt-1">
-                  <ModalModifyEperience experienceId={e} />
-                </Col>
+                {mystateMe._id === "63fc65b1f193e60013807f4e" ? (
+                  <Col xs={1} className="mt-1">
+                    <ModalModifyEperience experienceId={e} />
+                  </Col>
+                ) : (
+                  ""
+                )}
               </div>
             ))}
         </Col>
-        <Col xs={1} className="mt-3">
-          <Button
-            onClick={handleShowModalPOST}
-            className="btn btn-light rounded-circle"
-          >
-            +
-          </Button>
-          <ModalExperiencePOST
-            show={showModalPOST}
-            handleClose={handleCloseModalPOST}
-            experienceId={mystateMe._id}
-          />
-        </Col>
+        {mystateMe._id === "63fc65b1f193e60013807f4e" ? (
+          <Col xs={1} className="mt-3">
+            <Button
+              onClick={handleShowModalPOST}
+              className="btn btn-light rounded-circle"
+            >
+              +
+            </Button>
+            <ModalExperiencePOST
+              show={showModalPOST}
+              handleClose={handleCloseModalPOST}
+              experienceId={mystateMe._id}
+            />
+          </Col>
+        ) : (
+          ""
+        )}
       </Row>
     </Container>
   );
