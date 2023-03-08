@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/Store";
 import SinglePost from "./SinglePost";
 
 const Post = () => {
-  const myState = useSelector((state: RootState) => state.home.postsFetch);
+  const [postsToShow, setPostsToShow] = useState<number>(5);
+  const posts = useSelector((state: RootState) => state.home.postsFetch);
+
+  const handleShowMore = () => {
+    setPostsToShow(postsToShow + 20);
+  };
 
   return (
     <>
-      {myState?.slice(0, 100).map((post, i) => (
+      {posts?.slice(0, postsToShow).map((post, i) => (
         <SinglePost key={i} post={post} />
       ))}
+      {posts && posts.length > postsToShow && (
+        <Row>
+          <button onClick={handleShowMore} className="mostraAltro">
+            Mostra altro
+          </button>
+        </Row>
+      )}
     </>
   );
 };

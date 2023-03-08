@@ -398,3 +398,14 @@ span {
   position: sticky;
   top: 80px;
 }
+
+.mostraAltro {
+  margin: 20px auto;
+  width: 200px;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  font-size: large;
+  font-weight: 700;
+  color: black;
+}

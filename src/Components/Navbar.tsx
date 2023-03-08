@@ -1,5 +1,5 @@
 import "../App.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import HeaderOption from "./ProfileComponent/HeaderOption";
 import Logo from "../linkedin.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -9,16 +9,21 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { EXPERIENCE_FETCH, fetchMyExperience, fetchMyProfile, ME } from "../Redux/ActionTypes";
+import {
+  EXPERIENCE_FETCH,
+  fetchMyExperience,
+  fetchMyProfile,
+  ME,
+} from "../Redux/ActionTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/Store";
 
 function Navbar() {
-  const myState = useSelector((state:RootState)=> state.profile.me)
-  const dispatch = useDispatch()
+  const myState = useSelector((state: RootState) => state.profile.me);
+  const dispatch = useDispatch();
 
-  const profileFetch= async () => {
-    if(myState._id){
+  const profileFetch = async () => {
+    if (myState._id) {
       let data = await fetchMyProfile("me");
       dispatch({
         type: ME,
@@ -30,11 +35,9 @@ function Navbar() {
         payload: data2,
       });
     }
-  }
-  
-  
+  };
 
-    return (
+  return (
     <div className="header">
       <div className="header_left">
         <img src={Logo} alt="LinkedIn icon" />
@@ -48,10 +51,12 @@ function Navbar() {
           <HeaderOption Icon={<HomeIcon />} title="Home" />
         </Link>
         <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />
-        <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />
+        <Link to={"/Jobs"}>
+          <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />{" "}
+        </Link>
         <HeaderOption Icon={<ChatIcon />} title="Messaging" />
         <HeaderOption Icon={<NotificationsIcon />} title="Notifications" />
-        <Link to={`/Profile/me`} onClick={profileFetch} >
+        <Link to={`/Profile/me`} onClick={profileFetch}>
           <HeaderOption Icon={<AccountCircleIcon />} title="Profile" />
         </Link>
       </div>
@@ -60,5 +65,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
