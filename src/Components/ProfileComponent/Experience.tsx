@@ -60,7 +60,8 @@ const Experience = () => {
                     </div>
                   </div>
                 </Col>
-                {mystateMe._id === "63fc65b1f193e60013807f4e" ? (
+                {mystateMe._id === "63fc65b1f193e60013807f4e" ||
+                "63fc64fdf193e60013807f4c" ? (
                   <Col xs={1} className="mt-1">
                     <ModalModifyEperience experienceId={e} />
                   </Col>
@@ -70,7 +71,8 @@ const Experience = () => {
               </div>
             ))}
         </Col>
-        {mystateMe._id === "63fc65b1f193e60013807f4e" ? (
+        {mystateMe._id === "63fc65b1f193e60013807f4e" ||
+        "63fc64fdf193e60013807f4c" ? (
           <Col xs={1} className="mt-3">
             <Button
               onClick={handleShowModalPOST}

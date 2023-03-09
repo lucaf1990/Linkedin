@@ -14,7 +14,7 @@ export const fetchHome = async (followers: string[]) => {
     let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${lucaKey}`,
+        Authorization: `Bearer ${beboKey}`,
       },
     });
     if (res.ok) {
@@ -38,7 +38,7 @@ export const addMyPost = async (params: newPost) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${lucaKey}`,
+        Authorization: `Bearer ${beboKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -53,7 +53,7 @@ export const addMyPostImg = async (id: string, fd: FormData) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${lucaKey}`,
+        Authorization: `Bearer ${beboKey}`,
       },
       body: fd,
     }
@@ -66,7 +66,7 @@ export const changeMyPost = async (params: newPost) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${lucaKey}`,
+        Authorization: `Bearer ${beboKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -80,7 +80,7 @@ export const deletePost = async (params: newPost) => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${lucaKey}`,
+        Authorization: `Bearer ${beboKey}`,
       },
       body: JSON.stringify(params),
     }

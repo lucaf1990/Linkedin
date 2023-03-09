@@ -71,7 +71,8 @@ const ProfileSection = () => {
               <div className="Profile-Btn3 btn-light text-secondary">Altro</div>
             </Col>
           </Col>{" "}
-          {data._id === "63fc65b1f193e60013807f4e" ? (
+          {data._id === "63fc65b1f193e60013807f4e" ||
+          "63fc64fdf193e60013807f4c" ? (
             <Col xs={1} className="mt-3">
               <Button id="modal-btn" onClick={handleShowModal}>
                 {" "}
