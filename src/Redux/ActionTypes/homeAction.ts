@@ -3,13 +3,16 @@ import { Me, newPost, postFetch } from "../Interfaces";
 export const HOME_FETCH = "HOME_FETCH";
 export const FOLLOWER_POST = "FOLLOWER_POST";
 
+const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
+const lucaKey = process.env.REACT_APP_LUCA_SECRET_KEY;
+const daniKey = process.env.REACT_APP_DANI_SECRET_KEY;
+
 export const fetchHome = async (followers: string[]) => {
   try {
     let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       method: "GET",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
     });
     if (res.ok) {
@@ -33,8 +36,7 @@ export const addMyPost = async (params: newPost) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -49,8 +51,7 @@ export const addMyPostImg = async (id: string, fd: FormData) => {
     {
       method: "POST",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
@@ -63,8 +64,7 @@ export const changeMyPost = async (params: newPost) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -78,8 +78,7 @@ export const deletePost = async (params: newPost) => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }

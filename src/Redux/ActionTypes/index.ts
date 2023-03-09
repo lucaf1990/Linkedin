@@ -5,15 +5,18 @@ export const PROFILES_FETCH = "PROFILES_FETCH";
 export const ME = "ME";
 export const EXPERIENCE_FETCH = "EXPERIENCE_FETCH";
 
-export const fetchMyProfile = async (id:string|undefined) => {
+const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
+const lucaKey = process.env.REACT_APP_LUCA_SECRET_KEY;
+const daniKey = process.env.REACT_APP_DANI_SECRET_KEY;
+
+export const fetchMyProfile = async (id: string | undefined) => {
   try {
     let res = await fetch(
       `https://striveschool-api.herokuapp.com/api/profile/${id}`,
       {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+          Authorization: `Bearer ${lucaKey}`,
         },
       }
     );
@@ -35,8 +38,7 @@ export const fetchMyExperience = async (params: string) => {
       {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+          Authorization: `Bearer ${lucaKey}`,
         },
       }
     );
@@ -58,8 +60,7 @@ export const changeMyInfo = async (params: MyExperienceChanges) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -72,8 +73,7 @@ export const fetchProfiles = async () => {
       {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+          Authorization: `Bearer ${lucaKey}`,
         },
       }
     );
@@ -95,8 +95,7 @@ export const changeMyProfileInfo = async (params: MyProfileChanges) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -111,14 +110,13 @@ export const addMyInfo = async (params: MyExperienceChanges) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
   );
-  let newExp = await requestOptions.json()
-  return newExp
+  let newExp = await requestOptions.json();
+  return newExp;
 };
 
 export const deleteExp = async (params: MyExperienceChanges) => {
@@ -127,48 +125,44 @@ export const deleteExp = async (params: MyExperienceChanges) => {
     {
       method: "DELETE",
       headers: {
-        "Content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
   );
 };
-export const uploadPost = async (id:string,fd:FormData) => {
+export const uploadPost = async (id: string, fd: FormData) => {
   const requestOptions = await fetch(
     `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`,
     {
       method: "POST",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
   );
 };
-export const uploadExpImg = async (id:string,expId:string,fd:FormData) => {
+export const uploadExpImg = async (id: string, expId: string, fd: FormData) => {
   const requestOptions = await fetch(
     `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences/${expId}/picture`,
     {
       method: "POST",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
   );
 };
-export const addMyImg = async (id:string,fd:FormData,userId:string) => {
+export const addMyImg = async (id: string, fd: FormData, userId: string) => {
   const requestOptions = await fetch(
     `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${id}/picture`,
     {
       method: "POST",
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNjViMWYxOTNlNjAwMTM4MDdmNGUiLCJpYXQiOjE2Nzc0ODU0OTAsImV4cCI6MTY3ODY5NTA5MH0.jLHyxn39KIUUwQUfidKv8LPnbyoGAa5Mc6Zmgo8WHQg",
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
