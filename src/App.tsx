@@ -9,6 +9,7 @@ import Profile from "./Components/Profile";
 import Company from "./Components/JobsComponent/Company";
 import Category from "./Components/JobsComponent/Category";
 import SearchComponent from "./Components/JobsComponent/SearchComponent";
+import LikedPost from "./Components/Likes/LikedPost";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Profile/:user" element={<Profile />} />
           <Route path="/Jobs" element={<Jobs />} />
+          <Route path="/Likes" element={<LikedPost />} />
           <Route path="/Company/:company" element={<Company />} />
           <Route path="/Category/:category" element={<Category />} />
           <Route path="/Search/:value" element={<SearchComponent />} />
