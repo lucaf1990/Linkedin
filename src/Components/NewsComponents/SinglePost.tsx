@@ -19,21 +19,32 @@ import {
   deletePost,
   fetchHome,
   HOME_FETCH,
+  LIKED_POST,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost, postFetch } from "../../Redux/Interfaces";
 import Comments from "../HomeCommentComponents/Comments";
 import { RootState } from "../../Redux/Store";
+import { type } from "os";
 
 const SinglePost = ({ post }: { post: postFetch }) => {
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const followers = useSelector((state: RootState) => state.home.followers);
+  const like = useSelector((state: RootState) => state.home.likes);
   const [showComments, setShowComments] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   const handleChange = () => {
     setShowComments(!showComments);
   };
-
   const dispatch = useDispatch();
+  const AddLike = () => {
+    dispatch({
+      type: LIKED_POST,
+      payload: post,
+    });
+    setSelected(!selected);
+  };
+  const IconaCliccata = selected ? "blue" : "grey";
 
   const handleDelete = async (obj: newPost) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -120,7 +131,12 @@ const SinglePost = ({ post }: { post: postFetch }) => {
         />
       </div>
       <div className="post_buttons">
-        <InputOption Icon={<ThumbUpOffAltIcon />} title="Like" />
+        <span onClick={AddLike}>
+          <InputOption
+            Icon={<ThumbUpOffAltIcon style={{ color: IconaCliccata }} />}
+            title="Like"
+          />
+        </span>
         <span onClick={handleChange}>
           <InputOption Icon={<InsertCommentOutlinedIcon />} title="Comment" />
         </span>

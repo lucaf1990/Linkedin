@@ -78,7 +78,7 @@ function Navbar() {
         <Link to={"/"} onClick={profileFetch}>
           <HeaderOption Icon={<HomeIcon />} title="Home" />
         </Link>
-        <HeaderOption Icon={<SupervisorAccountIcon />} title="My Network" />
+        <HeaderOption Icon={<SupervisorAccountIcon />} title="My Likes" />
         <Link to={"/Jobs"}>
           <HeaderOption Icon={<BusinessCenterIcon />} title="Jobs" />{" "}
         </Link>

@@ -1,15 +1,20 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { FOLLOWER_POST, HOME_FETCH } from "../ActionTypes/homeAction";
+import {
+  FOLLOWER_POST,
+  HOME_FETCH,
+  LIKED_POST,
+} from "../ActionTypes/homeAction";
 import { Me, MyHomeState, postFetch } from "../Interfaces";
 
 const initialState: MyHomeState = {
   postsFetch: [],
   followers: [],
+  likes: [],
 };
 
 const homeReducer = (
   state = initialState,
-  action: PayloadAction<postFetch[] | string>
+  action: PayloadAction<postFetch[] | string | postFetch>
 ) => {
   switch (action.type) {
     case HOME_FETCH:
@@ -21,6 +26,11 @@ const homeReducer = (
       return {
         ...state,
         followers: [...state.followers, action.payload as string],
+      };
+    case LIKED_POST:
+      return {
+        ...state,
+        likes: [...state.likes, action.payload as postFetch],
       };
 
     default:

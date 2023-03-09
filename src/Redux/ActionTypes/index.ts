@@ -8,6 +8,7 @@ export const EXPERIENCE_FETCH = "EXPERIENCE_FETCH";
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 const lucaKey = process.env.REACT_APP_LUCA_SECRET_KEY;
 const daniKey = process.env.REACT_APP_DANI_SECRET_KEY;
+const kevinKey = process.env.REACT_APP_KEVIN_SECRET_KEY;
 
 export const fetchMyProfile = async (id: string | undefined) => {
   try {

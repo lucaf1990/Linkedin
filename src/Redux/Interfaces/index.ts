@@ -52,10 +52,14 @@ export interface MyState {
   me: Me;
   experiencesFetch: ArrMe[];
 }
+export interface MyLikes {
+  likes: postFetch[];
+}
 
 export interface MyHomeState {
   postsFetch: postFetch[];
   followers: string[];
+  likes: postFetch[];
 }
 
 export interface ModalProfileSectionProps {}

@@ -2,10 +2,12 @@ import { Me, newPost, postFetch } from "../Interfaces";
 
 export const HOME_FETCH = "HOME_FETCH";
 export const FOLLOWER_POST = "FOLLOWER_POST";
+export const LIKED_POST = "LIKED_POST";
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 const lucaKey = process.env.REACT_APP_LUCA_SECRET_KEY;
 const daniKey = process.env.REACT_APP_DANI_SECRET_KEY;
+const kevinKey = process.env.REACT_APP_KEVIN_SECRET_KEY;
 
 export const fetchHome = async (followers: string[]) => {
   try {
