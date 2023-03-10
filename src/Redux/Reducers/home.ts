@@ -5,7 +5,7 @@ import {
   LIKED_POST,
   REMOVE_LIKE,
 } from "../ActionTypes/homeAction";
-import { MyHomeState, postFetch } from "../Interfaces";
+import { Me, MyHomeState, postFetch } from "../Interfaces";
 
 const initialState: MyHomeState = {
   postsFetch: [],

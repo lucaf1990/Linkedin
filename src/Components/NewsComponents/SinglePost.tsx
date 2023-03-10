@@ -27,7 +27,15 @@ import Comments from "../HomeCommentComponents/Comments";
 import { RootState } from "../../Redux/Store";
 import { type } from "os";
 
-const SinglePost = ({ post,index,select }: { post: postFetch,index:number,select:boolean }) => {
+const SinglePost = ({
+  post,
+  index,
+  select,
+}: {
+  post: postFetch;
+  index: number;
+  select: boolean;
+}) => {
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const followers = useSelector((state: RootState) => state.home.followers);
   const [showComments, setShowComments] = useState(false);
@@ -39,18 +47,35 @@ const SinglePost = ({ post,index,select }: { post: postFetch,index:number,select
   const dispatch = useDispatch();
   const AddLike = () => {
     setSelected(!selected);
-    if(selected === false){
+    if (selected === false) {
       dispatch({
         type: LIKED_POST,
         payload: post,
       });
-    }else{
+    } else {
       dispatch({
         type: REMOVE_LIKE,
-        payload: index
-      })
+        payload: index,
+      });
     }
   };
+
+  // const AddLike = () => {
+  //   if (likes.map((l) => l._id).includes(post._id)) {
+  //     setSelected(false);
+  //     dispatch({
+  //       type: REMOVE_LIKE,
+  //       payload: post._id,
+  //     });
+  //   } else {
+  //     setSelected(true);
+  //     dispatch({
+  //       type: LIKED_POST,
+  //       payload: post,
+  //     });
+  //   }
+  // };
+
   const IconaCliccata = selected ? "blue" : "grey";
 
   const handleDelete = async (obj: newPost) => {
