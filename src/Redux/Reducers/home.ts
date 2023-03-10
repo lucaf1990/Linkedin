@@ -5,7 +5,7 @@ import {
   LIKED_POST,
   REMOVE_LIKE,
 } from "../ActionTypes/homeAction";
-import { Me, MyHomeState, postFetch } from "../Interfaces";
+import { MyHomeState, postFetch } from "../Interfaces";
 
 const initialState: MyHomeState = {
   postsFetch: [],
@@ -15,7 +15,7 @@ const initialState: MyHomeState = {
 
 const homeReducer = (
   state = initialState,
-  action: PayloadAction<postFetch[] | string | postFetch |number>
+  action: PayloadAction<postFetch[] | string | postFetch | number>
 ) => {
   switch (action.type) {
     case HOME_FETCH:
@@ -34,10 +34,10 @@ const homeReducer = (
         likes: [...state.likes, action.payload as postFetch],
       };
     case REMOVE_LIKE:
-      return{
+      return {
         ...state,
-        likes: state.likes.filter((_,i)=> i !== action.payload )
-      }
+        likes: state.likes.filter((_, i) => i !== action.payload),
+      };
 
     default:
       return state;

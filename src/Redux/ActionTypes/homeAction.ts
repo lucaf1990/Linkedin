@@ -1,9 +1,9 @@
-import { Me, newPost, postFetch } from "../Interfaces";
+import { newPost, postFetch } from "../Interfaces";
 
 export const HOME_FETCH = "HOME_FETCH";
 export const FOLLOWER_POST = "FOLLOWER_POST";
 export const LIKED_POST = "LIKED_POST";
-export const REMOVE_LIKE = 'REMOVE_LIKE'
+export const REMOVE_LIKE = "REMOVE_LIKE";
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 const lucaKey = process.env.REACT_APP_LUCA_SECRET_KEY;
@@ -15,7 +15,7 @@ export const fetchHome = async (followers: string[]) => {
     let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
     });
     if (res.ok) {
@@ -39,7 +39,7 @@ export const addMyPost = async (params: newPost) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -54,7 +54,7 @@ export const addMyPostImg = async (id: string, fd: FormData) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
@@ -67,7 +67,7 @@ export const changeMyPost = async (params: newPost) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -81,7 +81,7 @@ export const deletePost = async (params: newPost) => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }

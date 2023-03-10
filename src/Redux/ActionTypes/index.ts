@@ -17,7 +17,7 @@ export const fetchMyProfile = async (id: string | undefined) => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${beboKey}`,
+          Authorization: `Bearer ${lucaKey}`,
         },
       }
     );
@@ -39,7 +39,7 @@ export const fetchMyExperience = async (params: string) => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${beboKey}`,
+          Authorization: `Bearer ${lucaKey}`,
         },
       }
     );
@@ -61,7 +61,7 @@ export const changeMyInfo = async (params: MyExperienceChanges) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -74,7 +74,7 @@ export const fetchProfiles = async () => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${beboKey}`,
+          Authorization: `Bearer ${lucaKey}`,
         },
       }
     );
@@ -96,7 +96,7 @@ export const changeMyProfileInfo = async (params: MyProfileChanges) => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -111,7 +111,7 @@ export const addMyInfo = async (params: MyExperienceChanges) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -127,7 +127,7 @@ export const deleteExp = async (params: MyExperienceChanges) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: JSON.stringify(params),
     }
@@ -139,7 +139,7 @@ export const uploadPost = async (id: string, fd: FormData) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
@@ -151,7 +151,7 @@ export const uploadExpImg = async (id: string, expId: string, fd: FormData) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }
@@ -163,7 +163,7 @@ export const addMyImg = async (id: string, fd: FormData, userId: string) => {
     {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${beboKey}`,
+        Authorization: `Bearer ${lucaKey}`,
       },
       body: fd,
     }

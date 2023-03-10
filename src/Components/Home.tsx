@@ -14,7 +14,6 @@ import NewsSideBar from "./NewsComponents/NewsSideBar";
 import RightBar from "./NewsComponents/rightCard";
 
 function Home() {
-  const myState = useSelector((state: RootState) => state.profile.me);
   const followers = useSelector((state: RootState) => state.home.followers);
   console.log(followers);
 
