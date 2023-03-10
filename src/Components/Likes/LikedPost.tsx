@@ -51,8 +51,8 @@ function LikedPost() {
     <div className="d-flex  justify-content-center ">
       <NewsSideBar />
       <div style={{ width: "746px" }} className="mx-3 mb-3 mt-0">
-        {liked.reverse().map((singPost, i) => (
-          <SinglePost key={i} post={singPost} />
+        {liked.map((singPost, i) => (
+          <SinglePost key={i} post={singPost} index={i} select={true} />
         ))}
       </div>
       <RightBar />

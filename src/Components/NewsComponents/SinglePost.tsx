@@ -20,29 +20,36 @@ import {
   fetchHome,
   HOME_FETCH,
   LIKED_POST,
+  REMOVE_LIKE,
 } from "../../Redux/ActionTypes/homeAction";
 import { newPost, postFetch } from "../../Redux/Interfaces";
 import Comments from "../HomeCommentComponents/Comments";
 import { RootState } from "../../Redux/Store";
 import { type } from "os";
 
-const SinglePost = ({ post }: { post: postFetch }) => {
+const SinglePost = ({ post,index,select }: { post: postFetch,index:number,select:boolean }) => {
   const myProfile = useSelector((state: RootState) => state.profile.me);
   const followers = useSelector((state: RootState) => state.home.followers);
-  const like = useSelector((state: RootState) => state.home.likes);
   const [showComments, setShowComments] = useState(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(select);
 
   const handleChange = () => {
     setShowComments(!showComments);
   };
   const dispatch = useDispatch();
   const AddLike = () => {
-    dispatch({
-      type: LIKED_POST,
-      payload: post,
-    });
     setSelected(!selected);
+    if(selected === false){
+      dispatch({
+        type: LIKED_POST,
+        payload: post,
+      });
+    }else{
+      dispatch({
+        type: REMOVE_LIKE,
+        payload: index
+      })
+    }
   };
   const IconaCliccata = selected ? "blue" : "grey";
 

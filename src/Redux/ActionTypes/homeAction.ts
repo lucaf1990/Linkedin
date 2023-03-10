@@ -3,6 +3,7 @@ import { Me, newPost, postFetch } from "../Interfaces";
 export const HOME_FETCH = "HOME_FETCH";
 export const FOLLOWER_POST = "FOLLOWER_POST";
 export const LIKED_POST = "LIKED_POST";
+export const REMOVE_LIKE = 'REMOVE_LIKE'
 
 const beboKey = process.env.REACT_APP_BEBO_SECRET_KEY;
 const lucaKey = process.env.REACT_APP_LUCA_SECRET_KEY;

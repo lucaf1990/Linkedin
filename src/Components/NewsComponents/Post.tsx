@@ -15,7 +15,7 @@ const Post = () => {
   return (
     <>
       {posts?.slice(0, postsToShow).map((post, i) => (
-        <SinglePost key={i} post={post} />
+        <SinglePost key={i} post={post} index={i} select={false}/>
       ))}
       {posts && posts.length > postsToShow && (
         <Row>
