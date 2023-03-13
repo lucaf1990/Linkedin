@@ -55,7 +55,7 @@ const SinglePost = ({
     } else {
       dispatch({
         type: REMOVE_LIKE,
-        payload: index,
+        payload: post._id,
       });
     }
   };

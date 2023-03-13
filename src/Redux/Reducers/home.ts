@@ -36,7 +36,7 @@ const homeReducer = (
     case REMOVE_LIKE:
       return {
         ...state,
-        likes: state.likes.filter((_, i) => i !== action.payload),
+        likes: state.likes.filter((post) => post._id !== action.payload),
       };
 
     default:
